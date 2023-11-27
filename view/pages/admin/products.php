@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Categories</title>
+    <title>Users</title>
 
     <!-- Custom fonts for this template -->
     <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -47,14 +47,14 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Manage Categories</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Manage Products</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary">Thông tin categories</h6>
-                            <button type="button" class="ml-auto d-block btn btn-primary" data-toggle="modal" data-target="#addCategory">
+                            <h6 class="m-0 font-weight-bold text-primary">Thông tin products</h6>
+                            <button type="button" class="ml-auto d-block btn btn-primary" data-toggle="modal" data-target="#addProduct">
                                 <i class="fa fa-plus"></i>
-                                Add new cateogry
+                                Add new Products
                             </button>
                         </div>
                         <div class="card-body">
@@ -62,9 +62,10 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Category Name</th>
-                                            <th>Description</th>
+                                            <th>Product Name</th>
+                                            <th>Price</th>
+                                            <th>Image</th>
+                                            <th>Category</th>
                                             <th>Status</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
@@ -72,15 +73,16 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Category Name</th>
-                                            <th>Description</th>
+                                            <th>Product Name</th>
+                                            <th>Price</th>
+                                            <th>Image</th>
+                                            <th>Category</th>
                                             <th>Status</th>
                                             <th>Created Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
-                                    <tbody id="table-category">
+                                    <tbody id="table-products">
 
                                     </tbody>
                                 </table>
@@ -98,7 +100,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2023</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>
@@ -133,27 +135,37 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="addProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Category</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="createCategory">
+                    <form id="createProduct" enctype="multipart/form-data">
                         <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="username">Category name</label>
-                                <input type="text" name="categoryname" class="form-control" id="categoryname" placeholder="category name">
+                            <div class="form-group col-md-6">
+                                <label for="productname">Product name</label>
+                                <input type="text" name="productname" class="form-control" id="productname" placeholder="product name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Price">Price</label>
+                                <input type="number" name="price" class="form-control" id="price" placeholder="Price">
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="Description">Description</label>
-                                <input type="Description" name="description" class="form-control" id="description" placeholder="description">
+                            <div class="form-group col-md-6">
+                                <select class="form-select" name="categoryid" id="categoryid" aria-label="Default select example">
+                                    <option selected>Choose an category</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="mb-3">
+                                    <input class="form-control" name="image" type="file" id="formFile">
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
@@ -162,7 +174,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Sign in</button>
                         </div>
                     </form>
                 </div>
@@ -170,43 +183,60 @@
         </div>
     </div>
 
-    <div class="modal fade" id="editCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+    <div class="modal fade" id="editProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Category</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Product</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="updateCategory">
+                    <form id="editProduct" enctype="multipart/form-data">
                         <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="username">Category name</label>
-                                <input type="text" name="categoryname" class="form-control categoryname" placeholder="category name">
+                            <div class="form-group col-md-6">
+                                <label for="productname">Product name</label>
+                                <input type="text" name="productname" class="form-control productname" id="productname" placeholder="product name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Price">Price</label>
+                                <input type="number" name="price" class="form-control price" id="price" placeholder="Price">
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="Description">Description</label>
-                                <input type="text" name="description" class="form-control description" placeholder="description">
+                            <div class="form-group col-md-6">
+                                <select class="form-select categoryid" name="categoryid" id="categoryid" aria-label="Default select example">
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <div class="mb-3">
+                                    <input onchange="loadImage(event)" class="form-control image" name="image" type="file" id="formFile">
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <input type="text" name="id" class="form-control id" placeholder="id" hidden>
-                            <div class="eerror text-danger">
+                            <div class="form-group">
+                                <img src="" alt="" class="w-100 ratio ratio-1x1 avatar" id="avatar">
+                                <input type="text" class="id" hidden>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="cerror text-danger">
 
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">update</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Sign in</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="../../../vendor/jquery/jquery.min.js"></script>
     <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -227,39 +257,51 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
+            showAllProducts();
             showAllCategory();
         })
-        const showAllCategory = () => {
+        
+
+
+        const showAllProducts = () => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
                 data: {
                     action: "view"
                 },
                 success: (response) => {
-                    let categories = JSON.parse(response)
-                    console.log(categories);
+                    let products = JSON.parse(response)
+                    console.log(products);
                     $('#dataTable').DataTable({
                         searching: true,
                         paging: true,
-                        data: categories,
+                        data: products,
                         columns: [
                             {
-                                data: 'id',
+                                data: 'productname',
                                 render: function(data, type, row) {
-                                    return row.id
+                                    return row.productname
                                 }
                             },
                             {
-                                data: 'name',
+                                data: 'price',
                                 render: function(data, type, row) {
-                                    return row.name
+                                    return row.price
                                 }
                             },
                             {
-                                data: 'description',
+                                data: 'image',
                                 render: function(data, type, row) {
-                                    return row.description
+                                    return `<div class="w-4 h-4">
+                                                 <img src="../../../uploads/${row.image}" style="width: 100%; height:100%; object-fit: cover"/>
+                                             </div>`
+                                }
+                            },
+                            {
+                                data: 'categoryname',
+                                render: function(data, type, row) {
+                                    return row.categoryname
                                 }
                             },
                             {
@@ -290,9 +332,33 @@
                 }
             })
         }
-        const EnableCategory = (id) => {
+
+        const showAllCategory = () => {
             $.ajax({
                 url: 'http://localhost:3000/database/repository/category.php',
+                type: 'POST',
+                data: `action=view`,
+                success: (response) => {
+                    let data = JSON.parse(response)
+                    for (var i = 0; i < data.length; i++) {
+                        var option = document.createElement("option");
+                        console.log(data[i]);
+                        option.value = data[i].id;
+                        option.text = data[i].name;
+                        $('#categoryid').append(option);
+                    }
+                }
+            })
+        }
+
+        const loadImage = (evente) => {
+            console.log('hehe');
+            $('.avatar').attr('src', URL.createObjectURL(event.target.files[0]));
+        }
+
+        const EnableProduct = (id) => {
+            $.ajax({
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
                 data: {
                     action: "enable",
@@ -302,6 +368,7 @@
                     let {
                         status
                     } = JSON.parse(response)
+                    console.log(status);
                     if (status === 200) {
                         window.location.reload()
                     } else if (status === 400) {
@@ -310,9 +377,9 @@
                 }
             })
         }
-        const DisableCategory = (id) => {
+        const DisableProduct = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
                 data: {
                     action: "disable",
@@ -322,77 +389,126 @@
                     let {
                         status
                     } = JSON.parse(response)
+                    console.log(status);
                     if (status === 200) {
                         window.location.reload()
                     } else if (status === 400) {
-                        console.log('haha');
+                        
                     }
                 }
             })
         }
 
-        $('#createCategory').on('submit', (e) => {
+
+        $('#createProduct').on('submit', (e) => {
             e.preventDefault();
-            var formData = $('#createCategory').serialize();
+
+            var formData = new FormData();
+            var file = $('#formFile')[0].files;
+            formData.append('image', file[0]);
+            formData.append('price', $('#price').val())
+            formData.append('categoryid', $('#categoryid').val())
+            formData.append('productname', $('#productname').val())
+            formData.append('action', 'create')
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
-                data: `${formData}&action=create`,
+                data: formData,
+                processData: false, // Không xử lý dữ liệu
+                contentType: false,
                 success: (response) => {
                     let {
                         status,
                         message
                     } = JSON.parse(response)
                     console.log(status);
+                    console.log(message);
                     if (status === 200) {
                         window.location.reload()
                     } else if (status === 400) {
+                        console.log('hehe');
                         $('.cerror').html(message);
                     }
                 }
             })
         })
-
-        const EditCategory = (id) => {
+        
+        const handleUpdate = (id, categoryid) => {
+            
             $.ajax({
                 url: 'http://localhost:3000/database/repository/category.php',
+                type: 'POST',
+                data: `action=view`,
+                success: (response) => {
+                    let data = JSON.parse(response)
+                    for (var i = 0; i < data.length; i++) {
+                        var option = document.createElement("option");
+                        console.log(data[i]);
+                        option.value = data[i].id;
+                        option.text = data[i].name;
+                        if (data[i].id == categoryid) {
+                            option.selected = true;
+                        }
+                        $('.categoryid').append(option);
+                    }
+                }
+            })
+
+            $.ajax({
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
                 data: `id=${id}&action=getbyid`,
                 success: (response) => {
-                    console.log(response);
                     let data = JSON.parse(response)[0]
-                    $('.categoryname').val(data['name']);
-                    $('.description').val(data['description']);
-                    $('.id').val(data['id']);
-                    $('#editCategory').modal('show')
+                        console.log(data);
+                        $('.productname').val(data['name'])
+                        $('.price').val(data['price'])
+                        $('.id').val(id)
+                        $('.avatar').attr('src', `../../../uploads/${data['image']}`)
+                        $('#editProduct').modal('show')
                 }
             })
         }
-        $('#updateCategory').on('submit', (e) => {
+
+        $('#editProduct').on('submit', (e) => {
             e.preventDefault();
-            var formData = $('#updateCategory').serialize();
+            var formData = new FormData();
+            formData.append('id', $('.id').val());
+            formData.append('productname', $('.productname').val())
+            formData.append('price', $('.price').val())
+            formData.append('categoryid', $('.categoryid').val())
+            formData.append('action', "update")
+            var img = $('.image')[0]
+            console.log(img.files[0]);
+            if (img.files[0]) {
+                console.log('co anh');
+                formData.append('image', img.files[0])
+            }
+
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
-                data: `${formData}&action=update`,
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: (response) => {
                     let {
                         status,
                         message
                     } = JSON.parse(response)
-                    console.log(message);
+                    console.log(JSON.parse(response));
                     if (status === 200) {
                         $('.eerror').html('');
-                        window.location.reload()
+                        window.location.reload();
                     } else if (status === 400) {
+                        console.log('error');
                         $('.eerror').html(message);
                     }
                 }
             })
         })
-
     </script>
 </body>
 

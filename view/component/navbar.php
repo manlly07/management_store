@@ -49,6 +49,25 @@
         </a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="./products.php">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Products</span>
+        </a>
+    </li>
+    <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInvoices" aria-expanded="true" aria-controls="collapseInvoices">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Invoices</span>
+            </a>
+            <div id="collapseInvoices" class="collapse" aria-labelledby="headingInvoices" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Invoices</h6>
+                    <a class="collapse-item" href="./listinvoice.php">List</a>
+                    <a class="collapse-item" href="./addinvoice.php">Add</a>
+                </div>
+            </div>
+        </li>
     <!-- Divider -->
     <hr class="sidebar-divider">
 

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Categories</title>
+    <title>Invoices</title>
 
     <!-- Custom fonts for this template -->
     <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -17,6 +17,7 @@
 
     <!-- Custom styles for this template -->
     <link href="../../../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../../css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
     <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -47,15 +48,15 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Manage Categories</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Manage Invoice</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary">Thông tin categories</h6>
-                            <button type="button" class="ml-auto d-block btn btn-primary" data-toggle="modal" data-target="#addCategory">
+                            <h6 class="m-0 font-weight-bold text-primary">Thông tin hóa đơn</h6>
+                            <a href="./addinvoice.php" type="button" class="ml-auto d-block btn btn-primary">
                                 <i class="fa fa-plus"></i>
-                                Add new cateogry
-                            </button>
+                                Add new invoice
+                            </a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -63,25 +64,73 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Category Name</th>
-                                            <th>Description</th>
+                                            <th>Client</th>
+                                            <th>Total</th>
                                             <th>Status</th>
-                                            <th>Created Date</th>
+                                            <th>Issued date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>Category Name</th>
-                                            <th>Description</th>
+                                            <th>Client</th>
+                                            <th>Total</th>
                                             <th>Status</th>
-                                            <th>Created Date</th>
+                                            <th>Issued date</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody id="table-category">
-
+                                        <tr>
+                                            <td>
+                                                <a href="#"><span>#4582</span></a>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex justify-content-start align-items-center">
+                                                    <div class="avatar-wrapper">
+                                                        <div class="avatar avatar-sm me-2">
+                                                            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_3000,h_2250,f_auto/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/x1nlzlyldasoj6pllfug/V%C3%A9V%C3%A0oC%E1%BB%95ngIMGWorldsofAdventure,Dubai-KlookVi%E1%BB%87tNam.jpg" alt="Avatar" class="rounded-circle" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column gap-1">
+                                                        <a href="pages-profile-user.html" class="text-truncate">
+                                                            <h6 class="mb-0">Jereme Saltmarsh</h6>
+                                                        </a>
+                                                        <small class="text-truncate">jsaltmarshj@hp.com</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                $5612	
+                                            </td>
+                                            <td>
+                                                12 Apr 2020	
+                                            </td>
+                                            <td>
+                                                <span class="badge rounded-pill bg-label-success"> Paid </span>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <a href="javascript:;" data-bs-toggle="tooltip" class="text-body delete-record" data-bs-placement="top" aria-label="Delete Invoice" data-bs-original-title="Delete Invoice">
+                                                        <i class="fa fa-trash mx-1"></i>
+                                                    </a>
+                                                    <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" aria-label="Preview Invoice" data-bs-original-title="Preview Invoice">
+                                                        <i class="fa fa-eye mx-1"></i>
+                                                    </a>
+                                                    <div class="dropdown">
+                                                        <i class="dropdown-toggle fa fa-caret-down " id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                           
+                                                        </i>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            <a class="dropdown-item" href="#">Action</a>
+                                                            <a class="dropdown-item" href="#">Another action</a>
+                                                            <a class="dropdown-item" href="#">Something else here</a>
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -227,7 +276,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
-            showAllCategory();
+            // showAllCategory();
         })
         const showAllCategory = () => {
             $.ajax({
@@ -237,55 +286,10 @@
                     action: "view"
                 },
                 success: (response) => {
-                    let categories = JSON.parse(response)
-                    console.log(categories);
+                    $('#table-category').html(response)
                     $('#dataTable').DataTable({
                         searching: true,
                         paging: true,
-                        data: categories,
-                        columns: [
-                            {
-                                data: 'id',
-                                render: function(data, type, row) {
-                                    return row.id
-                                }
-                            },
-                            {
-                                data: 'name',
-                                render: function(data, type, row) {
-                                    return row.name
-                                }
-                            },
-                            {
-                                data: 'description',
-                                render: function(data, type, row) {
-                                    return row.description
-                                }
-                            },
-                            {
-                                data: 'is_active',
-                                render: function(data, type, row) {
-                                    return row.is_active == 0 ? `<button type="button" class="m-auto d-block btn-sm btn btn-outline-danger">Disable</button>` : `<button type="button" class="m-auto d-block btn-sm btn btn-outline-success">Enable</button>`
-                                }
-                            },
-                            {
-                                data: 'created_at',
-                                render: function(data, type, row) {
-                                    return row.created_at
-                                }
-                            },
-                            {
-                                "data":null,
-                                render: function(data, type, row) {
-                                    console.log(row);
-                                    return `<div class="btn-group" role="group" aria-label="Basic example">
-                                                <button onclick="EnableProduct(${row.id})" type="button" class="btn btn-sm btn-success mr-2">Enable</button>
-                                                <button onclick="DisableProduct(${row.id})" type="button" class="btn btn-sm btn-danger mr-2">Disable</button>
-                                                <button onclick="handleUpdate(${row.id}, ${row.categoryid})" type="button" class="btn btn-sm btn-warning">Edit</button>
-                                            </div>`
-                                }
-                            }
-                        ],
                     })
                 }
             })
