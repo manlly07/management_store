@@ -1,7 +1,7 @@
 <?php
     include '../config.php';
     if($_POST['action'] && $_POST['action'] == 'view') {
-        $sql = "SELECT * FROM Categories";
+        $sql = "SELECT * FROM invoiceshipments";
         $data = Query($sql, db());
         echo json_encode($data);
     }

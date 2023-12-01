@@ -182,80 +182,6 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="createCategory">
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="username">Category name</label>
-                                <input type="text" name="categoryname" class="form-control" id="categoryname" placeholder="category name">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="Description">Description</label>
-                                <input type="Description" name="description" class="form-control" id="description" placeholder="description">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="cerror text-danger">
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Add</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="editCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="updateCategory">
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="username">Category name</label>
-                                <input type="text" name="categoryname" class="form-control categoryname" placeholder="category name">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="Description">Description</label>
-                                <input type="text" name="description" class="form-control description" placeholder="description">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <input type="text" name="id" class="form-control id" placeholder="id" hidden>
-                            <div class="eerror text-danger">
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">update</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../../../vendor/jquery/jquery.min.js"></script>
     <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -276,11 +202,11 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
-            // showAllCategory();
+            showAllInvoice();
         })
-        const showAllCategory = () => {
+        const showAllInvoice = () => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:3000/database/repository/invoices.php',
                 type: 'POST',
                 data: {
                     action: "view"
@@ -294,108 +220,6 @@
                 }
             })
         }
-        const EnableCategory = (id) => {
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: {
-                    action: "enable",
-                    id: id
-                },
-                success: (response) => {
-                    let {
-                        status
-                    } = JSON.parse(response)
-                    if (status === 200) {
-                        window.location.reload()
-                    } else if (status === 400) {
-                        console.log('haha');
-                    }
-                }
-            })
-        }
-        const DisableCategory = (id) => {
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: {
-                    action: "disable",
-                    id: id
-                },
-                success: (response) => {
-                    let {
-                        status
-                    } = JSON.parse(response)
-                    if (status === 200) {
-                        window.location.reload()
-                    } else if (status === 400) {
-                        console.log('haha');
-                    }
-                }
-            })
-        }
-
-        $('#createCategory').on('submit', (e) => {
-            e.preventDefault();
-            var formData = $('#createCategory').serialize();
-            console.log(formData);
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: `${formData}&action=create`,
-                success: (response) => {
-                    let {
-                        status,
-                        message
-                    } = JSON.parse(response)
-                    console.log(status);
-                    if (status === 200) {
-                        window.location.reload()
-                    } else if (status === 400) {
-                        $('.cerror').html(message);
-                    }
-                }
-            })
-        })
-
-        const EditCategory = (id) => {
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: `id=${id}&action=getbyid`,
-                success: (response) => {
-                    console.log(response);
-                    let data = JSON.parse(response)[0]
-                    $('.categoryname').val(data['name']);
-                    $('.description').val(data['description']);
-                    $('.id').val(data['id']);
-                    $('#editCategory').modal('show')
-                }
-            })
-        }
-        $('#updateCategory').on('submit', (e) => {
-            e.preventDefault();
-            var formData = $('#updateCategory').serialize();
-            console.log(formData);
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: `${formData}&action=update`,
-                success: (response) => {
-                    let {
-                        status,
-                        message
-                    } = JSON.parse(response)
-                    console.log(message);
-                    if (status === 200) {
-                        $('.eerror').html('');
-                        window.location.reload()
-                    } else if (status === 400) {
-                        $('.eerror').html(message);
-                    }
-                }
-            })
-        })
 
     </script>
 </body>

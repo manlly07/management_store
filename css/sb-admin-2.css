@@ -59,6 +59,10 @@
   object-fit: cover;
 }
 
+.w-px-100 {
+  width: 100px !important;
+}
+
 .avatar {
   position: relative;
   width: 2.5rem;

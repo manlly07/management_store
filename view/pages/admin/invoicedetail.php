@@ -48,16 +48,13 @@
                 <div class="container-fluid">
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-
-
-
-                        <div class="row invoice-edit">
-                            <!-- Invoice Edit-->
-                            <div class="col-lg-9 col-12 mb-lg-0 mb-4">
+                        <div class="row invoice-preview">
+                            <!-- Invoice -->
+                            <div class="col-xl-9 col-md-8 col-12 mb-md-0 mb-4">
                                 <div class="card invoice-preview-card">
                                     <div class="card-body">
-                                        <div class="row mx-0">
-                                            <div class="col-md-7 mb-md-0 mb-4 ps-0">
+                                        <div class="d-flex justify-content-between flex-xl-row flex-md-column flex-sm-row flex-column">
+                                            <div class="mb-xl-0 pb-3">
                                                 <div class="d-flex svg-illustration align-items-center gap-2 mb-4">
                                                     <span class="app-brand-logo demo">
                                                         <span class="text-primary">
@@ -81,30 +78,16 @@
                                                 <p class="mb-1 text-secondary">San Diego County, CA 91905, USA</p>
                                                 <p class="mb-0 text-secondary">+1 (123) 456 7891, +44 (876) 543 2198</p>
                                             </div>
-                                            <div class="col-md-5 pe-0 ps-0 ps-md-2">
-                                                <dl class="row mb-2 g-2">
-                                                    <dt class="col-sm-6 mb-2 d-md-flex align-items-center justify-content-end">
-                                                        <span class="h4 text-capitalize mb-0 text-nowrap">Invoice</span>
-                                                    </dt>
-                                                    <dd class="col-sm-6">
-                                                        <div class="input-group input-group-merge disabled">
-                                                            <span style="background-color: #efeff0;" class="input-group-text">#</span>
-                                                            <input type="text" class="form-control" disabled="" placeholder="74909" value="74909" id="invoiceId">
-                                                        </div>
-                                                    </dd>
-                                                    <dt class="col-sm-6 mb-2 d-md-flex align-items-center justify-content-end">
-                                                        <span class="fw-normal text-secondary">Date Issued:</span>
-                                                    </dt>
-                                                    <dd class="col-sm-6">
-                                                        <input type="date" class="form-control invoice-date flatpickr-input" readonly="readonly">
-                                                    </dd>
-                                                    <dt class="col-sm-6 mb-2 d-md-flex align-items-center justify-content-end">
-                                                        <span class="fw-normal text-secondary">Due Date:</span>
-                                                    </dt>
-                                                    <dd class="col-sm-6">
-                                                        <input type="date" class="form-control due-date flatpickr-input" readonly="readonly">
-                                                    </dd>
-                                                </dl>
+                                            <div>
+                                                <h4 class="fw-medium text-capitalize pb-1 text-nowrap">INVOICE #86423</h4>
+                                                <div class="mb-1">
+                                                    <span class="text-secondary">Date Issues:</span>
+                                                    <span class="text-secondary">April 25, 2021</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-secondary">Date Due:</span>
+                                                    <span class="text-secondary">May 25, 2021</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -148,60 +131,59 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr class="my-0">
-                                    <div class="card-body">
-                                        <form class="source-item pt-1">
-                                            <div class="mb-3" data-repeater-list="group-a">
-                                                <div class="repeater-wrapper pt-0 pt-md-4" data-repeater-item="">
-                                                    <div class="d-flex border rounded position-relative pe-0">
-                                                        <div class="row w-100 p-3">
-                                                            <div class="col-md-6 col-12 mb-md-0 mb-3">
-                                                                <h6 class="mb-2 repeater-title">Item</h6>
-                                                                <select class="form-select item-details mb-3">
-                                                                    <option value="App Design">App Design</option>
-                                                                    <option value="App Customization" selected="">App Customization</option>
-                                                                    <option value="ABC Template">ABC Template</option>
-                                                                    <option value="App Development">App Development</option>
-                                                                </select>
-                                                                <textarea class="form-control" rows="2">The most developer friendly &amp; highly customizable HTML5 Admin</textarea>
-                                                            </div>
-                                                            <div class="col-md-3 col-12 mb-md-0 mb-3">
-                                                                <h6 class="mb-2 repeater-title">Cost</h6>
-                                                                <input type="number" class="form-control invoice-item-price mb-3" value="24" placeholder="24" min="12">
-                                                            </div>
-                                                            <div class="col-md-2 col-12 mb-md-0 mb-3">
-                                                                <h6 class="mb-2 repeater-title">Qty</h6>
-                                                                <input type="number" class="form-control invoice-item-qty" value="1" placeholder="1" min="1" max="50">
-                                                            </div>
-                                                            <div class="col-md-1 col-12 pe-0">
-                                                                <h6 class="mb-2 repeater-title">Price</h6>
-                                                                <p class="mb-0">$24.00</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex flex-column align-items-center justify-content-center border-start p-2">
-                                                            <i class="fa fa-trash-alt cursor-pointer" data-repeater-delete=""></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-repeater-create=""><i class="mdi mdi-plus me-1"></i> Add Item</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless m-0">
+                                            <thead class="border-top">
+                                                <tr>
+                                                    <th>Item</th>
+                                                    <th>Description</th>
+                                                    <th>Cost</th>
+                                                    <th>Qty</th>
+                                                    <th>Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap text-heading">Vuexy Admin Template</td>
+                                                    <td class="text-nowrap">HTML Admin Template</td>
+                                                    <td>$32</td>
+                                                    <td>1</td>
+                                                    <td>$32.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap text-heading">Frest Admin Template</td>
+                                                    <td class="text-nowrap">Angular Admin Template</td>
+                                                    <td>$22</td>
+                                                    <td>1</td>
+                                                    <td>$22.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap text-heading">Apex Admin Template</td>
+                                                    <td class="text-nowrap">HTML Admin Template</td>
+                                                    <td>$17</td>
+                                                    <td>2</td>
+                                                    <td>$34.00</td>
+                                                </tr>
+                                                <tr class="border-bottom">
+                                                    <td class="text-nowrap text-heading">Robust Admin Template</td>
+                                                    <td class="text-nowrap">React Admin Template</td>
+                                                    <td>$66</td>
+                                                    <td>1</td>
+                                                    <td>$66.00</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                     <hr class="my-0">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6 mb-md-0 mb-3">
-                                                <div class="d-flex align-items-center gap-2 mb-3 mt-2">
-                                                    <label for="salesperson" class="text-heading">Salesperson: </label>
-                                                    <input type="text" class="form-control w-50" id="salesperson" placeholder="Edward Crowley" value="Edward Crowley">
-                                                </div>
-                                                <div class="mb-4">
-                                                    <input type="text" class="form-control w-50" id="invoiceMsg" placeholder="Thanks for your business" value="Thanks for your business">
-                                                    <label for="invoiceMsg" class="d-none">Customer Notes</label>
+                                                <div>
+                                                    <p class="mb-2">
+                                                        <span class="me-1 text-heading">Salesperson:</span>
+                                                        <span class="text-secondary">Alfie Solomons</span>
+                                                    </p>
+                                                    <span class="text-secondary">Thanks for your business</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 d-flex justify-content-md-end mt-2">
@@ -228,31 +210,36 @@
                                         </div>
                                     </div>
                                     <hr class="my-0">
+
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="mb-3">
-                                                    <label for="note" class="form-label fw-medium">Note:</label>
-                                                    <textarea class="form-control" rows="2" id="note">It was a pleasure working with you and your team. We hope you will keep us in mind for future freelance projects. Thank You!</textarea>
-                                                </div>
+                                                <span class="fw-medium">Note:</span>
+                                                <span class="text-secondary">It was a pleasure working with you and your team. We hope you will keep us in mind for future freelance
+                                                    projects. Thank You!</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /Invoice Edit-->
+                            <!-- /Invoice -->
 
                             <!-- Invoice Actions -->
-                            <div class="col-lg-3 col-12 invoice-actions">
-                                <div class="card mb-4">
+                            <div class="col-xl-3 col-md-4 col-12 invoice-actions">
+                                <div class="card">
                                     <div class="card-body">
                                         <button class="btn btn-primary d-grid w-100 mb-3 waves-effect waves-light" data-bs-toggle="offcanvas" data-bs-target="#sendInvoiceOffcanvas">
-                                            <span class="d-flex align-items-center justify-content-center text-nowrap"><i class="mdi mdi-send-outline scaleX-n1-rtl me-2"></i>Send Invoice</span>
+                                            <span class="d-flex align-items-center justify-content-center text-nowrap"><i class="fa fa-angle-double-left me-2"></i>Send Invoice</span>
                                         </button>
-                                        <div class="d-flex">
-                                            <a href="./invoicedetail.php" class="btn btn-outline-secondary w-50 me-2 mb-3 waves-effect">Preview</a>
-                                            <button type="button" class="btn btn-outline-secondary w-50 mb-3 waves-effect">Save</button>
-                                        </div>
+                                        <button class="btn btn-outline-secondary d-grid w-100 mb-3 waves-effect">
+                                            Download
+                                        </button>
+                                        <a class="btn btn-outline-secondary d-grid w-100 mb-3 waves-effect" target="_blank" href="./app-invoice-print.php">
+                                            Print
+                                        </a>
+                                        <a href="./app-invoice-edit.php" class="btn btn-outline-secondary d-grid w-100 mb-3 waves-effect">
+                                            Edit Invoice
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -282,9 +269,9 @@
                                     </div>
                                     <div class="form-floating form-floating-outline mb-4">
                                         <textarea class="form-control" name="invoice-message" id="invoice-message" style="height: 190px;">Dear Queen Consolidated,
-                      Thank you for your business, always a pleasure to work with you!
-                      We have generated a new invoice in the amount of $95.59
-                      We would appreciate payment of this invoice by 05/11/2021</textarea>
+                                            Thank you for your business, always a pleasure to work with you!
+                                            We have generated a new invoice in the amount of $95.59
+                                            We would appreciate payment of this invoice by 05/11/2021</textarea>
                                         <label for="invoice-message">Message</label>
                                     </div>
                                     <div class="mb-4">
