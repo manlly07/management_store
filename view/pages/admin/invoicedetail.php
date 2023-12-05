@@ -74,19 +74,15 @@
                                                     </span>
                                                     <span class="h3 mb-0 app-brand-text fw-semibold text-black">VoTri</span>
                                                 </div>
-                                                <p class="mb-1 text-secondary">Office 149, 450 South Brand Brooklyn</p>
-                                                <p class="mb-1 text-secondary">San Diego County, CA 91905, USA</p>
+                                                <p class="mb-1 text-secondary">Công ty phân phối nước ngọt Võ Tín</p>
+                                                <p class="mb-1 text-secondary">Thành phố Hồ Chí Minh</p>
                                                 <p class="mb-0 text-secondary">+1 (123) 456 7891, +44 (876) 543 2198</p>
                                             </div>
                                             <div>
-                                                <h4 class="fw-medium text-capitalize pb-1 text-nowrap">INVOICE #86423</h4>
+                                                <h4 class="fw-medium text-capitalize pb-1 text-nowrap">INVOICE <span class="invoice-id">#86423</span></h4>
                                                 <div class="mb-1">
                                                     <span class="text-secondary">Date Issues:</span>
-                                                    <span class="text-secondary">April 25, 2021</span>
-                                                </div>
-                                                <div>
-                                                    <span class="text-secondary">Date Due:</span>
-                                                    <span class="text-secondary">May 25, 2021</span>
+                                                    <span class="text-secondary date-issues">April 25, 2021</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,11 +92,9 @@
                                         <div class="d-flex justify-content-between flex-wrap">
                                             <div class="my-3 me-3">
                                                 <h6 class="fw-bold">Invoice To:</h6>
-                                                <p class="mb-1 text-secondary">Thomas shelby</p>
-                                                <p class="mb-1 text-secondary">Shelby Company Limited</p>
-                                                <p class="mb-1 text-secondary">Small Heath, B10 0HF, UK</p>
-                                                <p class="mb-1 text-secondary">718-986-6062</p>
-                                                <p class="mb-0 text-secondary">peakyFBlinders@gmail.com</p>
+                                                <p class="mb-1 text-secondary name">Thomas shelby</p>
+                                                <p class="mb-1 text-secondary address">Shelby Company Limited</p>
+                                                <p class="mb-1 text-secondary phone">Small Heath, B10 0HF, UK</p>
                                             </div>
                                             <div class="my-3">
                                                 <h6 class="fw-bold">Bill To:</h6>
@@ -108,23 +102,15 @@
                                                     <tbody>
                                                         <tr class="text-secondary">
                                                             <td class="pe-3">Total Due:</td>
-                                                            <td>$12,110.55</td>
+                                                            <td class="total-due">$12,110.55</td>
                                                         </tr>
                                                         <tr class="text-secondary">
-                                                            <td class="pe-3">Bank name:</td>
-                                                            <td>American Bank</td>
+                                                            <td class="pe-3">Method:</td>
+                                                            <td class="method">Banking</td>
                                                         </tr>
                                                         <tr class="text-secondary">
-                                                            <td class="pe-3">Country:</td>
-                                                            <td>United States</td>
-                                                        </tr>
-                                                        <tr class="text-secondary">
-                                                            <td class="pe-3">IBAN:</td>
-                                                            <td>ETD95476213874685</td>
-                                                        </tr>
-                                                        <tr class="text-secondary">
-                                                            <td class="pe-3">SWIFT code:</td>
-                                                            <td>BR91905</td>
+                                                            <td class="pe-3">Status:</td>
+                                                            <td class="status">Pending</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -136,41 +122,20 @@
                                             <thead class="border-top">
                                                 <tr>
                                                     <th>Item</th>
-                                                    <th>Description</th>
+                                                    <!-- <th>Description</th> -->
                                                     <th>Cost</th>
                                                     <th>Qty</th>
                                                     <th>Price</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-nowrap text-heading">Vuexy Admin Template</td>
-                                                    <td class="text-nowrap">HTML Admin Template</td>
-                                                    <td>$32</td>
-                                                    <td>1</td>
-                                                    <td>$32.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-nowrap text-heading">Frest Admin Template</td>
-                                                    <td class="text-nowrap">Angular Admin Template</td>
-                                                    <td>$22</td>
-                                                    <td>1</td>
-                                                    <td>$22.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-nowrap text-heading">Apex Admin Template</td>
-                                                    <td class="text-nowrap">HTML Admin Template</td>
-                                                    <td>$17</td>
-                                                    <td>2</td>
-                                                    <td>$34.00</td>
-                                                </tr>
-                                                <tr class="border-bottom">
-                                                    <td class="text-nowrap text-heading">Robust Admin Template</td>
-                                                    <td class="text-nowrap">React Admin Template</td>
-                                                    <td>$66</td>
-                                                    <td>1</td>
-                                                    <td>$66.00</td>
-                                                </tr>
+                                            <tbody class="tbody">
+                                                <!-- <tr> -->
+                                                    <!-- <td class="text-nowrap text-heading item">Vuexy Admin Template</td> -->
+                                                    <!-- <td class="text-nowrap">HTML Admin Template</td> -->
+                                                    <!-- <td class="cost">$32</td>
+                                                    <td class="qty">1</td>
+                                                    <td class="price">$32.00</td> -->
+                                                <!-- </tr> -->
                                             </tbody>
                                         </table>
                                     </div>
@@ -180,8 +145,8 @@
                                             <div class="col-md-6 mb-md-0 mb-3">
                                                 <div>
                                                     <p class="mb-2">
-                                                        <span class="me-1 text-heading">Salesperson:</span>
-                                                        <span class="text-secondary">Alfie Solomons</span>
+                                                        <span class="me-1 text-heading">Person:</span>
+                                                        <span class="text-secondary personname">Alfie Solomons</span>
                                                     </p>
                                                     <span class="text-secondary">Thanks for your business</span>
                                                 </div>
@@ -190,20 +155,20 @@
                                                 <div class="invoice-calculations">
                                                     <div class="d-flex justify-content-between mb-2">
                                                         <span class="w-px-100 text-secondary">Subtotal:</span>
-                                                        <h6 class="mb-0 pt-1">$5000.25</h6>
+                                                        <h6 class="mb-0 pt-1 subtotal">$5000.25</h6>
                                                     </div>
                                                     <div class="d-flex justify-content-between mb-2">
                                                         <span class="w-px-100 text-secondary">Discount:</span>
-                                                        <h6 class="mb-0 pt-1">$00.00</h6>
+                                                        <h6 class="mb-0 pt-1">00.00</h6>
                                                     </div>
                                                     <div class="d-flex justify-content-between mb-2">
                                                         <span class="w-px-100 text-secondary">Tax:</span>
-                                                        <h6 class="mb-0 pt-1">$100.00</h6>
+                                                        <h6 class="mb-0 pt-1">00.00</h6>
                                                     </div>
                                                     <hr>
                                                     <div class="d-flex justify-content-between">
                                                         <span class="w-px-100 text-secondary">Total:</span>
-                                                        <h6 class="mb-0 pt-1">$5100.25</h6>
+                                                        <h6 class="mb-0 pt-1 total">5100.25</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -215,7 +180,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <span class="fw-medium">Note:</span>
-                                                <span class="text-secondary">It was a pleasure working with you and your team. We hope you will keep us in mind for future freelance
+                                                <span class="text-secondary note">It was a pleasure working with you and your team. We hope you will keep us in mind for future freelance
                                                     projects. Thank You!</span>
                                             </div>
                                         </div>
@@ -230,9 +195,6 @@
                                     <div class="card-body">
                                         <button class="btn btn-primary d-grid w-100 mb-3 waves-effect waves-light" data-bs-toggle="offcanvas" data-bs-target="#sendInvoiceOffcanvas">
                                             <span class="d-flex align-items-center justify-content-center text-nowrap"><i class="fa fa-angle-double-left me-2"></i>Send Invoice</span>
-                                        </button>
-                                        <button class="btn btn-outline-secondary d-grid w-100 mb-3 waves-effect">
-                                            Download
                                         </button>
                                         <a class="btn btn-outline-secondary d-grid w-100 mb-3 waves-effect" target="_blank" href="./app-invoice-print.php">
                                             Print
@@ -385,80 +347,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="createCategory">
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="username">Category name</label>
-                                <input type="text" name="categoryname" class="form-control" id="categoryname" placeholder="category name">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="Description">Description</label>
-                                <input type="Description" name="description" class="form-control" id="description" placeholder="description">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="cerror text-danger">
 
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Add</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="editCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="updateCategory">
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="username">Category name</label>
-                                <input type="text" name="categoryname" class="form-control categoryname" placeholder="category name">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="Description">Description</label>
-                                <input type="text" name="description" class="form-control description" placeholder="description">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <input type="text" name="id" class="form-control id" placeholder="id" hidden>
-                            <div class="eerror text-danger">
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">update</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../../../vendor/jquery/jquery.min.js"></script>
     <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -479,126 +368,48 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
-            // showAllCategory();
-        })
-        const showAllCategory = () => {
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: {
-                    action: "view"
-                },
-                success: (response) => {
-                    $('#table-category').html(response)
-                    $('#dataTable').DataTable({
-                        searching: true,
-                        paging: true,
-                    })
-                }
-            })
-        }
-        const EnableCategory = (id) => {
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: {
-                    action: "enable",
-                    id: id
-                },
-                success: (response) => {
-                    let {
-                        status
-                    } = JSON.parse(response)
-                    if (status === 200) {
-                        window.location.reload()
-                    } else if (status === 400) {
-                        console.log('haha');
-                    }
-                }
-            })
-        }
-        const DisableCategory = (id) => {
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: {
-                    action: "disable",
-                    id: id
-                },
-                success: (response) => {
-                    let {
-                        status
-                    } = JSON.parse(response)
-                    if (status === 200) {
-                        window.location.reload()
-                    } else if (status === 400) {
-                        console.log('haha');
-                    }
-                }
-            })
-        }
+            var urlParams = new URLSearchParams(window.location.search);
+            var id = urlParams.get('id');
+            console.log(id);
 
-        $('#createCategory').on('submit', (e) => {
-            e.preventDefault();
-            var formData = $('#createCategory').serialize();
-            console.log(formData);
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: `${formData}&action=create`,
-                success: (response) => {
-                    let {
-                        status,
-                        message
-                    } = JSON.parse(response)
-                    console.log(status);
-                    if (status === 200) {
-                        window.location.reload()
-                    } else if (status === 400) {
-                        $('.cerror').html(message);
-                    }
-                }
-            })
+            getInvoiceDetail(id)
         })
 
-        const EditCategory = (id) => {
+        const getInvoiceDetail = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:3000/database/repository/invoices.php',
                 type: 'POST',
-                data: `id=${id}&action=getbyid`,
+                data: `action=getbyid&id=${id}`,
                 success: (response) => {
-                    console.log(response);
-                    let data = JSON.parse(response)[0]
-                    $('.categoryname').val(data['name']);
-                    $('.description').val(data['description']);
-                    $('.id').val(data['id']);
-                    $('#editCategory').modal('show')
+                    console.log(JSON.parse(response));
+                    let invoices = JSON.parse(response)
+                    $('.invoices-id').html('#' + invoices[0].shipment_id)
+                    $('.date-issues').html(invoices[0].shipment_date)
+                    $('.name').html(invoices[0].supplier_name)
+                    $('.address').html(invoices[0].supplier_address)
+                    $('.phone').html(invoices[0].supplier_phone)
+                    $('.total-due').html(invoices[0].total)
+                    $('.method').html(invoices[0].shipping_method)
+                    $('.status').html(invoices[0].status)
+                    
+                    invoices.forEach((invoice) => {
+                        let tr = `
+                            <tr>
+                                <td class="text-nowrap text-heading item">${invoice.product_name}</td>
+                                <td class="cost">${invoice.purchase_price}</td>
+                                <td class="qty">${invoice.quantity}</td>
+                                <td class="price">${invoice.purchase_price * invoice.quantity}</td>
+                            </tr>
+                        `;
+                        $('.tbody').append(tr);
+                    });
+
+                    $('.subtotal').html(invoices[0].total)
+                    $('.total').html(invoices[0].total)  
+                    $('.note').html(invoices[0].note)
                 }
             })
         }
-        $('#updateCategory').on('submit', (e) => {
-            e.preventDefault();
-            var formData = $('#updateCategory').serialize();
-            console.log(formData);
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: `${formData}&action=update`,
-                success: (response) => {
-                    let {
-                        status,
-                        message
-                    } = JSON.parse(response)
-                    console.log(message);
-                    if (status === 200) {
-                        $('.eerror').html('');
-                        window.location.reload()
-                    } else if (status === 400) {
-                        $('.eerror').html(message);
-                    }
-                }
-            })
-        })
     </script>
 </body>
 

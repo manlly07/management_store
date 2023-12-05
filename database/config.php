@@ -39,4 +39,13 @@
         $data = $statement->fetchAll();
         return $data;
     }
+
+    function QueryGetId($sql, $connection)
+    {
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $data = $statement->fetchAll();
+        return $connection->lastInsertId();
+    }
 ?>

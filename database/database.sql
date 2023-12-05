@@ -73,12 +73,12 @@ CREATE TABLE `OrderDetails` (
 CREATE TABLE `InvoiceShipments` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `Supplier_id` int NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `email` varchar(255) DEFAULT "",
   `shipment_date` DATE DEFAULT (now()),
   `total` float DEFAULT 0,
+  `description` varchar(255) DEFAULT '',
   `status` ENUM ('pending', 'processing', 'shipped', 'delivered', 'cancelled') DEFAULT "processing",
   `shipping_method` ENUM ('COD', 'OnlineBanking') DEFAULT "COD",
   `is_active` boolean DEFAULT true

@@ -3,29 +3,30 @@
     if($_POST['action'] && $_POST['action'] == 'view') {
         $sql = "SELECT * FROM Suppliers";
         $data = Query($sql, db());
-        $output = '';
-        foreach($data as $row) {
-            $action = ' <div class="btn-group" role="group" aria-label="Basic example">
-                            <button onclick="EnableSupplier(\'' . $row['id'] . '\')" type="button" class="btn btn-sm btn-success mr-2">Enable</button>
-                            <button onclick="DisableSupplier(\'' . $row['id'] . '\')" type="button" class="btn btn-sm btn-danger mr-2">Disable</button>
-                            <button onclick="EditSupplier(\'' . $row['id'] . '\')" type="button" class="btn btn-sm btn-warning">Edit</button>
-                        </div>';
-            if($row['is_active'] == 1) {
-                $button = '<button type="button" class="m-auto d-block btn-sm btn btn-outline-success">Enable</button>';
-            }else {
-                $button = '<button type="button" class="m-auto d-block btn-sm btn btn-outline-danger">Disable</button>';
-            }
-            $output .= '<tr>
-                                <td>'.$row['id'].'</td>
-                                <td>'.$row['name'].'</td>
-                                <td>'.$row['address'].'</td>
-                                <td>'.$row['phone'].'</td>
-                                <td>'.$button.'</td>
-                                <td>'.$row['created_at'].'</td>
-                                <td>'.$action.'</td>
-                            </tr>';
-        }
-        echo $output;
+        // $output = '';
+        // foreach($data as $row) {
+        //     $action = ' <div class="btn-group" role="group" aria-label="Basic example">
+        //                     <button onclick="EnableSupplier(\'' . $row['id'] . '\')" type="button" class="btn btn-sm btn-success mr-2">Enable</button>
+        //                     <button onclick="DisableSupplier(\'' . $row['id'] . '\')" type="button" class="btn btn-sm btn-danger mr-2">Disable</button>
+        //                     <button onclick="EditSupplier(\'' . $row['id'] . '\')" type="button" class="btn btn-sm btn-warning">Edit</button>
+        //                 </div>';
+        //     if($row['is_active'] == 1) {
+        //         $button = '<button type="button" class="m-auto d-block btn-sm btn btn-outline-success">Enable</button>';
+        //     }else {
+        //         $button = '<button type="button" class="m-auto d-block btn-sm btn btn-outline-danger">Disable</button>';
+        //     }
+        //     $output .= '<tr>
+        //                         <td>'.$row['id'].'</td>
+        //                         <td>'.$row['name'].'</td>
+        //                         <td>'.$row['address'].'</td>
+        //                         <td>'.$row['phone'].'</td>
+        //                         <td>'.$button.'</td>
+        //                         <td>'.$row['created_at'].'</td>
+        //                         <td>'.$action.'</td>
+        //                     </tr>';
+        // }
+        // echo $output;
+        echo json_encode($data);
     }
 
     if($_POST['action'] && $_POST['action'] == 'disable') {

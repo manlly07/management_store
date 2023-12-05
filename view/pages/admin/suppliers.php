@@ -251,10 +251,61 @@
                     action: "view"
                 },
                 success: (response) => {
-                    $('#table-supplier').html(response)
+                    let suppliers = JSON.parse(response)
+                    // $('#table-supplier').html(response)
                     $('#dataTable').DataTable({
                         searching: true,
                         paging: true,
+                        data: suppliers,
+                        columns: [
+                            {
+                                data: 'id',
+                                render: function(data, type, row) {
+                                    return row.id
+                                }
+                            },
+                            {
+                                data: 'name',
+                                render: function(data, type, row) {
+                                    return row.name
+                                }
+                            },
+                            {
+                                data: 'address',
+                                render: function(data, type, row) {
+                                    return row.address
+                                }
+                            },
+                            {
+                                data: 'phone',
+                                render: function(data, type, row) {
+                                    return row.phone
+                                }
+                            },
+                            {
+                                data: 'is_active',
+                                render: function(data, type, row) {
+                                    return row.is_active == 0 ? `<button type="button" class="m-auto d-block btn-sm btn btn-outline-danger">Disable</button>` : `<button type="button" class="m-auto d-block btn-sm btn btn-outline-success">Enable</button>`
+                                }
+                            },
+                            {
+                                data: 'created_at',
+                                render: function(data, type, row) {
+                                    return row.created_at
+                                }
+                            },
+                            {
+                                "data":null,
+                                render: function(data, type, row) {
+                                    console.log(row);
+                                    return `<div class="btn-group" role="group" aria-label="Basic example">
+                                                <button onclick="EnableSupplier(${row.id})" type="button" class="btn btn-sm btn-success mr-2">Enable</button>
+                                                <button onclick="DisableSupplier(${row.id})" type="button" class="btn btn-sm btn-danger mr-2">Disable</button>
+                                                <button onclick="EditSupplier(${row.id})" type="button" class="btn btn-sm btn-warning">Edit</button>
+                                            </div>`
+                                }
+                            }
+                        ],
                     })
                 }
             })

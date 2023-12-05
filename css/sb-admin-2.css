@@ -63,6 +63,18 @@
   width: 100px !important;
 }
 
+.invoice-print {
+  min-width: 768px !important;
+  font-size: 15px !important;
+}
+
+@media print {
+  * {
+    font-size: 28px !important;
+  }
+
+}
+
 .avatar {
   position: relative;
   width: 2.5rem;

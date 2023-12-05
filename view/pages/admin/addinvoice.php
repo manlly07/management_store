@@ -77,8 +77,8 @@
                                                     </span>
                                                     <span class="h3 mb-0 app-brand-text fw-semibold text-black">VoTri</span>
                                                 </div>
-                                                <p class="mb-1 text-secondary">Office 149, 450 South Brand Brooklyn</p>
-                                                <p class="mb-1 text-secondary">San Diego County, CA 91905, USA</p>
+                                                <p class="mb-1 text-secondary">Công ty phân phối nước ngọt Võ Tín</p>
+                                                <p class="mb-1 text-secondary">Thành phố Hồ Chí Minh</p>
                                                 <p class="mb-0 text-secondary">+1 (123) 456 7891, +44 (876) 543 2198</p>
                                             </div>
                                             <div class="col-md-5 pe-0 ps-0 ps-md-2">
@@ -96,13 +96,7 @@
                                                         <span class="fw-normal text-secondary">Date Issued:</span>
                                                     </dt>
                                                     <dd class="col-sm-6">
-                                                        <input type="date" class="form-control invoice-date flatpickr-input" readonly="readonly">
-                                                    </dd>
-                                                    <dt class="col-sm-6 mb-2 d-md-flex align-items-center justify-content-end">
-                                                        <span class="fw-normal text-secondary">Due Date:</span>
-                                                    </dt>
-                                                    <dd class="col-sm-6">
-                                                        <input type="date" class="form-control due-date flatpickr-input" readonly="readonly">
+                                                        <input type="date" class="form-control invoice-date flatpickr-input">
                                                     </dd>
                                                 </dl>
                                             </div>
@@ -113,35 +107,46 @@
                                         <div class="d-flex justify-content-between flex-wrap">
                                             <div class="my-3 me-3">
                                                 <h6 class="fw-bold">Invoice To:</h6>
-                                                <p class="mb-1 text-secondary">Thomas shelby</p>
-                                                <p class="mb-1 text-secondary">Shelby Company Limited</p>
-                                                <p class="mb-1 text-secondary">Small Heath, B10 0HF, UK</p>
-                                                <p class="mb-1 text-secondary">718-986-6062</p>
-                                                <p class="mb-0 text-secondary">peakyFBlinders@gmail.com</p>
+                                                <select class="form-select mb-3 select-supplier" required>
+                                                    <option>Select a supplier</option>
+                                                    
+                                                </select>
+                                                <p class="mb-1 text-secondary name"></p>
+                                                <p class="mb-1 text-secondary address"></p>
+                                                <p class="mb-1 text-secondary phone"></p>
                                             </div>
                                             <div class="my-3">
                                                 <h6 class="fw-bold">Bill To:</h6>
                                                 <table>
                                                     <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="cod" checked>
+                                                                    <label class="form-check-label" for="exampleRadios1">
+                                                                        COD
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="banking">
+                                                                    <label class="form-check-label" for="exampleRadios2">
+                                                                        Banking
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="text-secondary">
+                                                            <select class="form-select mb-3 select-status" required>
+                                                                <option value="Pending">Pending</option>
+                                                                <option value="Shipped">Shipped</option>
+                                                                <option value="Processing">Processing</option>
+                                                            </select>
+                                                        </tr>
                                                         <tr class="text-secondary">
                                                             <td class="pe-3">Total Due:</td>
-                                                            <td>$12,110.55</td>
-                                                        </tr>
-                                                        <tr class="text-secondary">
-                                                            <td class="pe-3">Bank name:</td>
-                                                            <td>American Bank</td>
-                                                        </tr>
-                                                        <tr class="text-secondary">
-                                                            <td class="pe-3">Country:</td>
-                                                            <td>United States</td>
-                                                        </tr>
-                                                        <tr class="text-secondary">
-                                                            <td class="pe-3">IBAN:</td>
-                                                            <td>ETD95476213874685</td>
-                                                        </tr>
-                                                        <tr class="text-secondary">
-                                                            <td class="pe-3">SWIFT code:</td>
-                                                            <td>BR91905</td>
+                                                            <td class="total-due">0.00 đ</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -157,25 +162,26 @@
                                                         <div class="row w-100 p-3">
                                                             <div class="col-md-6 col-12 mb-md-0 mb-3">
                                                                 <h6 class="mb-2 repeater-title">Item</h6>
-                                                                <select class="form-select item-details mb-3">
+                                                                <select class="form-select item-details mb-3" required>
+                                                                    <option value="">Select a item</option>
                                                                     <option value="App Design">App Design</option>
-                                                                    <option value="App Customization" selected="">App Customization</option>
+                                                                    <option value="App Customization">App Customization</option>
                                                                     <option value="ABC Template">ABC Template</option>
                                                                     <option value="App Development">App Development</option>
                                                                 </select>
-                                                                <textarea class="form-control" rows="2">The most developer friendly &amp; highly customizable HTML5 Admin</textarea>
+                                                                <textarea class="form-control" rows="2"></textarea>
                                                             </div>
                                                             <div class="col-md-3 col-12 mb-md-0 mb-3">
                                                                 <h6 class="mb-2 repeater-title">Cost</h6>
-                                                                <input type="number" class="form-control invoice-item-price mb-3" value="24" placeholder="24" min="12">
+                                                                <input type="number" class="form-control invoice-item-cost mb-3" placeholder="cost" min="1" value="0">
                                                             </div>
                                                             <div class="col-md-2 col-12 mb-md-0 mb-3">
                                                                 <h6 class="mb-2 repeater-title">Qty</h6>
-                                                                <input type="number" class="form-control invoice-item-qty" value="1" placeholder="1" min="1" max="50">
+                                                                <input type="number" class="form-control invoice-item-qty" value="0" placeholder="qty" min="0" max="50">
                                                             </div>
                                                             <div class="col-md-1 col-12 pe-0">
                                                                 <h6 class="mb-2 repeater-title">Price</h6>
-                                                                <p class="mb-0">$24.00</p>
+                                                                <p class="mb-0 invoice-item-price">0.00 đ</p>
                                                             </div>
                                                         </div>
                                                         <div class="d-flex flex-column align-items-center justify-content-center border-start p-2">
@@ -186,7 +192,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-repeater-create=""><i class="mdi mdi-plus me-1"></i> Add Item</button>
+                                                    <button type="button" class="btn btn-primary btn-sm button-create" data-repeater-create=""><i class="fa fa-plus me-1"></i> Add Item</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -196,8 +202,8 @@
                                         <div class="row">
                                             <div class="col-md-6 mb-md-0 mb-3">
                                                 <div class="d-flex align-items-center gap-2 mb-3 mt-2">
-                                                    <label for="salesperson" class="text-heading">Salesperson: </label>
-                                                    <input type="text" class="form-control w-50" id="salesperson" placeholder="Edward Crowley" value="Edward Crowley">
+                                                    <label for="salesperson" class="text-heading">Person: </label>
+                                                    <input type="text" class="form-control w-50" id="personname" placeholder="Enter your name" required ><input type="text" class="form-control w-50" id="personphone" placeholder="Enter your phone" required >
                                                 </div>
                                                 <div class="mb-4">
                                                     <input type="text" class="form-control w-50" id="invoiceMsg" placeholder="Thanks for your business" value="Thanks for your business">
@@ -208,7 +214,7 @@
                                                 <div class="invoice-calculations">
                                                     <div class="d-flex justify-content-between mb-2">
                                                         <span class="w-px-100 text-secondary">Subtotal:</span>
-                                                        <h6 class="mb-0 pt-1">$5000.25</h6>
+                                                        <h6 class="mb-0 pt-1 subtotal">0.00 đ</h6>
                                                     </div>
                                                     <div class="d-flex justify-content-between mb-2">
                                                         <span class="w-px-100 text-secondary">Discount:</span>
@@ -216,12 +222,12 @@
                                                     </div>
                                                     <div class="d-flex justify-content-between mb-2">
                                                         <span class="w-px-100 text-secondary">Tax:</span>
-                                                        <h6 class="mb-0 pt-1">$100.00</h6>
+                                                        <h6 class="mb-0 pt-1">$00.00</h6>
                                                     </div>
                                                     <hr>
                                                     <div class="d-flex justify-content-between">
                                                         <span class="w-px-100 text-secondary">Total:</span>
-                                                        <h6 class="mb-0 pt-1">$5100.25</h6>
+                                                        <h6 class="mb-0 pt-1 total">0.00 đ</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -233,7 +239,7 @@
                                             <div class="col-12">
                                                 <div class="mb-3">
                                                     <label for="note" class="form-label fw-medium">Note:</label>
-                                                    <textarea class="form-control" rows="2" id="note">It was a pleasure working with you and your team. We hope you will keep us in mind for future freelance projects. Thank You!</textarea>
+                                                    <textarea class="form-control" rows="2" id="note"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -251,7 +257,7 @@
                                         </button>
                                         <div class="d-flex">
                                             <a href="./invoicedetail.php" class="btn btn-outline-secondary w-50 me-2 mb-3 waves-effect">Preview</a>
-                                            <button type="button" class="btn btn-outline-secondary w-50 mb-3 waves-effect">Save</button>
+                                            <button type="button" class="btn btn-outline-secondary w-50 mb-3 waves-effect save">Save</button>
                                         </div>
                                     </div>
                                 </div>
@@ -282,14 +288,14 @@
                                     </div>
                                     <div class="form-floating form-floating-outline mb-4">
                                         <textarea class="form-control" name="invoice-message" id="invoice-message" style="height: 190px;">Dear Queen Consolidated,
-                      Thank you for your business, always a pleasure to work with you!
-                      We have generated a new invoice in the amount of $95.59
-                      We would appreciate payment of this invoice by 05/11/2021</textarea>
+                                            Thank you for your business, always a pleasure to work with you!
+                                            We have generated a new invoice in the amount of $95.59
+                                            We would appreciate payment of this invoice by 05/11/2021</textarea>
                                         <label for="invoice-message">Message</label>
                                     </div>
                                     <div class="mb-4">
                                         <span class="badge bg-label-primary rounded-pill">
-                                            <i class="mdi mdi-link-variant mdi-14px me-1"></i>
+                                            <i class="mdi mdi-link-letiant mdi-14px me-1"></i>
                                             <span class="align-middle">Invoice Attached</span>
                                         </span>
                                     </div>
@@ -301,55 +307,6 @@
                             </div>
                         </div>
                         <!-- /Send Invoice Sidebar -->
-
-                        <!-- Add Payment Sidebar -->
-                        <div class="offcanvas offcanvas-end" id="addPaymentOffcanvas" aria-hidden="true">
-                            <div class="offcanvas-header mb-3">
-                                <h5 class="offcanvas-title">Add Payment</h5>
-                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body flex-grow-1">
-                                <div class="d-flex justify-content-between bg-lighter p-2 mb-3">
-                                    <p class="mb-0">Invoice Balance:</p>
-                                    <p class="fw-medium mb-0">$5000.00</p>
-                                </div>
-                                <form>
-                                    <div class="input-group input-group-merge mb-4">
-                                        <span class="input-group-text">$</span>
-                                        <div class="form-floating form-floating-outline">
-                                            <input type="text" id="invoiceAmount" name="invoiceAmount" class="form-control invoice-amount" placeholder="100">
-                                            <label for="invoiceAmount">Payment Amount</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-floating form-floating-outline mb-4">
-                                        <input id="payment-date" class="form-control invoice-date flatpickr-input" type="text" readonly="readonly">
-                                        <label for="payment-date">Payment Date</label>
-                                    </div>
-                                    <div class="form-floating form-floating-outline mb-4">
-                                        <select class="form-select" id="payment-method">
-                                            <option value="" selected="" disabled="">Select payment method</option>
-                                            <option value="Cash">Cash</option>
-                                            <option value="Bank Transfer">Bank Transfer</option>
-                                            <option value="Debit Card">Debit Card</option>
-                                            <option value="Credit Card">Credit Card</option>
-                                            <option value="Paypal">Paypal</option>
-                                        </select>
-                                        <label for="payment-method">Payment Method</label>
-                                    </div>
-                                    <div class="form-floating form-floating-outline mb-4">
-                                        <textarea class="form-control" id="payment-note" style="height: 62px;"></textarea>
-                                        <label for="payment-note">Internal Payment Note</label>
-                                    </div>
-                                    <div class="mb-3 d-flex flex-wrap">
-                                        <button type="button" class="btn btn-primary me-3 waves-effect waves-light" data-bs-dismiss="offcanvas">Send</button>
-                                        <button type="button" class="btn btn-outline-secondary waves-effect" data-bs-dismiss="offcanvas">Cancel</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- /Add Payment Sidebar -->
-
-                        <!-- /Offcanvas -->
 
 
                     </div>
@@ -398,80 +355,6 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="createCategory">
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="username">Category name</label>
-                                <input type="text" name="categoryname" class="form-control" id="categoryname" placeholder="category name">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="Description">Description</label>
-                                <input type="Description" name="description" class="form-control" id="description" placeholder="description">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="cerror text-danger">
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Add</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="editCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="updateCategory">
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="username">Category name</label>
-                                <input type="text" name="categoryname" class="form-control categoryname" placeholder="category name">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-12">
-                                <label for="Description">Description</label>
-                                <input type="text" name="description" class="form-control description" placeholder="description">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <input type="text" name="id" class="form-control id" placeholder="id" hidden>
-                            <div class="eerror text-danger">
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">update</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="../../../vendor/jquery/jquery.min.js"></script>
     <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -488,128 +371,268 @@
 
     <!-- Page level custom scripts -->
     <script src="../../../js/demo/datatables-demo.js"></script>
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(() => {
-            // showAllCategory();
+
+        $(document).ready(function() {
+            // showAllProducts();
+            getSuppliers()
+            getProducts().done(function(response) {
+                console.log(response);
+                let products = response
+                $(".item-details").each(function() {
+                    let selectElement = $(this);
+                    // Xóa các tùy chọn hiện có
+                    selectElement.empty();
+                    // Thêm tùy chọn mặc định
+                    selectElement.append('<option value="">Select an item</option>');
+                    // Thêm tùy chọn cho từng sản phẩm
+                    products.forEach(function(product) {
+                        selectElement.append('<option value="' + product.id + '">' + product.productname + '</option>');
+                    });
+                });
+                }).fail(function(error) {
+                console.error('Error fetching products:', error);
+                });
+                
+            // Lấy ngày hiện tại
+            let currentDate = new Date();
+
+            // Đặt giá trị ngày hiện tại cho trường "Date Issued"
+            let invoiceDateField = $(".invoice-date");
+            invoiceDateField.val(formatDate(currentDate));
+
+        });
+
+        //   Gán sự kiện change cho các trường cost và qty
+        $(document).on('input', '.invoice-item-cost, .invoice-item-qty', function(event) {
+            // Lấy giá trị của cost và qty trong hàng hiện tại
+            let row = $(event.target).closest(".repeater-wrapper");
+            let cost = parseFloat(row.find(".invoice-item-cost").val());
+            let qty = parseFloat(row.find(".invoice-item-qty").val());
+            // Tính toán giá mới
+            // Kiểm tra nếu cost là NaN, gán bằng 0
+            if (isNaN(cost)) {
+            cost = 0;
+            }
+            
+            // Kiểm tra nếu qty là NaN, gán bằng 0
+            if (isNaN(qty)) {
+            qty = 0;
+            }
+            let price = cost * qty;
+            // Cập nhật giá (price) trong hàng hiện tại
+            row.find(".invoice-item-price").html(price.toFixed(2) + ' đ');
+
+            let total = $('.invoice-item-price').map(function() {
+                return parseFloat($(this).text());
+                }).get().reduce(function(a, b) {
+                return a + b;
+            }, 0);
+            console.log(total.toFixed(2));
+            $('.total-due').html(total.toFixed(2) + ' đ');
+            $('.total').html(total.toFixed(2) + ' đ');
+            $('.subtotal').html(total.toFixed(2) + ' đ');
+        });
+
+        const formatDate = (date) => {
+            let year = date.getFullYear();
+            let month = (date.getMonth() + 1).toString().padStart(2, '0');
+            let day = date.getDate().toString().padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        $('.button-create').click(() => {
+            let row = $("<div>")
+            .addClass("repeater-wrapper pt-0 pt-md-4")
+            .attr("data-repeater-item", "");
+            
+            console.log('hehe');
+            // Thêm nội dung HTML vào div mới
+            getProducts().then(function(products) {
+            let selectElement = products.map((product) => {
+                return (
+                    '<option value="' + product.id + '">' + product.productname + '</option>'
+                ) 
+            });
+            row.html(`
+            <div class="d-flex border rounded position-relative pe-0">
+                                                        <div class="row w-100 p-3">
+                                                            <div class="col-md-6 col-12 mb-md-0 mb-3">
+                                                                <h6 class="mb-2 repeater-title">Item</h6>
+                                                                <select class="form-select item-details mb-3">
+                                                                    <option value>Select an item</option>
+                                                                    ${selectElement}
+                                                                </select>
+                                                                <textarea class="form-control" rows="2"></textarea>
+                                                            </div>
+                                                            <div class="col-md-3 col-12 mb-md-0 mb-3">
+                                                                <h6 class="mb-2 repeater-title">Cost</h6>
+                                                                <input type="number" class="form-control invoice-item-cost mb-3" placeholder="cost" min="1" value="0">
+                                                            </div>
+                                                            <div class="col-md-2 col-12 mb-md-0 mb-3">
+                                                                <h6 class="mb-2 repeater-title">Qty</h6>
+                                                                <input type="number" class="form-control invoice-item-qty" value="0" placeholder="qty" min="0" max="50">
+                                                            </div>
+                                                            <div class="col-md-1 col-12 pe-0">
+                                                                <h6 class="mb-2 repeater-title">Price</h6>
+                                                                <p class="mb-0 invoice-item-price">0.00 đ</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex flex-column align-items-center justify-content-center border-start p-2">
+                                                            <i class="fa fa-trash-alt cursor-pointer" data-repeater-delete=""></i>
+                                                        </div>
+                                                    </div>
+            `);
+            });
+
+            // Tìm phần tử cha của hàng mới để thêm vào
+            // let repeaterWrapper = $("#repeater-wrapper");
+            let repeaterList = $("[data-repeater-list='group-a']");
+            // Thêm hàng mới vào phần tử cha
+            repeaterList.append(row);
         })
-        const showAllCategory = () => {
+
+        $(document).on("click", "[data-repeater-delete]", function() {
+            // Tìm phần tử cha gần nhất có lớp .repeater-wrapper và xóa nó
+            $(this).closest(".repeater-wrapper").remove();
+        });
+
+        const getProducts = () => {
+            return $.ajax({
+            url: 'http://localhost:3000/database/repository/products.php',
+            method: 'POST',
+            dataType: 'json',
+            data: 'action=view',
+            });
+        }
+
+        const getSuppliers = () => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:3000/database/repository/supplier.php',
                 type: 'POST',
                 data: {
                     action: "view"
                 },
                 success: (response) => {
-                    $('#table-category').html(response)
-                    $('#dataTable').DataTable({
-                        searching: true,
-                        paging: true,
-                    })
+                    let suppliers = JSON.parse(response)
+                    let selectElement = $('.select-supplier');
+                    // Xóa các tùy chọn hiện có
+                    selectElement.empty();
+                    // Thêm tùy chọn mặc định
+                    selectElement.append('<option disabled selected value>Select a supplier</option>');
+                    // Thêm tùy chọn cho từng sản phẩm
+                    suppliers.forEach(function(supplier) {
+                        selectElement.append('<option value="' + supplier.id + '">' + supplier.name + '</option>');
+                    });
                 }
             })
         }
-        const EnableCategory = (id) => {
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: {
-                    action: "enable",
-                    id: id
-                },
-                success: (response) => {
-                    let {
-                        status
-                    } = JSON.parse(response)
-                    if (status === 200) {
-                        window.location.reload()
-                    } else if (status === 400) {
-                        console.log('haha');
-                    }
-                }
-            })
-        }
-        const DisableCategory = (id) => {
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: {
-                    action: "disable",
-                    id: id
-                },
-                success: (response) => {
-                    let {
-                        status
-                    } = JSON.parse(response)
-                    if (status === 200) {
-                        window.location.reload()
-                    } else if (status === 400) {
-                        console.log('haha');
-                    }
-                }
-            })
-        }
+        $(document).on('change', '.select-supplier', function(event) {
+            let selectedOption = $(this).val();
+            console.log(selectedOption);
 
-        $('#createCategory').on('submit', (e) => {
-            e.preventDefault();
-            var formData = $('#createCategory').serialize();
-            console.log(formData);
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:3000/database/repository/supplier.php',
                 type: 'POST',
-                data: `${formData}&action=create`,
+                data: `id=${selectedOption}&action=getbyid`,
                 success: (response) => {
-                    let {
-                        status,
-                        message
-                    } = JSON.parse(response)
-                    console.log(status);
-                    if (status === 200) {
-                        window.location.reload()
-                    } else if (status === 400) {
-                        $('.cerror').html(message);
-                    }
+                    let supplier = JSON.parse(response)[0]
+                    console.log(supplier.name);
+
+                    $('.name').html(supplier.name)
+                    $('.address').html(supplier.address)
+                    $('.phone').html(supplier.phone)
                 }
             })
-        })
+        });
+        // Gán sự kiện change cho các trường item-details
+        $(document).on('change', '.item-details', function(event) {
+            let selectedOption = $(this).val();
+            let optionExists = false;
 
-        const EditCategory = (id) => {
+            // Lặp qua các hàng khác và kiểm tra xem tùy chọn đã tồn tại hay chưa
+            $(".item-details").not(this).each(function() {
+                if ($(this).val() === selectedOption) {
+                    optionExists = true;
+                    return false; // Dừng vòng lặp nếu tìm thấy tùy chọn đã tồn tại
+                }
+            });
+
+            if (optionExists) {
+                // Hiển thị thông báo hoặc không cho phép chọn
+                alert("Tùy chọn đã tồn tại trong các select khác.");
+                // Đặt giá trị của select về một giá trị mặc định hoặc không cho phép người dùng chọn
+                $(this).val("");
+            }
+        });
+
+        $('.save').on('click', () => {
+            let shipment_date = $(".invoice-date").val()
+            let supplier = $('.select-supplier').val()
+            let status = $('.select-status').val()
+            let method = $('input[name="exampleRadios"]:checked').val()
+            let name = $('#personname').val()
+            let phone = $('#personphone').val()
+            let total = $('.total').html()
+            let note = $('#note').val()
+            console.log(total);
+            // Lấy danh sách các hàng trong biểu mẫu
+            let rows = Array.from($('.repeater-wrapper'));
+            console.log(rows);
+            // Mảng để lưu trữ các giá trị từ các hàng
+            let formData = [];
+
+            // Lặp qua từng hàng và lấy giá trị
+            rows.forEach(function(row) {
+                let itemDetails = row.querySelector('.item-details').value;
+                let itemCost = row.querySelector('.invoice-item-cost').value;
+                let itemQty = row.querySelector('.invoice-item-qty').value;
+
+                // Tạo đối tượng dữ liệu cho hàng hiện tại
+                let rowData = {
+                    itemDetails: itemDetails,
+                    itemCost: itemCost,
+                    itemQty: itemQty
+                };
+
+                // Thêm đối tượng dữ liệu vào mảng formData
+                formData.push(rowData);
+            });
+            
+            for($i = 0; $i < formData.length; $i++) {
+                if (formData[$i].itemDetails.trim() === '') {
+                    alert('Please select item')
+                    return
+                }
+            }
+
+            let payload = {
+                Supplier_id: supplier,
+                name: name,
+                phone: phone,
+                shipment_date: shipment_date,
+                total: total,
+                description: note,
+                status: status,
+                shipping_method: method,
+                data: formData,
+                action: 'create'
+            }
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:3000/database/repository/invoices.php',
                 type: 'POST',
-                data: `id=${id}&action=getbyid`,
-                success: (response) => {
+                data: payload,
+                success: function(response) {
+                    // Xử lý phản hồi thành công từ máy chủ
+                    let {status, message} = JSON.parse(response);
+                    if (status === 200) {
+                        window.location.href('./listinvoice.php')
+                    }else {
+
+                    }
                     console.log(response);
-                    let data = JSON.parse(response)[0]
-                    $('.categoryname').val(data['name']);
-                    $('.description').val(data['description']);
-                    $('.id').val(data['id']);
-                    $('#editCategory').modal('show')
-                }
-            })
-        }
-        $('#updateCategory').on('submit', (e) => {
-            e.preventDefault();
-            var formData = $('#updateCategory').serialize();
-            console.log(formData);
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
-                type: 'POST',
-                data: `${formData}&action=update`,
-                success: (response) => {
-                    let {
-                        status,
-                        message
-                    } = JSON.parse(response)
-                    console.log(message);
-                    if (status === 200) {
-                        $('.eerror').html('');
-                        window.location.reload()
-                    } else if (status === 400) {
-                        $('.eerror').html(message);
-                    }
-                }
+                },
             })
         })
     </script>
