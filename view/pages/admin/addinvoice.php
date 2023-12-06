@@ -625,9 +625,10 @@
                 data: payload,
                 success: function(response) {
                     // Xử lý phản hồi thành công từ máy chủ
+                    console.log(response);
                     let {status, message} = JSON.parse(response);
                     if (status === 200) {
-                        window.location.href('./listinvoice.php')
+                        window.location.href = 'http://localhost:3000/view/pages/admin/listinvoice.php'
                     }else {
 
                     }

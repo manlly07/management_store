@@ -26,9 +26,9 @@
             $sql = "INSERT INTO InvoiceShipments (Supplier_id, name, phone, shipment_date, total, status, shipping_method)
                     VALUES ($supplier_id, '$name', '$phone', '$shipment_date', '$total', '$status', '$shipping_method')";
             
-            Query($sql, db());
+            // Query($sql, db());
             $shipment_id = QueryGetId($sql, db());
-            echo $shipment_id;
+            // echo $shipment_id;
             // Lấy ID của bản ghi vừa chèn
             // Chèn dữ liệu vào bảng InvoiceShipmentDetails
             $sql = "INSERT INTO InvoiceShipmentDetails (shipment_id, product_id, quantity, purchase_price)
