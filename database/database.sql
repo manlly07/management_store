@@ -19,6 +19,7 @@ CREATE TABLE `Products` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `price` float DEFAULT 0,
+  `description` varchar(255) DEFAULT "",
   `image` varchar(255) NOT NULL,
   `category_id` int NOT NULL,
   `created_at` DATETIME DEFAULT (now()),

@@ -22,6 +22,15 @@
     <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+
+    <script src='https://cdn.jsdelivr.net/npm/@goongmaps/goong-js@1.0.9/dist/goong-js.js'></script>
+  <link href='https://cdn.jsdelivr.net/npm/@goongmaps/goong-js@1.0.9/dist/goong-js.css' rel='stylesheet' />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+  </style>
 </head>
 
 <body id="page-top">
@@ -47,14 +56,14 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Manage Suppliers</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Quản lý nhà cung cấp</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary">Thông tin suppliers</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Thông tin nhà cung cấp</h6>
                             <button type="button" class="ml-auto d-block btn btn-primary" data-toggle="modal" data-target="#addSupplier">
                                 <i class="fa fa-plus"></i>
-                                Add new supplier
+                                Thêm nhà cung cấp mới
                             </button>
                         </div>
                         <div class="card-body">
@@ -62,24 +71,24 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Name</th>
-                                            <th>Address</th>
-                                            <th>Phone</th>
-                                            <th>Status</th>
-                                            <th>Created Date</th>
-                                            <th>Action</th>
+                                            <th>ID</th>
+                                            <th>Tên</th>
+                                            <th>Địa chỉ</th>
+                                            <th>SĐT</th>
+                                            <th>Trạng thái</th>
+                                            <th>Ngày tạo</th>
+                                            <th>Hành động</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Name</th>
-                                            <th>Address</th>
-                                            <th>Phone</th>
-                                            <th>Status</th>
-                                            <th>Created Date</th>
-                                            <th>Action</th>
+                                            <th>ID</th>
+                                            <th>Tên</th>
+                                            <th>Địa chỉ</th>
+                                            <th>SĐT</th>
+                                            <th>Trạng thái</th>
+                                            <th>Ngày tạo</th>
+                                            <th>Hành động</th>
                                         </tr>
                                     </tfoot>
                                     <tbody id="table-supplier">
@@ -96,6 +105,7 @@
             </div>
             <!-- End of Main Content -->
 
+            
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -130,7 +140,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -197,15 +207,16 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
-                                <label for="Address">Address</label>
-                                <input type="text" name="address" class="form-control address" placeholder="Address">
+                                <label for="Phone">Phone</label>
+                                <input type="text" name="phone" class="form-control phone" placeholder="Phone">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
-                                <label for="Phone">Phone</label>
-                                <input type="text" name="phone" class="form-control phone" placeholder="Phone">
+                                <label for="Address">Address</label>
+                                <input type="text" name="address" id="addressInput" class="form-control address" placeholder="Address">
                             </div>
+                            <div id="addressOutput" class="m-auto"></div>
                         </div>
                         <div class="form-row">
                             <input type="text" name="id" class="form-control id" placeholder="id" hidden>
@@ -235,17 +246,137 @@
     <script src="../../../vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="../../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/@goongmaps/goong-geocoder@1.1.1/dist/goong-geocoder.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@goongmaps/goong-geocoder@1.1.1/dist/goong-geocoder.css" rel="stylesheet"
+    type="text/css" />
+
+  <!-- Promise polyfill script is required -->
+  <!-- to use Goong Geocoder in IE 11. -->
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/goong-js@1.2.0/goong-js.min.js"></script>
     <!-- Page level custom scripts -->
     <script src="../../../js/demo/datatables-demo.js"></script>
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../../js/checkURL.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
+            let username = localStorage.getItem('fullName')
+            $('#username').html(`${username}`)
             showAllSpplier();
         })
+
+       
+        
+
+        // var addressInput = document.getElementById('addressInput');
+        // var addressDisplay = document.getElementById('addressDisplay');
+
+
+  // Lấy thẻ input và thẻ output
+  const addressInput = document.getElementById('addressInput');
+  const addressOutput = document.getElementById('addressOutput');
+
+  // Xử lý sự kiện khi giá trị trong input thay đổi
+  const showMap = (address) => {// Thay thế bằng địa chỉ bạn muốn tìm kiếm
+
+        fetch(`https://rsapi.goong.io/Geocode?address=${encodeURIComponent(address)}&api_key=GFZGMOVfqTYbDT6lqYjvTcmnLjjmQAqwsRQYelGL`)
+        .then(response => {
+            if (response.ok) {
+            return response.json();
+            } else {
+            throw new Error('Lỗi khi gửi yêu cầu.');
+            }
+        })
+        .then(data => {
+            console.log(data);
+                    if (data.results.length > 0) {
+                    const result = data.results[0];
+                    const location = result.geometry.location;
+
+                // Hiển thị địa chỉ trong thẻ output
+                addressOutput.textContent = result.formatted_address;
+                var flashingSquare = {
+                            width: 500,
+                            height: 400,
+                            data: new Uint8Array(500 *400 * 8),
+                            
+                        
+                        }
+                // Tạo bản đồ Goong Maps
+                    goongjs.accessToken = 'PtFoCFjhwnscynuTn4YzLkevN13FlxfCOQjsrpiU';
+                    const map = new goongjs.Map({
+                        container: 'addressOutput',
+                        style: 'https://tiles.goong.io/assets/goong_map_web.json',
+                        center: [location.lng, location.lat],
+                        zoom: 14
+                    }).addImage('flashing_square', flashingSquare);
+
+                    
+                                    
+                    // map.addImage('flashing_square', flashingSquare);
+
+          // Thêm điểm đánh dấu lên bản đồ
+          new goongjs.Marker().setLngLat([location.lng, location.lat]).addTo(map);
+        } else {
+          addressOutput.textContent = 'Không tìm thấy địa chỉ.';
+        }
+            // Xử lý dữ liệu phản hồi ở đây
+        })
+        .catch(error => {
+            console.error(error);
+        });
+  }
+  addressInput.addEventListener('input', function () {
+    const address = addressInput.value;
+    // Gọi Ajax để lấy thông tin địa chỉ từ Goong Maps API
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `https://rsapi.goong.io/Geocode?address=${encodeURIComponent(address)}&api_key=GFZGMOVfqTYbDT6lqYjvTcmnLjjmQAqwsRQYelGL`);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        const response = JSON.parse(xhr.responseText);
+        console.log(response);
+        if (response.results.length > 0) {
+          const result = response.results[0];
+          const location = result.geometry.location;
+
+          // Hiển thị địa chỉ trong thẻ output
+          addressOutput.textContent = result.formatted_address;
+
+          // Tạo bản đồ Goong Maps
+        goongjs.accessToken = 'PtFoCFjhwnscynuTn4YzLkevN13FlxfCOQjsrpiU';
+        var flashingSquare = {
+                            width: 500,
+                            height: 400,
+                            data: new Uint8Array(500 *400 * 8),
+                            
+                        
+                        }
+          const map = new goongjs.Map({
+            container: 'addressOutput',
+            style: 'https://tiles.goong.io/assets/goong_map_web.json',
+            center: [location.lng, location.lat],
+            zoom: 14
+          }).addImage('flashing_square', flashingSquare);
+
+          // Thêm điểm đánh dấu lên bản đồ
+          new goongjs.Marker().setLngLat([location.lng, location.lat]).addTo(map);
+        } else {
+          addressOutput.textContent = 'Không tìm thấy địa chỉ.';
+        }
+      } else {
+        addressOutput.textContent = 'Đã xảy ra lỗi khi lấy dữ liệu.';
+      }
+    };
+    xhr.send();
+  });
+
+
+
         const showAllSpplier = () => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/supplier.php',
+                url: 'http://localhost:8000/database/repository/supplier.php',
                 type: 'POST',
                 data: {
                     action: "view"
@@ -261,7 +392,7 @@
                             {
                                 data: 'id',
                                 render: function(data, type, row) {
-                                    return row.id
+                                    return `<a href="">#${row.id}</a>`
                                 }
                             },
                             {
@@ -297,7 +428,6 @@
                             {
                                 "data":null,
                                 render: function(data, type, row) {
-                                    console.log(row);
                                     return `<div class="btn-group" role="group" aria-label="Basic example">
                                                 <button onclick="EnableSupplier(${row.id})" type="button" class="btn btn-sm btn-success mr-2">Enable</button>
                                                 <button onclick="DisableSupplier(${row.id})" type="button" class="btn btn-sm btn-danger mr-2">Disable</button>
@@ -312,7 +442,7 @@
         }
         const EnableSupplier = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/supplier.php',
+                url: 'http://localhost:8000/database/repository/supplier.php',
                 type: 'POST',
                 data: {
                     action: "enable",
@@ -323,16 +453,27 @@
                         status
                     } = JSON.parse(response)
                     if (status === 200) {
-                        window.location.reload()
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cập nhật thành công",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
                     } else if (status === 400) {
-                        console.log('haha');
+                        Swal.fire({
+                            title: "Oops...",
+                            text: message,
+                            icon: "error"
+                            });
                     }
                 }
             })
         }
         const DisableSupplier = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/supplier.php',
+                url: 'http://localhost:8000/database/repository/supplier.php',
                 type: 'POST',
                 data: {
                     action: "disable",
@@ -343,9 +484,20 @@
                         status
                     } = JSON.parse(response)
                     if (status === 200) {
-                        window.location.reload()
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cập nhật thành công",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
                     } else if (status === 400) {
-                        console.log('haha');
+                        Swal.fire({
+                            title: "Oops...",
+                            text: message,
+                            icon: "error"
+                            });
                     }
                 }
             })
@@ -356,7 +508,7 @@
             var formData = $('#createSupplier').serialize();
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:3000/database/repository/supplier.php',
+                url: 'http://localhost:8000/database/repository/supplier.php',
                 type: 'POST',
                 data: `${formData}&action=create`,
                 success: (response) => {
@@ -366,9 +518,20 @@
                     } = JSON.parse(response)
                     console.log(status);
                     if (status === 200) {
-                        window.location.reload()
+                        Swal.fire({
+                                title: "Done",
+                                text: "Taọ mới thành công",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
                     } else if (status === 400) {
-                        $('.cerror').html(message);
+                        Swal.fire({
+                            title: "Oops...",
+                            text: message,
+                            icon: "error"
+                            });
                     }
                 }
             })
@@ -376,16 +539,17 @@
 
         const EditSupplier = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/supplier.php',
+                url: 'http://localhost:8000/database/repository/supplier.php',
                 type: 'POST',
                 data: `id=${id}&action=getbyid`,
                 success: (response) => {
-                    console.log(response);
+                    // console.log(response);
                     let data = JSON.parse(response)[0]
                     $('.suppliername').val(data['name']);
                     $('.address').val(data['address']);
                     $('.phone').val(data['phone']);
                     $('.id').val(data['id']);
+                    showMap(data['address'])
                     $('#editSupplier').modal('show')
                 }
             })
@@ -393,9 +557,9 @@
         $('#updateSupplier').on('submit', (e) => {
             e.preventDefault();
             var formData = $('#updateSupplier').serialize();
-            console.log(formData);
+            // console.log(formData);
             $.ajax({
-                url: 'http://localhost:3000/database/repository/supplier.php',
+                url: 'http://localhost:8000/database/repository/supplier.php',
                 type: 'POST',
                 data: `${formData}&action=update`,
                 success: (response) => {
@@ -403,10 +567,17 @@
                         status,
                         message
                     } = JSON.parse(response)
-                    console.log(message);
+                    // console.log(message);
                     if (status === 200) {
                         $('.eerror').html('');
-                        window.location.reload()
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cập nhật thành công",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
                     } else if (status === 400) {
                         $('.eerror').html(message);
                     }

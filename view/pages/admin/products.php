@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Users</title>
+    <title>Admin Products</title>
 
     <!-- Custom fonts for this template -->
     <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -47,14 +47,14 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Manage Products</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Quản lý sản phẩm</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary">Thông tin products</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Thông tin sản phẩm</h6>
                             <button type="button" class="ml-auto d-block btn btn-primary" data-toggle="modal" data-target="#addProduct">
                                 <i class="fa fa-plus"></i>
-                                Add new Products
+                                Thêm sản phẩm mới
                             </button>
                         </div>
                         <div class="card-body">
@@ -62,24 +62,24 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Product Name</th>
-                                            <th>Price</th>
-                                            <th>Image</th>
-                                            <th>Category</th>
-                                            <th>Status</th>
-                                            <th>Created Date</th>
-                                            <th>Action</th>
+                                            <th>Sản Phẩm</th>
+                                            <th>Đơn Giá</th>
+                                            <th>Số hàng trong kho</th>
+                                            <th>Đã Bán</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Ngày Tạo</th>
+                                            <th>Hành Động</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Product Name</th>
-                                            <th>Price</th>
-                                            <th>Image</th>
-                                            <th>Category</th>
-                                            <th>Status</th>
-                                            <th>Created Date</th>
-                                            <th>Action</th>
+                                        <th>Sản Phẩm</th>
+                                            <th>Đơn Giá</th>
+                                            <th>Số hàng trong kho</th>
+                                            <th>Đã Bán</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Ngày Tạo</th>
+                                            <th>Hành Động</th>
                                         </tr>
                                     </tfoot>
                                     <tbody id="table-products">
@@ -130,7 +130,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -148,18 +148,24 @@
                     <form id="createProduct" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="productname">Product name</label>
+                                <label for="productname">Tên sản phẩm</label>
                                 <input type="text" name="productname" class="form-control" id="productname" placeholder="product name">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="Price">Price</label>
+                                <label for="Price">Giá</label>
                                 <input type="number" name="price" class="form-control" id="price" placeholder="Price">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="Price">Mô tả</label>
+                                <textarea  name="description" class="form-control description" id="description" placeholder="description"></textarea>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <select class="form-select" name="categoryid" id="categoryid" aria-label="Default select example">
-                                    <option selected>Choose an category</option>
+                                    <option selected>Loại đồ uống</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
@@ -175,7 +181,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Sign in</button>
+                            <button type="submit" class="btn btn-primary">Tạo mới</button>
                         </div>
                     </form>
                 </div>
@@ -197,12 +203,16 @@
                     <form id="editProduct" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="productname">Product name</label>
+                                <label for="productname">Tên sản phẩm</label>
                                 <input type="text" name="productname" class="form-control productname" id="productname" placeholder="product name">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="Price">Price</label>
+                                <label for="Price">Giá</label>
                                 <input type="number" name="price" class="form-control price" id="price" placeholder="Price">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="Price">Mô tả</label>
+                                <textarea  name="description" class="form-control description1" id="description" placeholder="description"></textarea>
                             </div>
                         </div>
                         <div class="form-row">
@@ -217,8 +227,8 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group">
-                                <img src="" alt="" class="w-100 ratio ratio-1x1 avatar" id="avatar">
+                            <div class="form-group m-auto">
+                                <img src="" alt="" class="w-100 ratio ratio-1x1 avatar" id="avatar" style="width: 300px; height:300px; object-fit: cover">
                                 <input type="text" class="id" hidden>
                             </div>
                         </div>
@@ -229,7 +239,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Sign in</button>
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
                         </div>
                     </form>
                 </div>
@@ -255,8 +265,12 @@
     <script src="../../../js/demo/datatables-demo.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../../js/checkURL.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
+            let username = localStorage.getItem('fullName')
+            $('#username').html(`${username}`)
             showAllProducts();
             showAllCategory();
         })
@@ -265,23 +279,30 @@
 
         const showAllProducts = () => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/products.php',
+                url: 'http://localhost:8000/database/repository/products.php',
                 type: 'POST',
                 data: {
-                    action: "view"
+                    action: "viewAdmin"
                 },
                 success: (response) => {
                     let products = JSON.parse(response)
-                    console.log(products);
                     $('#dataTable').DataTable({
                         searching: true,
                         paging: true,
                         data: products,
                         columns: [
                             {
-                                data: 'productname',
+                                data: null,
                                 render: function(data, type, row) {
-                                    return row.productname
+                                    return `<div class="d-flex gap-2 align-items-center">
+                                            <div class="w-4 h-4">
+                                                 <img src="../../../uploads/${row.image}" style="width: 100px; height:100px; object-fit: cover"/>
+                                             </div>
+                                             <div class="d-flex flex-column mt-4">
+                                                <h6 class="fw-bold">${row.productname}</h6>
+                                                <p>${row.categoryname}</p>
+                                             </div>
+                                        </div>`
                                 }
                             },
                             {
@@ -291,17 +312,18 @@
                                 }
                             },
                             {
-                                data: 'image',
+                                data: null,
                                 render: function(data, type, row) {
-                                    return `<div class="w-4 h-4">
-                                                 <img src="../../../uploads/${row.image}" style="width: 100%; height:100%; object-fit: cover"/>
-                                             </div>`
+                                    return `<div class="d-flex flex-column  align-items-center">
+                                            <p>${row.qis}</p>
+                                            <a class="text-danger" href="http://localhost:8000/view/pages/admin/addinvoice.php">${row.qis<=20 ? 'Sắp hết hàng, hãy nhập thêm': ''}</a>
+                                        </div>`
                                 }
                             },
                             {
-                                data: 'categoryname',
+                                data: 'quantity_sold',
                                 render: function(data, type, row) {
-                                    return row.categoryname
+                                    return row.quantity_sold
                                 }
                             },
                             {
@@ -319,7 +341,6 @@
                             {
                                 "data":null,
                                 render: function(data, type, row) {
-                                    console.log(row);
                                     return `<div class="btn-group" role="group" aria-label="Basic example">
                                                 <button onclick="EnableProduct(${row.id})" type="button" class="btn btn-sm btn-success mr-2">Enable</button>
                                                 <button onclick="DisableProduct(${row.id})" type="button" class="btn btn-sm btn-danger mr-2">Disable</button>
@@ -335,14 +356,13 @@
 
         const showAllCategory = () => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: `action=view`,
                 success: (response) => {
                     let data = JSON.parse(response)
                     for (var i = 0; i < data.length; i++) {
                         var option = document.createElement("option");
-                        console.log(data[i]);
                         option.value = data[i].id;
                         option.text = data[i].name;
                         $('#categoryid').append(option);
@@ -358,7 +378,7 @@
 
         const EnableProduct = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/products.php',
+                url: 'http://localhost:8000/database/repository/products.php',
                 type: 'POST',
                 data: {
                     action: "enable",
@@ -370,16 +390,27 @@
                     } = JSON.parse(response)
                     console.log(status);
                     if (status === 200) {
-                        window.location.reload()
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cập nhật sản phẩm thành công",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
                     } else if (status === 400) {
-                        console.log('haha');
+                        Swal.fire({
+                            title: "Oops...",
+                            text: message,
+                            icon: "error"
+                            });
                     }
                 }
             })
         }
         const DisableProduct = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/products.php',
+                url: 'http://localhost:8000/database/repository/products.php',
                 type: 'POST',
                 data: {
                     action: "disable",
@@ -389,11 +420,21 @@
                     let {
                         status
                     } = JSON.parse(response)
-                    console.log(status);
                     if (status === 200) {
-                        window.location.reload()
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cập nhật sản phẩm thành công",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
                     } else if (status === 400) {
-                        
+                        Swal.fire({
+                            title: "Oops...",
+                            text: message,
+                            icon: "error"
+                            });
                     }
                 }
             })
@@ -409,10 +450,11 @@
             formData.append('price', $('#price').val())
             formData.append('categoryid', $('#categoryid').val())
             formData.append('productname', $('#productname').val())
+            formData.append('description', $('#description').val())
             formData.append('action', 'create')
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:3000/database/repository/products.php',
+                url: 'http://localhost:8000/database/repository/products.php',
                 type: 'POST',
                 data: formData,
                 processData: false, // Không xử lý dữ liệu
@@ -422,11 +464,23 @@
                         status,
                         message
                     } = JSON.parse(response)
-                    console.log(status);
-                    console.log(message);
                     if (status === 200) {
-                        window.location.reload()
-                    } else if (status === 400) {
+                        $('.eerror').html('');
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cập nhật sản phẩm thành công",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
+                    } else if (status === 404) {
+                        Swal.fire({
+                            title: "Oops...",
+                            text: message,
+                            icon: "error"
+                            });
+                    }else if (status === 400) {
                         console.log('hehe');
                         $('.cerror').html(message);
                     }
@@ -437,14 +491,13 @@
         const handleUpdate = (id, categoryid) => {
             
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: `action=view`,
                 success: (response) => {
                     let data = JSON.parse(response)
                     for (var i = 0; i < data.length; i++) {
                         var option = document.createElement("option");
-                        console.log(data[i]);
                         option.value = data[i].id;
                         option.text = data[i].name;
                         if (data[i].id == categoryid) {
@@ -456,14 +509,14 @@
             })
 
             $.ajax({
-                url: 'http://localhost:3000/database/repository/products.php',
+                url: 'http://localhost:8000/database/repository/products.php',
                 type: 'POST',
                 data: `id=${id}&action=getbyid`,
                 success: (response) => {
-                    let data = JSON.parse(response)[0]
-                        console.log(data);
-                        $('.productname').val(data['name'])
+                    let data = JSON.parse(response)
+                        $('.productname').val(data['productName'])
                         $('.price').val(data['price'])
+                        $('.description1').val(data.productDescription)
                         $('.id').val(id)
                         $('.avatar').attr('src', `../../../uploads/${data['image']}`)
                         $('#editProduct').modal('show')
@@ -478,17 +531,16 @@
             formData.append('productname', $('.productname').val())
             formData.append('price', $('.price').val())
             formData.append('categoryid', $('.categoryid').val())
+            formData.append('description', $('.description1').val())
             formData.append('action', "update")
             var img = $('.image')[0]
-            console.log(img.files[0]);
             if (img.files[0]) {
-                console.log('co anh');
                 formData.append('image', img.files[0])
             }
 
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:3000/database/repository/products.php',
+                url: 'http://localhost:8000/database/repository/products.php',
                 type: 'POST',
                 data: formData,
                 processData: false,
@@ -498,13 +550,25 @@
                         status,
                         message
                     } = JSON.parse(response)
-                    console.log(JSON.parse(response));
                     if (status === 200) {
                         $('.eerror').html('');
-                        window.location.reload();
-                    } else if (status === 400) {
-                        console.log('error');
-                        $('.eerror').html(message);
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cập nhật sản phẩm thành công",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
+                    } else if (status === 404) {
+                        Swal.fire({
+                            title: "Oops...",
+                            text: message,
+                            icon: "error"
+                            });
+                    }else if (status === 400) {
+                        console.log('hehe');
+                        $('.cerror').html(message);
                     }
                 }
             })

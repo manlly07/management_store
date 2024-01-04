@@ -72,14 +72,14 @@
                                                             </svg>
                                                         </span>
                                                     </span>
-                                                    <span class="h3 mb-0 app-brand-text fw-semibold text-black">VoTri</span>
+                                                    <span class="h3 mb-0 app-brand-text fw-semibold text-black">Tín Võ</span>
                                                 </div>
-                                                <p class="mb-1 text-secondary">Công ty phân phối nước ngọt Võ Tín</p>
+                                                <p class="mb-1 text-secondary">Nhà phân phối bia nước ngọt Tín Võ</p>
                                                 <p class="mb-1 text-secondary">Thành phố Hồ Chí Minh</p>
                                                 <p class="mb-0 text-secondary">+1 (123) 456 7891, +44 (876) 543 2198</p>
                                             </div>
                                             <div>
-                                                <h4 class="fw-medium text-capitalize pb-1 text-nowrap">INVOICE <span class="invoice-id">#86423</span></h4>
+                                                <h4 class="fw-medium text-capitalize pb-1 text-nowrap">INVOICE <span class="invoices-id">#0</span></h4>
                                                 <div class="mb-1">
                                                     <span class="text-secondary">Date Issues:</span>
                                                     <span class="text-secondary date-issues">April 25, 2021</span>
@@ -146,7 +146,7 @@
                                                 <div>
                                                     <p class="mb-2">
                                                         <span class="me-1 text-heading">Person:</span>
-                                                        <span class="text-secondary personname">Alfie Solomons</span>
+                                                        <span class="text-secondary personname"></span>
                                                     </p>
                                                     <span class="text-secondary">Thanks for your business</span>
                                                 </div>
@@ -199,9 +199,9 @@
                                         <a class="btn btn-outline-secondary d-grid w-100 mb-3 waves-effect" target="_blank" href="./app-invoice-print.php">
                                             Print
                                         </a>
-                                        <a href="./app-invoice-edit.php" class="btn btn-outline-secondary d-grid w-100 mb-3 waves-effect">
-                                            Edit Invoice
-                                        </a>
+                                        <button onclick="Status()" class="btn btn-outline-secondary d-grid w-100 mb-3 waves-effect">
+                                            Update Status
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -329,6 +329,53 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+    <div class="modal fade" id="editStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Update Order Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateStatus">
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                            <label class="form-label" for="customRange2">Order Status</label>
+                            <div class="d-flex justify-content-between mb-3">
+                                <div class="d-flex flex-column align-items-center">
+                                    <img src="../../../img/pending.png" alt="" style="width: 100px; height: 100px">
+                                    <span class="fw-bold">Pending</span>
+                                </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <img src="../../../img//processing.png" alt="" style="width: 100px; height: 100px;">
+                                    <span class="fw-bold">Processing</span>
+                                </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <img src="../../../img/delivered.png" alt="" style="width: 100px; height: 100px;">
+                                    <span class="fw-bold">Delivered</span>
+                                </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <img src="../../../img/canceled.jpg" alt="" style="width: 100px; height: 100px;">
+                                    <span class="fw-bold text-danger">Canceled</span>
+                                </div>
+                            </div>
+                            <div class="range" data-mdb-range-init>
+                                <input type="range" class="form-range" min="1" max="4" id="status-value"/>
+                            </div>
+                            <textarea type="text" id="cancelled" class="form-control mt-1" placeholder="Reason for canceled..." style="display: none;"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="submit" class="btn btn-primary">update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -342,7 +389,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -366,18 +413,95 @@
     <script src="../../../js/demo/datatables-demo.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../../js/checkURL.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
+            let username = localStorage.getItem('fullName')
+            $('#username').html(`${username}`)
             var urlParams = new URLSearchParams(window.location.search);
             var id = urlParams.get('id');
-            console.log(id);
-
             getInvoiceDetail(id)
         })
 
+        var urlParams = new URLSearchParams(window.location.search);
+        var id = urlParams.get('id');
+
+        const Status = () => {
+            $.ajax({
+                url: 'http://localhost:8000/database/repository/invoices.php',
+                type: 'POST',
+                data: {id: id, action: 'getbyid'},
+                success: (response) => {
+                    let data = JSON.parse(response)
+                    // console.log(data);
+                    switch (data[0]['status']){
+                        case 'pending': $('#status-value').val(1);break;
+                        case 'processing': $('#status-value').val(2);break;
+                        case 'delivered': $('#status-value').val(3);break;
+                        case 'cancelled': $('#status-value').val(4);break;
+                    } 
+                    $('#editStatus').modal('show')
+                }
+            })
+
+            $('#status-value').on('change', () => {
+                if($('#status-value').val() == '4'){
+                    $('#cancelled').show()
+                }else{
+                    $('#cancelled').hide();
+                }
+            })
+            $('#submit').on('click', (e) => {
+                e.preventDefault();
+                let status = ''
+                switch ($('#status-value').val()){
+                    case '1': status = 'pending';break;
+                    case '2': status = 'processing';break;
+                    case '3': status = 'delivered';break;
+                    case '4': status = 'cancelled';break;
+                }
+                $.ajax({
+                    url: 'http://localhost:8000/database/repository/invoices.php',
+                    type: 'POST',
+                    data: {
+                        action: 'update',
+                        id: id,
+                        status: status
+                    },
+                    success: function (response) {
+                        let {
+                        status,
+                        message
+                    } = JSON.parse(response)
+                        if (status === 200) {
+                            $('.eerror').html('');
+                            Swal.fire({
+                                    title: "Done",
+                                    text: "Cập nhật trạng thái thành công",
+                                    icon: "success"
+                                });
+                                setTimeout(() => {
+                                    window.location.reload()
+                                },1500)
+                        } else if (status === 404) {
+                            Swal.fire({
+                                title: "Oops...",
+                                text: message,
+                                icon: "error"
+                                });
+                        }
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    },
+                });
+            })
+        }
+
         const getInvoiceDetail = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/invoices.php',
+                url: 'http://localhost:8000/database/repository/invoices.php',
                 type: 'POST',
                 data: `action=getbyid&id=${id}`,
                 success: (response) => {
@@ -391,7 +515,7 @@
                     $('.total-due').html(invoices[0].total)
                     $('.method').html(invoices[0].shipping_method)
                     $('.status').html(invoices[0].status)
-                    
+                    $('.personname').html(invoices[0].name)
                     invoices.forEach((invoice) => {
                         let tr = `
                             <tr>

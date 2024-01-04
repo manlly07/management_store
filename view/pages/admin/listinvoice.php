@@ -48,14 +48,14 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Manage Invoice</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Quản Lý Đơn Nhập Kho</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary">Thông tin hóa đơn</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Thông tin đơn nhập</h6>
                             <a href="./addinvoice.php" type="button" class="ml-auto d-block btn btn-primary">
                                 <i class="fa fa-plus"></i>
-                                Add new invoice
+                                Thêm đơn mới
                             </a>
                         </div>
                         <div class="card-body">
@@ -63,24 +63,24 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Client</th>
-                                            <th>Total</th>
-                                            <th>Status</th>
-                                            <th>Method</th>
-                                            <th>Issued date</th>
-                                            <th>Action</th>
+                                            <th>ID</th>
+                                            <th>Người Nhập</th>
+                                            <th>Giá Trị</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Thanh Toán</th>
+                                            <th>Ngày Nhập</th>
+                                            <th>Hành Động</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Client</th>
-                                            <th>Total</th>
-                                            <th>Status</th>
-                                            <th>Method</th>
-                                            <th>Issued date</th>
-                                            <th>Action</th>
+                                            <th>ID</th>
+                                            <th>Người Nhập</th>
+                                            <th>Giá Trị</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Thanh Toán</th>
+                                            <th>Ngày Nhập</th>
+                                            <th>Hành Động</th>
                                         </tr>
                                     </tfoot>
                                     <tbody id="table-category">
@@ -92,7 +92,7 @@
                                                 <div class="d-flex justify-content-start align-items-center">
                                                     <div class="avatar-wrapper">
                                                         <div class="avatar avatar-sm me-2">
-                                                            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_3000,h_2250,f_auto/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/x1nlzlyldasoj6pllfug/V%C3%A9V%C3%A0oC%E1%BB%95ngIMGWorldsofAdventure,Dubai-KlookVi%E1%BB%87tNam.jpg" alt="Avatar" class="rounded-circle" />
+                                                            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_8000,h_2250,f_auto/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/x1nlzlyldasoj6pllfug/V%C3%A9V%C3%A0oC%E1%BB%95ngIMGWorldsofAdventure,Dubai-KlookVi%E1%BB%87tNam.jpg" alt="Avatar" class="rounded-circle" />
                                                         </div>
                                                     </div>
                                                     <div class="d-flex flex-column gap-1">
@@ -182,7 +182,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -205,13 +205,16 @@
     <script src="../../../js/demo/datatables-demo.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <script src="../../../js/checkURL.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
+            let username = localStorage.getItem('fullName')
+            $('#username').html(`${username}`)
             showAllInvoice();
         })
         const showAllInvoice = () => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/invoices.php',
+                url: 'http://localhost:8000/database/repository/invoices.php',
                 type: 'POST',
                 data: {
                     action: "view"
@@ -239,7 +242,7 @@
                                     <div class="d-flex justify-content-start align-items-center">
                                                     <div class="avatar-wrapper">
                                                         <div class="avatar avatar-sm me-2">
-                                                            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_3000,h_2250,f_auto/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/x1nlzlyldasoj6pllfug/V%C3%A9V%C3%A0oC%E1%BB%95ngIMGWorldsofAdventure,Dubai-KlookVi%E1%BB%87tNam.jpg" alt="Avatar" class="rounded-circle" />
+                                                            <img src="../../../img/supplier.png" alt="Avatar" class="rounded-circle" />
                                                         </div>
                                                     </div>
                                                     <div class="d-flex flex-column gap-1">
@@ -255,23 +258,19 @@
                             {
                                 data: 'total',
                                 render: function(data, type, row) {
-                                    return `${row.total} đ`
+                                    return `$${row.total}`
                                 }
                             },
                             {
                                 data: 'status',
                                 render: function(data, type, row) {
-                                    return `
-                                    <span class="badge rounded-pill bg-label-success"> ${row.status} </span>
-                                    `
+                                    return checkStatus(row.status)
                                 }
                             },
                             {
                                 data: 'method',
                                 render: function(data, type, row) {
-                                    return `
-                                    <span class="badge rounded-pill bg-label-success"> ${row.shipping_method} </span>
-                                    `
+                                    return checkMethod(row.shipping_method)
                                 }
                             },
                             {
@@ -308,6 +307,32 @@
                     })
                 }
             })
+        }
+
+        checkMethod = (method) => {
+            if(method == 'OnlineBanking'){
+                return `<span class="badge rounded-pill py-1 px-2 fs--5 bg-info"> ${method} </span>`
+            }
+            if(method == 'COD'){
+                return `<span class="badge rounded-pill py-1 px-2 fs--5 bg-dark"> ${method} </span>`
+            }
+        }
+
+        const checkStatus = (status) => {
+            switch (status){
+                        case 'pending': 
+                            return `<span class="badge rounded-pill py-2 px-3 fs-6 bg-primary"> ${status} </span>`
+                            break
+                        case 'processing': 
+                            return `<span class="badge rounded-pill py-2 px-3 fs-6 bg-warning"> ${status} </span>`
+                            break
+                        case 'delivered': 
+                            return `<span class="badge rounded-pill py-2 px-3 fs-6 bg-success"> ${status} </span>`
+                            break
+                        case 'cancelled': 
+                            return `<span class="badge rounded-pill py-2 px-3 fs-6 bg-secondary"> ${status} </span>`
+                            break
+                    }
         }
 
     </script>

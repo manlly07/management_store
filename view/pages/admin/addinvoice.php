@@ -75,16 +75,16 @@
                                                             </svg>
                                                         </span>
                                                     </span>
-                                                    <span class="h3 mb-0 app-brand-text fw-semibold text-black">VoTri</span>
+                                                    <span class="h3 mb-0 app-brand-text fw-semibold text-black">Tín võ</span>
                                                 </div>
-                                                <p class="mb-1 text-secondary">Công ty phân phối nước ngọt Võ Tín</p>
+                                                <p class="mb-1 text-secondary">Nhà phân phối bia nước ngọt Tín Võ</p>
                                                 <p class="mb-1 text-secondary">Thành phố Hồ Chí Minh</p>
                                                 <p class="mb-0 text-secondary">+1 (123) 456 7891, +44 (876) 543 2198</p>
                                             </div>
                                             <div class="col-md-5 pe-0 ps-0 ps-md-2">
                                                 <dl class="row mb-2 g-2">
                                                     <dt class="col-sm-6 mb-2 d-md-flex align-items-center justify-content-end">
-                                                        <span class="h4 text-capitalize mb-0 text-nowrap">Invoice</span>
+                                                        <span class="h4 text-capitalize mb-0 text-nowrap">Mã Đơn</span>
                                                     </dt>
                                                     <dd class="col-sm-6">
                                                         <div class="input-group input-group-merge disabled">
@@ -106,9 +106,9 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between flex-wrap">
                                             <div class="my-3 me-3">
-                                                <h6 class="fw-bold">Invoice To:</h6>
+                                                <h6 class="fw-bold">Đơn Nhập Từ:</h6>
                                                 <select class="form-select mb-3 select-supplier" required>
-                                                    <option>Select a supplier</option>
+                                                    <option>Chọn nhà cung cấp</option>
                                                     
                                                 </select>
                                                 <p class="mb-1 text-secondary name"></p>
@@ -116,7 +116,7 @@
                                                 <p class="mb-1 text-secondary phone"></p>
                                             </div>
                                             <div class="my-3">
-                                                <h6 class="fw-bold">Bill To:</h6>
+                                                <h6 class="fw-bold">Thanh Toán:</h6>
                                                 <table>
                                                     <tbody>
                                                         <tr>
@@ -145,7 +145,7 @@
                                                             </select>
                                                         </tr>
                                                         <tr class="text-secondary">
-                                                            <td class="pe-3">Total Due:</td>
+                                                            <td class="pe-3">Tổng Hoá Đơn:</td>
                                                             <td class="total-due">0.00 đ</td>
                                                         </tr>
                                                     </tbody>
@@ -161,9 +161,9 @@
                                                     <div class="d-flex border rounded position-relative pe-0">
                                                         <div class="row w-100 p-3">
                                                             <div class="col-md-6 col-12 mb-md-0 mb-3">
-                                                                <h6 class="mb-2 repeater-title">Item</h6>
+                                                                <h6 class="mb-2 repeater-title">Sản Phẩm</h6>
                                                                 <select class="form-select item-details mb-3" required>
-                                                                    <option value="">Select a item</option>
+                                                                    <option value="">Lựa chọn sản phẩm</option>
                                                                     <option value="App Design">App Design</option>
                                                                     <option value="App Customization">App Customization</option>
                                                                     <option value="ABC Template">ABC Template</option>
@@ -172,15 +172,15 @@
                                                                 <textarea class="form-control" rows="2"></textarea>
                                                             </div>
                                                             <div class="col-md-3 col-12 mb-md-0 mb-3">
-                                                                <h6 class="mb-2 repeater-title">Cost</h6>
+                                                                <h6 class="mb-2 repeater-title">Đơn Giá</h6>
                                                                 <input type="number" class="form-control invoice-item-cost mb-3" placeholder="cost" min="1" value="0">
                                                             </div>
                                                             <div class="col-md-2 col-12 mb-md-0 mb-3">
-                                                                <h6 class="mb-2 repeater-title">Qty</h6>
+                                                                <h6 class="mb-2 repeater-title">Số Lượng</h6>
                                                                 <input type="number" class="form-control invoice-item-qty" value="0" placeholder="qty" min="0" max="50">
                                                             </div>
                                                             <div class="col-md-1 col-12 pe-0">
-                                                                <h6 class="mb-2 repeater-title">Price</h6>
+                                                                <h6 class="mb-2 repeater-title">Giá Trị</h6>
                                                                 <p class="mb-0 invoice-item-price">0.00 đ</p>
                                                             </div>
                                                         </div>
@@ -192,7 +192,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <button type="button" class="btn btn-primary btn-sm button-create" data-repeater-create=""><i class="fa fa-plus me-1"></i> Add Item</button>
+                                                    <button type="button" class="btn btn-primary btn-sm button-create" data-repeater-create=""><i class="fa fa-plus me-1"></i>Thêm Sản Phẩm</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -202,8 +202,8 @@
                                         <div class="row">
                                             <div class="col-md-6 mb-md-0 mb-3">
                                                 <div class="d-flex align-items-center gap-2 mb-3 mt-2">
-                                                    <label for="salesperson" class="text-heading">Person: </label>
-                                                    <input type="text" class="form-control w-50" id="personname" placeholder="Enter your name" required ><input type="text" class="form-control w-50" id="personphone" placeholder="Enter your phone" required >
+                                                    <label for="salesperson" class="text-heading">Người Giao: </label>
+                                                    <input type="text" class="form-control w-50" id="personname" placeholder="Nhập tên..." required ><input type="text" class="form-control w-50" id="personphone" placeholder="Nhập SĐT..." required >
                                                 </div>
                                                 <div class="mb-4">
                                                     <input type="text" class="form-control w-50" id="invoiceMsg" placeholder="Thanks for your business" value="Thanks for your business">
@@ -226,7 +226,7 @@
                                                     </div>
                                                     <hr>
                                                     <div class="d-flex justify-content-between">
-                                                        <span class="w-px-100 text-secondary">Total:</span>
+                                                        <span class="w-px-100 text-secondary">Tổng:</span>
                                                         <h6 class="mb-0 pt-1 total">0.00 đ</h6>
                                                     </div>
                                                 </div>
@@ -238,7 +238,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="mb-3">
-                                                    <label for="note" class="form-label fw-medium">Note:</label>
+                                                    <label for="note" class="form-label fw-medium">Ghi Chú:</label>
                                                     <textarea class="form-control" rows="2" id="note"></textarea>
                                                 </div>
                                             </div>
@@ -253,11 +253,11 @@
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <button class="btn btn-primary d-grid w-100 mb-3 waves-effect waves-light" data-bs-toggle="offcanvas" data-bs-target="#sendInvoiceOffcanvas">
-                                            <span class="d-flex align-items-center justify-content-center text-nowrap"><i class="mdi mdi-send-outline scaleX-n1-rtl me-2"></i>Send Invoice</span>
+                                            <span class="d-flex align-items-center justify-content-center gap-2 text-nowrap"><i class="fas fa-fw fa-long-arrow-alt-left"></i><span>Gửi Đơn</span></span>
                                         </button>
                                         <div class="d-flex">
-                                            <a href="./invoicedetail.php" class="btn btn-outline-secondary w-50 me-2 mb-3 waves-effect">Preview</a>
-                                            <button type="button" class="btn btn-outline-secondary w-50 mb-3 waves-effect save">Save</button>
+                                            <a href="./invoicedetail.php" class="btn btn-outline-secondary w-50 me-2 mb-3 waves-effect">Xem Trước</a>
+                                            <button type="button" class="btn btn-outline-secondary w-50 mb-3 waves-effect save">Lưu</button>
                                         </div>
                                     </div>
                                 </div>
@@ -269,7 +269,7 @@
                         <!-- Send Invoice Sidebar -->
                         <div class="offcanvas offcanvas-end" id="sendInvoiceOffcanvas" aria-hidden="true">
                             <div class="offcanvas-header mb-3">
-                                <h5 class="offcanvas-title">Send Invoice</h5>
+                                <h5 class="offcanvas-title">Gửi Đơn</h5>
                                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body flex-grow-1">
@@ -350,7 +350,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -372,10 +372,14 @@
     <!-- Page level custom scripts -->
     <script src="../../../js/demo/datatables-demo.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../../js/checkURL.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function() {
             // showAllProducts();
+            let username = localStorage.getItem('fullName')
+            $('#username').html(`${username}`)
             getSuppliers()
             getProducts().done(function(response) {
                 console.log(response);
@@ -500,16 +504,16 @@
 
         const getProducts = () => {
             return $.ajax({
-            url: 'http://localhost:3000/database/repository/products.php',
+            url: 'http://localhost:8000/database/repository/products.php',
             method: 'POST',
             dataType: 'json',
-            data: 'action=view',
+            data: 'action=viewAdmin',
             });
         }
 
         const getSuppliers = () => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/supplier.php',
+                url: 'http://localhost:8000/database/repository/supplier.php',
                 type: 'POST',
                 data: {
                     action: "view"
@@ -533,7 +537,7 @@
             console.log(selectedOption);
 
             $.ajax({
-                url: 'http://localhost:3000/database/repository/supplier.php',
+                url: 'http://localhost:8000/database/repository/supplier.php',
                 type: 'POST',
                 data: `id=${selectedOption}&action=getbyid`,
                 success: (response) => {
@@ -617,10 +621,10 @@
                 status: status,
                 shipping_method: method,
                 data: formData,
-                action: 'create'
+                action: 'create'    
             }
             $.ajax({
-                url: 'http://localhost:3000/database/repository/invoices.php',
+                url: 'http://localhost:8000/database/repository/invoices.php',
                 type: 'POST',
                 data: payload,
                 success: function(response) {
@@ -628,7 +632,14 @@
                     console.log(response);
                     let {status, message} = JSON.parse(response);
                     if (status === 200) {
-                        window.location.href = 'http://localhost:3000/view/pages/admin/listinvoice.php'
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Added invoice successfully!",
+                            icon: "success"
+                            });
+                        setTimeout(() => {
+                            window.location.href = 'http://localhost:8000/view/pages/admin/listinvoice.php'
+                        },2000)
                     }else {
 
                     }

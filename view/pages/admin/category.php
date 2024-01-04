@@ -47,14 +47,14 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Manage Categories</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Quản Lý Loại Đồ Uống</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary">Thông tin categories</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Thông tin loại đồ uống</h6>
                             <button type="button" class="ml-auto d-block btn btn-primary" data-toggle="modal" data-target="#addCategory">
                                 <i class="fa fa-plus"></i>
-                                Add new cateogry
+                                Thêm loại mới
                             </button>
                         </div>
                         <div class="card-body">
@@ -62,22 +62,22 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Category Name</th>
-                                            <th>Description</th>
-                                            <th>Status</th>
-                                            <th>Created Date</th>
-                                            <th>Action</th>
+                                            <th>Thứ Tự</th>
+                                            <th>Tên Loại Đồ Uống</th>
+                                            <th>Mô Tả</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Ngày Tạo</th>
+                                            <th>Hành Động</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Category Name</th>
-                                            <th>Description</th>
-                                            <th>Status</th>
-                                            <th>Created Date</th>
-                                            <th>Action</th>
+                                            <th>Thứ Tự</th>
+                                            <th>Tên Loại Đồ Uống</th>
+                                            <th>Mô Tả</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Ngày Tạo</th>
+                                            <th>Hành Động</th>
                                         </tr>
                                     </tfoot>
                                     <tbody id="table-category">
@@ -128,7 +128,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -225,13 +225,16 @@
     <script src="../../../js/demo/datatables-demo.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <script src="../../../js/checkURL.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
+            let username = localStorage.getItem('fullName')
+            $('#username').html(`${username}`)
             showAllCategory();
         })
         const showAllCategory = () => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: {
                     action: "view"
@@ -292,7 +295,7 @@
         }
         const EnableCategory = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: {
                     action: "enable",
@@ -312,7 +315,7 @@
         }
         const DisableCategory = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: {
                     action: "disable",
@@ -336,7 +339,7 @@
             var formData = $('#createCategory').serialize();
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: `${formData}&action=create`,
                 success: (response) => {
@@ -356,7 +359,7 @@
 
         const EditCategory = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: `id=${id}&action=getbyid`,
                 success: (response) => {
@@ -374,7 +377,7 @@
             var formData = $('#updateCategory').serialize();
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: `${formData}&action=update`,
                 success: (response) => {

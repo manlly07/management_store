@@ -8,6 +8,18 @@
         echo json_encode($data);
     }
 
+    if ($_POST['action'] && $_POST['action'] == 'count') {
+        $sql = "SELECT COUNT(*) AS total_invoice,
+        SUM(total) AS total_revenue
+        FROM invoiceshipments
+        WHERE InvoiceShipments.status = 'delivered'
+        -- AND YEAR(shipment_date) = YEAR(CURDATE())
+        ";
+        $data = Query($sql, db());
+        echo json_encode($data[0]);
+    
+    }
+
     if($_POST['action'] && $_POST['action'] == 'create') {
         try {
             // Lấy dữ liệu từ POST
@@ -19,7 +31,6 @@
             $status = $_POST['status'];
             $shipping_method = $_POST['shipping_method'];
             $data = $_POST['data'];
-            $total = "144.00 đ";
             $total = str_replace(" đ", "", $total);
             // Chèn dữ liệu vào bảng InvoiceShipments
 
@@ -44,6 +55,13 @@
                 $stmt->bindParam(':quantity', $quantity);
                 $stmt->bindParam(':purchase_price', $purchase_price);
                 $stmt->execute();
+
+                // Update quantity_in_stock in Products table
+                $updateStock = "UPDATE Products SET quantity_in_stock = quantity_in_stock + :quantity WHERE id = :product_id";
+                $updateStmt = db()->prepare($updateStock);
+                $updateStmt->bindParam(':quantity', $quantity);
+                $updateStmt->bindParam(':product_id', $product_id);
+                $updateStmt->execute();
             }
         
             echo json_encode([
@@ -59,7 +77,23 @@
     }
 
     if($_POST['action'] && $_POST['action'] == 'update') {
-        
+        $id = $_POST['id'];
+        $status = $_POST['status'];
+
+        $sql = "UPDATE InvoiceShipments SET status = '$status' WHERE id = '$id'";
+        $data = Query($sql, db());
+
+        if (count($data) == 0) {
+            echo json_encode([
+                'status' => 200,
+                'message' => 'Product quantity updated successfully'
+            ]);
+        } else {
+            echo json_encode([
+                'status' => 400,
+                'message' => 'Something went wrong while updating quantity'
+            ]);
+        }
     }
 
     if($_POST['action'] && $_POST['action'] == 'getbyid') {
@@ -105,4 +139,15 @@
         echo json_encode($data);
     }
 
+    if ($_POST['action'] && $_POST['action'] == 'revenue_monthly'){
+        $sql = "SELECT
+            MONTH(shipment_date) AS month,
+            SUM(total) AS total
+            FROM InvoiceShipments
+            WHERE InvoiceShipments.status = 'delivered'
+            -- AND YEAR(shipment_date) = YEAR(CURDATE())
+            GROUP BY MONTH(shipment_date)";
+        $data = Query($sql, db());
+        echo json_encode($data);
+    }
 ?>

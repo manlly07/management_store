@@ -136,6 +136,7 @@
     <!-- Page level custom scripts -->
     <script src="../../../js/demo/datatables-demo.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <script src="../../../js/checkURL.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
             var urlParams = new URLSearchParams(window.location.search);
@@ -147,7 +148,7 @@
 
         const getInvoiceDetail = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/invoices.php',
+                url: 'http://localhost:8000/database/repository/invoices.php',
                 type: 'POST',
                 data: `action=getbyid&id=${id}`,
                 success: (response) => {

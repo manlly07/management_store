@@ -47,14 +47,14 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Manage Users</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Quản Lý Người Dùng</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary">Thông tin users</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Thông tin người dùng</h6>
                             <button type="button" class="ml-auto d-block btn btn-primary" data-toggle="modal" data-target="#addCustommer">
                                 <i class="fa fa-plus"></i>
-                                Add new Users
+                                Thêm tài khoản mới
                             </button>
                         </div>
                         <div class="card-body">
@@ -62,24 +62,26 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Address</th>
-                                            <th>Phone</th>
+                                            <th>ID</th>
+                                            <th>Tên</th>
+                                            <th>Địa Chỉ</th>
+                                            <th>Điện Thoại</th>
                                             <th>Email</th>
-                                            <th>Status</th>
-                                            <th>Created Date</th>
-                                            <th>Action</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Ngày Tạo</th>
+                                            <th>Hành Động</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Address</th>
-                                            <th>Phone</th>
+                                            <th>ID</th>
+                                            <th>Tên</th>
+                                            <th>Địa Chỉ</th>
+                                            <th>Điện Thoại</th>
                                             <th>Email</th>
-                                            <th>Status</th>
-                                            <th>Created Date</th>
-                                            <th>Action</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Ngày Tạo</th>
+                                            <th>Hành Động</th>
                                         </tr>
                                     </tfoot>
                                     <tbody id="table-users">
@@ -130,7 +132,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -187,7 +189,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Sign in</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </form>
                 </div>
@@ -217,7 +219,7 @@
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">User Info</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Thông tin người dùng</h5>
                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -238,60 +240,7 @@
                                 </div>
                             </div>
                             <div class="col-8">
-                                <!-- <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">First Name</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                Kenneth Valdez
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Last Name</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                Kenneth Valdez
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Email</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                fip@jukmuh.al
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Phone</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                (239) 816-9029
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h6 class="mb-0">Address</h6>
-                                            </div>
-                                            <div class="col-sm-9 text-secondary">
-                                                Bay Area, San Francisco, CA
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                
                                 <div class="card">
                                     <div class="card-body">
                                         <form id="editUser">
@@ -353,38 +302,34 @@
                         <div class="row mt-4">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3 d-flex align-items-center">
-                                    <h6 class="m-0 font-weight-bold text-primary">Orders History</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Lịch sử mua hàng</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTableOrderHistory" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name Receiver</th>
-                                                    <th>Address</th>
-                                                    <th>Phone</th>
-                                                    <th>Total</th>
-                                                    <th>Status</th>
-                                                    <th>Ordered Date</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Name Receiver</th>
-                                                    <th>Address</th>
-                                                    <th>Phone</th>
-                                                    <th>Total</th>
-                                                    <th>Status</th>
-                                                    <th>Ordered Date</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody id="table-oders">
-                                                <tr>
-                                                    <td class="text-center" colspan="7">NOT ORDER HISTORY</td>
-                                                </tr>
-                                            </tbody>
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                        <tr>
+                                            <th>Mã đơn</th>
+                                            <th>Ngày</th>
+                                            <th>Chi phí</th>
+                                            <th>Phương thức</th>
+                                            <th>Trạng thái</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Mã đơn</th>
+                                            <th>Ngày</th>
+                                            <th>Chi phí</th>
+                                            <th>Phương thức</th>
+                                            <th>Trạng thái</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody id="table-category">
+                                        
+                                    </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -397,18 +342,23 @@
     </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../../js/checkURL.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
+            let username = localStorage.getItem('fullName')
+            $('#username').html(`${username}`)
             showAllUsers();
         })
         const showAllUsers = () => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/users.php',
+                url: 'http://localhost:8000/database/repository/users.php',
                 type: 'POST',
                 data: {
                     action: "view"
                 },
                 success: (response) => {
+                    // console.log(JSON.parse(response));
                     $('#table-users').html(response)
                     $('#dataTable').DataTable({
                         searching: true,
@@ -419,7 +369,7 @@
         }
         const EnableUser = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/users.php',
+                url: 'http://localhost:8000/database/repository/users.php',
                 type: 'POST',
                 data: {
                     action: "enable",
@@ -430,16 +380,28 @@
                         status
                     } = JSON.parse(response)
                     if (status === 200) {
-                        window.location.reload()
+                        let result =JSON.parse(response)
+                            Swal.fire({
+                                title: "Done",
+                                text: "Mở khoá người dùng thành công!",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
                     } else if (status === 400) {
-                        console.log('haha');
+                        Swal.fire({
+                            title: "Oops...",
+                            text: "Đã xảy ra lỗi",
+                            icon: "error"
+                            });
                     }
                 }
             })
         }
         const DisableUser = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/users.php',
+                url: 'http://localhost:8000/database/repository/users.php',
                 type: 'POST',
                 data: {
                     action: "disable",
@@ -450,41 +412,65 @@
                         status
                     } = JSON.parse(response)
                     if (status === 200) {
-                        window.location.reload()
+                        let result =JSON.parse(response)
+                            Swal.fire({
+                                title: "Done",
+                                text: "Khoá người dùng thành công!",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
                     } else if (status === 400) {
-                        console.log('haha');
+                        Swal.fire({
+                            title: "Oops...",
+                            text: "Đã xảy ra lỗi",
+                            icon: "error"
+                            });
                     }
                 }
             })
         }
 
-        const FindUserById = (id) => {
+        const Admin = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/users.php',
+                url: 'http://localhost:8000/database/repository/users.php',
                 type: 'POST',
-                data: `action=getbyid&id=${id}`,
+                data: {
+                    action: "grant_admin",
+                    id: id
+                },
                 success: (response) => {
-                    let data = JSON.parse(response)[0]
-                    console.log(data);
-                    $('#exampleModal').modal('show');
-                    $('.fname').val(data['first_name']);
-                    $('.lname').val(data['last_name']);
-                    $('.email').val(data['email']);
-                    $('.phone').val(data['phone']);
-                    $('.address').val(data['address']);
-                    $('.id').val(data['id']);
-                    $('.address').html(data['address']);
-                    $('.fullname').html(`${data['first_name']} ${data['last_name']}`);
+                    let {
+                        status
+                    } = JSON.parse(response)
+                    if (status === 200) {
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cấp quyền Admin thành công!",
+                                icon: "success"
+                            });
+                        setTimeout(() => {
+                            window.location.reload()
+                        },1500)
+                    } else if (status === 400) {
+                        Swal.fire({
+                            title: "Oops...",
+                            text: "Đã xảy ra lỗi",
+                            icon: "error"
+                            });
+                    }
                 }
             })
         }
 
+        
         $('#createUser').on('submit', (e) => {
             e.preventDefault();
             var formData = $('#createUser').serialize();
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:3000/database/repository/users.php',
+                url: 'http://localhost:8000/database/repository/users.php',
                 type: 'POST',
                 data: `${formData}&action=create`,
                 success: (response) => {
@@ -494,8 +480,14 @@
                     } = JSON.parse(response)
                     console.log(status);
                     if (status === 200) {
-                        // console.log(message);
-                        window.location.reload()
+                        Swal.fire({
+                                title: "Done",
+                                text: "Add User Successfully!",
+                                icon: "success"
+                            });
+                        setTimeout(() => {
+                            window.location.reload()
+                        },1500)
                     } else if (status === 400) {
                         console.log('hehe');
                         $('.cerror').html(message);
@@ -504,34 +496,7 @@
             })
         })
         
-        $('#editUser').on('submit', (e) => {
-            e.preventDefault();
-            var formData = $('#editUser').serialize();
-            console.log(formData);
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/users.php',
-                type: 'POST',
-                data: `${formData}&action=update`,
-                success: (response) => {
-                    let {
-                        status,
-                        message
-                    } = JSON.parse(response)
-                    console.log(message);
-                    if (status === 200) {
-                        $('.eerror').html('');
-                        var fullname = $('.fname').val() + ' ' + $('.lname').val();
-                        var address = $('.address').val()
-                        console.log(address);
-                        $('.fullname').html(fullname)
-                        $('.address').html(address)
-                    } else if (status === 400) {
-                        console.log('error');
-                        $('.eerror').html(message);
-                    }
-                }
-            })
-        })
+        
     </script>
 </body>
 

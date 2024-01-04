@@ -393,7 +393,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -490,13 +490,14 @@
     <script src="../../../js/demo/datatables-demo.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <script src="../../../js/checkURL.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
             // showAllCategory();
         })
         const showAllCategory = () => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: {
                     action: "view"
@@ -512,7 +513,7 @@
         }
         const EnableCategory = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: {
                     action: "enable",
@@ -532,7 +533,7 @@
         }
         const DisableCategory = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: {
                     action: "disable",
@@ -556,7 +557,7 @@
             var formData = $('#createCategory').serialize();
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: `${formData}&action=create`,
                 success: (response) => {
@@ -576,7 +577,7 @@
 
         const EditCategory = (id) => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: `id=${id}&action=getbyid`,
                 success: (response) => {
@@ -594,7 +595,7 @@
             var formData = $('#updateCategory').serialize();
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:3000/database/repository/category.php',
+                url: 'http://localhost:8000/database/repository/category.php',
                 type: 'POST',
                 data: `${formData}&action=update`,
                 success: (response) => {
