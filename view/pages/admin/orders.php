@@ -284,7 +284,6 @@
                                 render: function(data, type, row) {
                                     // console.log(row);
                                     return `<div class="d-flex align-items-center">
-                                                <button onclick="Delete(${row.order_id})" type="button" class="btn btn-sm btn-danger mr-2">Delete <i class="fa fa-trash mx-1"></i></button>
                                                 <button onclick="Status(${row.order_id})" type="button" class="btn btn-sm btn-primary">Status <i class="fa fa-edit mx-1"></i></button>
                                                 </div>`
                                 }

@@ -22,6 +22,9 @@
     <!-- Custom styles for this page -->
     <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <script src='https://cdn.jsdelivr.net/npm/@goongmaps/goong-js@1.0.9/dist/goong-js.js'></script>
+    <link href='https://cdn.jsdelivr.net/npm/@goongmaps/goong-js@1.0.9/dist/goong-js.css' rel='stylesheet' />
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
 </head>
 
@@ -58,10 +61,10 @@
                 <table class="table  border-bottom products">
                   <thead class="bg-200">
                     <tr style="background-color: #edf2f9;">
-                      <th class="text-900 border-0 fw-bold">Products</th>
-                      <th class="text-900 border-0 text-center fw-bold">Quantity</th>
-                      <th class="text-900 border-0 text-end fw-bold">Rate</th>
-                      <th class="text-900 border-0 text-end fw-bold">Amount</th>
+                      <th class="text-900 border-0 fw-bold">Sản phẩm</th>
+                      <th class="text-900 border-0 text-center fw-bold">Số lượng</th>
+                      <th class="text-900 border-0 text-end fw-bold">Đơn giá</th>
+                      <th class="text-900 border-0 text-end fw-bold">Giá trị</th>
                     </tr>
                   </thead>
                   
@@ -99,6 +102,32 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+    <div class="modal fade" id="shippingAddress" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Địa chỉ giao hàng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateSupplier">
+                        <div class="form-row">
+                            <div id="addressOutput" class="m-auto"></div>
+                        </div>
+                        <div class="form-row">
+                            <input type="text" name="id" class="form-control id" placeholder="id" hidden>
+                            <div class="eerror text-danger">
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -135,6 +164,10 @@
     <!-- Page level custom scripts -->
     <script src="../../../js/demo/datatables-demo.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/@goongmaps/goong-geocoder@1.1.1/dist/goong-geocoder.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@goongmaps/goong-geocoder@1.1.1/dist/goong-geocoder.css" rel="stylesheet"
+    type="text/css" />
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
     <script src="../../../js/checkURL.js"></script>
     <script type="text/javascript">
@@ -146,6 +179,55 @@
             getOrder(id)
             getDetail(id)
         })
+
+        const addressOutput = document.getElementById('addressOutput');
+        const showMap = (address) => {// Thay thế bằng địa chỉ bạn muốn tìm kiếm
+
+            fetch(`https://rsapi.goong.io/Geocode?address=${encodeURIComponent(address)}&api_key=GFZGMOVfqTYbDT6lqYjvTcmnLjjmQAqwsRQYelGL`)
+            .then(response => {
+                if (response.ok) {
+                return response.json();
+                } else {
+                throw new Error('Lỗi khi gửi yêu cầu.');
+                }
+            })
+            .then(data => {
+                        if (data.results.length > 0) {
+                        const result = data.results[0];
+                        const location = result.geometry.location;
+
+                    // Hiển thị địa chỉ trong thẻ output
+                    addressOutput.textContent = result.formatted_address;
+                    
+                    // Tạo bản đồ Goong Maps
+                        goongjs.accessToken = 'PtFoCFjhwnscynuTn4YzLkevN13FlxfCOQjsrpiU';
+                        const map = new goongjs.Map({
+                            container: 'addressOutput',
+                            style: 'https://tiles.goong.io/assets/goong_map_web.json',
+                            center: [location.lng, location.lat],
+                            zoom: 14
+                        })
+
+                        
+                                        
+                        // map.addImage('flashing_square', flashingSquare);
+
+            // Thêm điểm đánh dấu lên bản đồ
+            new goongjs.Marker().setLngLat([location.lng, location.lat]).addTo(map);
+            } else {
+            addressOutput.textContent = 'Không tìm thấy địa chỉ.';
+            }
+                // Xử lý dữ liệu phản hồi ở đây
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        }
+
+        const shippingAddress = (address) => {
+            showMap(address)
+            $('#shippingAddress').modal('show')
+        }
         
         const getOrder = (id) => {
             $.ajax({
@@ -161,14 +243,16 @@
                     let src_img = ''
                     order.payment_method == "OnlineBanking" ? src_img = '../../../img/vnpay.webp' :src_img = '../../../img/COD.png'
                     let html = `
-                    <div class="card mb-3">
-                        <div class="bg-holder d-none d-lg-block bg-card" ></div><!--/.bg-holder-->
-                        <div class="card-body position-relative">
-                        <h5 class="fw-bold">Order Details: #${order.order_id}</h5>
-                        <p class="fs--1">${order.order_date}</p>
-                        <div><strong class="me-2">Status: </strong>
-                            ${checkStatus(order.status)}
+                    <div class="card mb-3 d-flex flex-row align-items-center col-12">
+                        <div class="card-body position-relative col-9">
+                            <h5 class="fw-bold">Mã đơn: #${order.order_id}</h5>
+                            <p class="fs--1">${order.order_date}</p>
+                            <div><strong class="me-2">Trạng thái: </strong>
+                                ${checkStatus(order.status)}
+                            </div>
                         </div>
+                        <div col-3>
+                            <button onclick="shippingAddress('${order.address}')" class="btn btn-outline-secondary mr-5" type="button">Xem địa chỉ giao hàng</button>
                         </div>
                     </div>
 
@@ -176,18 +260,18 @@
             <div class="card-body">
               <div class="row d-flex justify-content-between">
                 <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
-                  <h5 class="mb-3 fs-0 fw-bold">Shipping Address</h5>
+                  <h5 class="mb-3 fs-0 fw-bold">Địa chỉ giao hàng</h5>
                   <h6 class="mb-2">${order.fullname}</h6>
                   <p class="mb-1 fs--1">${order.address}</p>
                   <p class="mb-0 fs--1"> <strong>Email: </strong><a href="${order.email}">${order.email}</a></p>
-                  <p class="mb-0 fs--1"> <strong>Phone: </strong><a href="${order.phone}">${order.phone}</a></p>
+                  <p class="mb-0 fs--1"> <strong>SĐT: </strong><a href="${order.phone}">${order.phone}</a></p>
                 </div>
                 <div class="col-md-4 col-lg-4 mb-4 mb-lg-0 text-center">
-                  <h5 class="mb-3 fs-0 fw-bold">Note</h5>
+                  <h5 class="mb-3 fs-0 fw-bold">Ghi chú</h5>
                   <p class="mb-1 fs--1">${JSON.parse(order.note).text}</p>
                 </div>
                 <div class="col-md-4 col-lg-4 text-center">
-                  <h5 class="mb-3 fs-0 fw-bold">Payment Method</h5>
+                  <h5 class="mb-3 fs-0 fw-bold">Phương thức thanh toán</h5>
                   <div class="d-flex justify-content-center">
                   <img class="me-3" src="${src_img}" width="40" height="30" alt="">
                     <div class="flex-1">

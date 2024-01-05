@@ -33,8 +33,8 @@
           <div class="container">
             <div class="row align-items-center justify-content-center">
               <div class="col-md-11">
-                <h3>Register to <strong>Tín Võ</strong></h3>
-                <p class="mb-4">Chào mừng đến của hàng Tín võ - Thế giới đồ uống</p>
+                <h3>Register to <strong>Tin Võ</strong></h3>
+                <p class="mb-4">Chào mừng đến của hàng Tin võ - Thế giới đồ uống</p>
                 <form id="createUser">
                         <div class="form-row">
                             <div class="form-group col-md-6">

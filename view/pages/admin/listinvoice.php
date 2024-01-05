@@ -169,6 +169,53 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+    <div class="modal fade" id="editStatus" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Update Order Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateStatus">
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                            <label class="form-label" for="customRange2">Order Status</label>
+                            <div class="d-flex justify-content-between mb-3">
+                                <div class="d-flex flex-column align-items-center">
+                                    <img src="../../../img/pending.png" alt="" style="width: 100px; height: 100px">
+                                    <span class="fw-bold">Pending</span>
+                                </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <img src="../../../img//processing.png" alt="" style="width: 100px; height: 100px;">
+                                    <span class="fw-bold">Processing</span>
+                                </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <img src="../../../img/delivered.png" alt="" style="width: 100px; height: 100px;">
+                                    <span class="fw-bold">Delivered</span>
+                                </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <img src="../../../img/canceled.jpg" alt="" style="width: 100px; height: 100px;">
+                                    <span class="fw-bold text-danger">Canceled</span>
+                                </div>
+                            </div>
+                            <div class="range" data-mdb-range-init>
+                                <input type="range" class="form-range" min="1" max="4" id="status-value"/>
+                            </div>
+                            <textarea type="text" id="cancelled" class="form-control mt-1" placeholder="Reason for canceled..." style="display: none;"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="submit" class="btn btn-primary">update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -206,6 +253,7 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
     <script src="../../../js/checkURL.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
         $(document).ready(() => {
             let username = localStorage.getItem('fullName')
@@ -220,7 +268,7 @@
                     action: "view"
                 },
                 success: (response) => {
-                    console.log(JSON.parse(response));
+                    // console.log(JSON.parse(response));
                     let invoices = JSON.parse(response)
                     $('#dataTable').DataTable({
                         searching: true,
@@ -282,24 +330,8 @@
                             {
                                 "data":null,
                                 render: function(data, type, row) {
-                                    console.log(row);
                                     return `<div class="d-flex align-items-center">
-                                                    <a href="javascript:;" data-bs-toggle="tooltip" class="text-body delete-record" data-bs-placement="top" aria-label="Delete Invoice" data-bs-original-title="Delete Invoice">
-                                                        <i class="fa fa-trash mx-1"></i>
-                                                    </a>
-                                                    <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" aria-label="Preview Invoice" data-bs-original-title="Preview Invoice">
-                                                        <i class="fa fa-eye mx-1"></i>
-                                                    </a>
-                                                    <div class="dropdown">
-                                                        <i class="dropdown-toggle fa fa-caret-down " id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                           
-                                                        </i>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else here</a>
-                                                        </div>
-                                                        </div>
+                                                <button onclick="Status(${row.id})" type="button" class="btn btn-sm btn-primary">Status <i class="fa fa-edit mx-1"></i></button>
                                                 </div>`
                                 }
                             }
@@ -333,6 +365,125 @@
                             return `<span class="badge rounded-pill py-2 px-3 fs-6 bg-secondary"> ${status} </span>`
                             break
                     }
+        }
+
+        const Status = (id) => {
+            $.ajax({
+                url: 'http://localhost:8000/database/repository/invoices.php',
+                type: 'POST',
+                data: {id: id, action: 'getbyid'},
+                success: (response) => {
+                    let data = JSON.parse(response)
+                    console.log(data);
+                    switch (data[0]['status']){
+                        case 'pending': $('#status-value').val(1);break;
+                        case 'processing': $('#status-value').val(2);break;
+                        case 'delivered': $('#status-value').val(3);break;
+                        case 'cancelled': $('#status-value').val(4);break;
+                    } 
+                    $('#editStatus').modal('show')
+                }
+            })
+
+            $('#status-value').on('change', () => {
+                if($('#status-value').val() == '4'){
+                    $('#cancelled').show()
+                }else{
+                    $('#cancelled').hide();
+                }
+            })
+            $('#submit').on('click', (e) => {
+                e.preventDefault();
+                let status = ''
+                switch ($('#status-value').val()){
+                    case '1': status = 'pending';break;
+                    case '2': status = 'processing';break;
+                    case '3': status = 'delivered';break;
+                    case '4': status = 'cancelled';break;
+                }
+                if(status == 'cancelled'){
+                    Swal.fire({
+                        title: "Bạn chắc chắn muốn huỷ đơn hàng?",
+                        text: "You won't be able to revert this!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "success",
+                        cancelButtonColor: "danger",
+                        confirmButtonText: "Xác nhận huỷ"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                    url: 'http://localhost:8000/database/repository/invoices.php',
+                    type: 'POST',
+                    data: {
+                        action: 'update',
+                        id: id,
+                        status: status
+                    },
+                    success: function (response) {
+                        let {
+                        status,
+                        message
+                    } = JSON.parse(response)
+                    if (status === 200) {
+                        $('.eerror').html('');
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cập nhật trạng thái thành công",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
+                    } else if (status === 404) {
+                        Swal.fire({
+                            title: "Oops...",
+                            text: message,
+                            icon: "error"
+                            });
+                    }
+                    }
+                    
+                });
+                        }
+                    });
+                }else {
+                    $.ajax({
+                    url: 'http://localhost:8000/database/repository/invoices.php',
+                    type: 'POST',
+                    data: {
+                        action: 'update',
+                        id: id,
+                        status: status
+                    },
+                    success: function (response) {
+                        let {
+                        status,
+                        message
+                    } = JSON.parse(response)
+                    if (status === 200) {
+                        $('.eerror').html('');
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cập nhật trạng thái thành công",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
+                    } else if (status === 404) {
+                        Swal.fire({
+                            title: "Oops...",
+                            text: message,
+                            icon: "error"
+                            });
+                    }
+                    }
+                    
+                });
+                }
+                
+            })
         }
 
     </script>

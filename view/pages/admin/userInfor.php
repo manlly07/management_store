@@ -57,7 +57,7 @@
                                             <div class="mt-3">
                                                 <h4 class="fullname">John Doe</h4>
                                                 <p class="text-muted font-size-sm address">Bay Area, San Francisco, CA</p>
-                                                <button class="btn btn-outline-primary">Edit Avartar</button>
+                                                <!-- <button class="btn btn-outline-primary">Edit Avartar</button> -->
                                             </div>
                                         </div>
                                     </div>
@@ -409,7 +409,6 @@
                             data: null,
                             render: function(data, type, row) {
                                 return `<div class="d-flex align-items-center">
-                                                <button onclick="Delete(${row.order_id})" type="button" class="btn btn-sm btn-danger mr-2">Delete <i class="fa fa-trash mx-1"></i></button>
                                                 <button onclick="Status(${row.order_id})" type="button" class="btn btn-sm btn-primary">Status <i class="fa fa-edit mx-1"></i></button>
                                                 </div>`
                             }

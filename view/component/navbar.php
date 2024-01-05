@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="fs--6">Votin Admin</div>
+        <div class="fs--6">Tinvo Admin</div>
     </a>
 
     <!-- Divider -->

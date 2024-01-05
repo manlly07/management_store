@@ -50,7 +50,7 @@
                     </span>
                     <span class="h4 mb-0 app-brand-text fw-semibold">Materio</span>
                 </div>
-                <p class="mb-1 text-secondary">Công ty phân phối nước ngọt Võ Tín</p>
+                <p class="mb-1 text-secondary">Công ty phân phối nước ngọt Võ Tin</p>
                 <p class="mb-1 text-secondary">Thành phố Hồ Chí Minh</p>
                 <p class="mb-0 text-secondary">+1 (123) 456 7891, +44 (876) 543 2198</p>
             </div>

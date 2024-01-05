@@ -75,9 +75,9 @@
                                                             </svg>
                                                         </span>
                                                     </span>
-                                                    <span class="h3 mb-0 app-brand-text fw-semibold text-black">Tín võ</span>
+                                                    <span class="h3 mb-0 app-brand-text fw-semibold text-black">Tin võ</span>
                                                 </div>
-                                                <p class="mb-1 text-secondary">Nhà phân phối bia nước ngọt Tín Võ</p>
+                                                <p class="mb-1 text-secondary">Nhà phân phối bia nước ngọt Tin Võ</p>
                                                 <p class="mb-1 text-secondary">Thành phố Hồ Chí Minh</p>
                                                 <p class="mb-0 text-secondary">+1 (123) 456 7891, +44 (876) 543 2198</p>
                                             </div>
@@ -93,7 +93,7 @@
                                                         </div>
                                                     </dd>
                                                     <dt class="col-sm-6 mb-2 d-md-flex align-items-center justify-content-end">
-                                                        <span class="fw-normal text-secondary">Date Issued:</span>
+                                                        <span class="fw-normal text-secondary">Ngày tạo:</span>
                                                     </dt>
                                                     <dd class="col-sm-6">
                                                         <input type="date" class="form-control invoice-date flatpickr-input">
@@ -109,7 +109,7 @@
                                                 <h6 class="fw-bold">Đơn Nhập Từ:</h6>
                                                 <select class="form-select mb-3 select-supplier" required>
                                                     <option>Chọn nhà cung cấp</option>
-                                                    
+                
                                                 </select>
                                                 <p class="mb-1 text-secondary name"></p>
                                                 <p class="mb-1 text-secondary address"></p>
@@ -389,7 +389,7 @@
                     // Xóa các tùy chọn hiện có
                     selectElement.empty();
                     // Thêm tùy chọn mặc định
-                    selectElement.append('<option value="">Select an item</option>');
+                    selectElement.append('<option value="">Chọn sản phẩm</option>');
                     // Thêm tùy chọn cho từng sản phẩm
                     products.forEach(function(product) {
                         selectElement.append('<option value="' + product.id + '">' + product.productname + '</option>');
@@ -414,7 +414,7 @@
             let row = $(event.target).closest(".repeater-wrapper");
             let cost = parseFloat(row.find(".invoice-item-cost").val());
             let qty = parseFloat(row.find(".invoice-item-qty").val());
-            // Tính toán giá mới
+            // Tinh toán giá mới
             // Kiểm tra nếu cost là NaN, gán bằng 0
             if (isNaN(cost)) {
             cost = 0;
@@ -451,7 +451,6 @@
             .addClass("repeater-wrapper pt-0 pt-md-4")
             .attr("data-repeater-item", "");
             
-            console.log('hehe');
             // Thêm nội dung HTML vào div mới
             getProducts().then(function(products) {
             let selectElement = products.map((product) => {
@@ -465,21 +464,21 @@
                                                             <div class="col-md-6 col-12 mb-md-0 mb-3">
                                                                 <h6 class="mb-2 repeater-title">Item</h6>
                                                                 <select class="form-select item-details mb-3">
-                                                                    <option value>Select an item</option>
+                                                                    <option value>Chọn sản phẩm</option>
                                                                     ${selectElement}
                                                                 </select>
                                                                 <textarea class="form-control" rows="2"></textarea>
                                                             </div>
                                                             <div class="col-md-3 col-12 mb-md-0 mb-3">
-                                                                <h6 class="mb-2 repeater-title">Cost</h6>
+                                                                <h6 class="mb-2 repeater-title">Đơn giá</h6>
                                                                 <input type="number" class="form-control invoice-item-cost mb-3" placeholder="cost" min="1" value="0">
                                                             </div>
                                                             <div class="col-md-2 col-12 mb-md-0 mb-3">
-                                                                <h6 class="mb-2 repeater-title">Qty</h6>
+                                                                <h6 class="mb-2 repeater-title">Số lượng</h6>
                                                                 <input type="number" class="form-control invoice-item-qty" value="0" placeholder="qty" min="0" max="50">
                                                             </div>
                                                             <div class="col-md-1 col-12 pe-0">
-                                                                <h6 class="mb-2 repeater-title">Price</h6>
+                                                                <h6 class="mb-2 repeater-title">Giá trị</h6>
                                                                 <p class="mb-0 invoice-item-price">0.00 đ</p>
                                                             </div>
                                                         </div>
@@ -524,7 +523,7 @@
                     // Xóa các tùy chọn hiện có
                     selectElement.empty();
                     // Thêm tùy chọn mặc định
-                    selectElement.append('<option disabled selected value>Select a supplier</option>');
+                    selectElement.append('<option disabled selected value>Chọn nhà cung cấp</option>');
                     // Thêm tùy chọn cho từng sản phẩm
                     suppliers.forEach(function(supplier) {
                         selectElement.append('<option value="' + supplier.id + '">' + supplier.name + '</option>');
@@ -606,7 +605,7 @@
             
             for($i = 0; $i < formData.length; $i++) {
                 if (formData[$i].itemDetails.trim() === '') {
-                    alert('Please select item')
+                    alert('Hãy trọn sản phẩm')
                     return
                 }
             }
@@ -634,14 +633,18 @@
                     if (status === 200) {
                         Swal.fire({
                             title: "Success!",
-                            text: "Added invoice successfully!",
+                            text: "Tạo thành công!",
                             icon: "success"
                             });
                         setTimeout(() => {
                             window.location.href = 'http://localhost:8000/view/pages/admin/listinvoice.php'
                         },2000)
                     }else {
-
+                        Swal.fire({
+                            title: "...Oops!",
+                            text: "Đã xảy ra lỗi, hãy kiểm tra lại!",
+                            icon: "error"
+                            });
                     }
                     console.log(response);
                 },

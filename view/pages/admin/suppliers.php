@@ -290,20 +290,13 @@
             }
         })
         .then(data => {
-            console.log(data);
                     if (data.results.length > 0) {
                     const result = data.results[0];
                     const location = result.geometry.location;
 
                 // Hiển thị địa chỉ trong thẻ output
                 addressOutput.textContent = result.formatted_address;
-                var flashingSquare = {
-                            width: 500,
-                            height: 400,
-                            data: new Uint8Array(500 *400 * 8),
-                            
-                        
-                        }
+                
                 // Tạo bản đồ Goong Maps
                     goongjs.accessToken = 'PtFoCFjhwnscynuTn4YzLkevN13FlxfCOQjsrpiU';
                     const map = new goongjs.Map({
@@ -311,7 +304,7 @@
                         style: 'https://tiles.goong.io/assets/goong_map_web.json',
                         center: [location.lng, location.lat],
                         zoom: 14
-                    }).addImage('flashing_square', flashingSquare);
+                    })
 
                     
                                     
@@ -336,7 +329,6 @@
     xhr.onload = function () {
       if (xhr.status === 200) {
         const response = JSON.parse(xhr.responseText);
-        console.log(response);
         if (response.results.length > 0) {
           const result = response.results[0];
           const location = result.geometry.location;
@@ -346,19 +338,13 @@
 
           // Tạo bản đồ Goong Maps
         goongjs.accessToken = 'PtFoCFjhwnscynuTn4YzLkevN13FlxfCOQjsrpiU';
-        var flashingSquare = {
-                            width: 500,
-                            height: 400,
-                            data: new Uint8Array(500 *400 * 8),
-                            
-                        
-                        }
+        
           const map = new goongjs.Map({
             container: 'addressOutput',
             style: 'https://tiles.goong.io/assets/goong_map_web.json',
             center: [location.lng, location.lat],
             zoom: 14
-          }).addImage('flashing_square', flashingSquare);
+          })
 
           // Thêm điểm đánh dấu lên bản đồ
           new goongjs.Marker().setLngLat([location.lng, location.lat]).addTo(map);

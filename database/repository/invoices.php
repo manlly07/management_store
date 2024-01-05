@@ -83,6 +83,18 @@
         $sql = "UPDATE InvoiceShipments SET status = '$status' WHERE id = '$id'";
         $data = Query($sql, db());
 
+        if ($status == 'cancelled') {
+            $sql1 = "SELECT product_id, quantity FROM InvoiceShipmentDetails WHERE shipment_id = $id";
+            $orderDetails = Query($sql1, db());
+ 
+            foreach ($orderDetails as $item) {
+                $product_id = $item['product_id'];
+                $quantity = $item['quantity'];
+                $updateStock = "UPDATE Products SET quantity_in_stock = quantity_in_stock - $quantity WHERE id = $product_id";
+                Query($updateStock, db());
+            }
+        }
+
         if (count($data) == 0) {
             echo json_encode([
                 'status' => 200,

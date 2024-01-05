@@ -46,15 +46,31 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <div class="d-sm-flex align-items-center justify-content-center mb-4">
                         <h1 class="h3 mb-2 text-gray-900">Bảng Điều Khiển</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
                     <!-- Content Row -->
-                    <div class="row">
+                    <div class="row d-flex justify-content-center">
 
                         <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Doanh Thu (theo ngày)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800 revenue-currentdate">$0</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
@@ -71,7 +87,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
@@ -89,9 +104,71 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Earnings (Monthly) Card Example -->
+
+                        <!-- Earnings (Monthly) Card Example -->
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Lượng người mua (theo ngày)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800 customer-currentdate">0</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Lượng người mua (theo tháng)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800 customer-currentmonth">0</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Lượng người mua (theo năm)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800 customer_annual">0</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Earnings (Monthly) Card Example -->
+
+                        <!-- Earnings (Monthly) Card Example -->
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                    <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -129,7 +206,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Content Row -->
 
                     <div class="row">
@@ -271,10 +347,28 @@
                 url: 'http://localhost:8000/database/repository/orders.php',
                 type: 'POST',
                 data: {
+                    action: 'revenue_currentDate'
+                },
+                success: (response) => {
+                    let result =JSON.parse(response)
+                    if (result.total_revenue == null){
+                        result.total_revenue = 0
+                    }
+                    $('.revenue-currentdate').html('$'+result.total_revenue)
+                }
+            })
+
+            $.ajax({
+                url: 'http://localhost:8000/database/repository/orders.php',
+                type: 'POST',
+                data: {
                     action: 'revenue_currentMonth'
                 },
                 success: (response) => {
                     let result =JSON.parse(response)
+                    if (result.total_revenue == null){
+                        result.total_revenue = 0
+                    }
                     $('.revenue-currentmonth').html('$'+result.total_revenue)
                 }
             })
@@ -287,7 +381,49 @@
                 },
                 success: (response) => {
                     let result =JSON.parse(response)
+                    if (result.total_revenue == null){
+                        result.total_revenue = 0
+                    }
                     $('.revenue_annual').html('$'+result.total_revenue)
+                }
+            })
+
+            $.ajax({
+                url: 'http://localhost:8000/database/repository/orders.php',
+                type: 'POST',
+                data: {
+                    action: 'number_customer_currentDate'
+                },
+                success: (response) => {
+                    let result =JSON.parse(response)
+                    console.log(result);
+                    $('.customer-currentdate').html(result.number_customer)
+                }
+            })
+
+            $.ajax({
+                url: 'http://localhost:8000/database/repository/orders.php',
+                type: 'POST',
+                data: {
+                    action: 'number_customer_currentMonth'
+                },
+                success: (response) => {
+                    let result =JSON.parse(response)
+                    console.log(result);
+                    $('.customer-currentmonth').html(result.number_customer)
+                }
+            })
+
+            $.ajax({
+                url: 'http://localhost:8000/database/repository/orders.php',
+                type: 'POST',
+                data: {
+                    action: 'number_customer_currentYear'
+                },
+                success: (response) => {
+                    let result =JSON.parse(response)
+                    console.log(result);
+                    $('.customer_annual').html(result.number_customer)
                 }
             })
 
@@ -355,7 +491,7 @@
                 },
                 success: (response) => {
                     let result =JSON.parse(response)
-                    console.log(result);
+                    // console.log(result);
                     var data = {
                         labels: result.map(item => "Tháng "+ item.month),
                         datasets: [

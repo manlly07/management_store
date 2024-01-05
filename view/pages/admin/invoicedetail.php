@@ -72,16 +72,16 @@
                                                             </svg>
                                                         </span>
                                                     </span>
-                                                    <span class="h3 mb-0 app-brand-text fw-semibold text-black">Tín Võ</span>
+                                                    <span class="h3 mb-0 app-brand-text fw-semibold text-black">Tin Võ</span>
                                                 </div>
-                                                <p class="mb-1 text-secondary">Nhà phân phối bia nước ngọt Tín Võ</p>
+                                                <p class="mb-1 text-secondary">Nhà phân phối bia nước ngọt Tin Võ</p>
                                                 <p class="mb-1 text-secondary">Thành phố Hồ Chí Minh</p>
                                                 <p class="mb-0 text-secondary">+1 (123) 456 7891, +44 (876) 543 2198</p>
                                             </div>
                                             <div>
-                                                <h4 class="fw-medium text-capitalize pb-1 text-nowrap">INVOICE <span class="invoices-id">#0</span></h4>
+                                                <h4 class="fw-medium text-capitalize pb-1 text-nowrap">Mã đơn <span class="invoices-id">#0</span></h4>
                                                 <div class="mb-1">
-                                                    <span class="text-secondary">Date Issues:</span>
+                                                    <span class="text-secondary">Ngày tạo:</span>
                                                     <span class="text-secondary date-issues">April 25, 2021</span>
                                                 </div>
                                             </div>
@@ -91,25 +91,25 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between flex-wrap">
                                             <div class="my-3 me-3">
-                                                <h6 class="fw-bold">Invoice To:</h6>
+                                                <h6 class="fw-bold">Nhập từ:</h6>
                                                 <p class="mb-1 text-secondary name">Thomas shelby</p>
                                                 <p class="mb-1 text-secondary address">Shelby Company Limited</p>
                                                 <p class="mb-1 text-secondary phone">Small Heath, B10 0HF, UK</p>
                                             </div>
                                             <div class="my-3">
-                                                <h6 class="fw-bold">Bill To:</h6>
+                                                <h6 class="fw-bold">Thanh toán:</h6>
                                                 <table>
                                                     <tbody>
                                                         <tr class="text-secondary">
-                                                            <td class="pe-3">Total Due:</td>
+                                                            <td class="pe-3">Tổng giá trị:</td>
                                                             <td class="total-due">$12,110.55</td>
                                                         </tr>
                                                         <tr class="text-secondary">
-                                                            <td class="pe-3">Method:</td>
+                                                            <td class="pe-3">Phương thức:</td>
                                                             <td class="method">Banking</td>
                                                         </tr>
                                                         <tr class="text-secondary">
-                                                            <td class="pe-3">Status:</td>
+                                                            <td class="pe-3">Trạng thái:</td>
                                                             <td class="status">Pending</td>
                                                         </tr>
                                                     </tbody>
@@ -121,11 +121,11 @@
                                         <table class="table table-borderless m-0">
                                             <thead class="border-top">
                                                 <tr>
-                                                    <th>Item</th>
+                                                    <th>Sản phẩm</th>
                                                     <!-- <th>Description</th> -->
-                                                    <th>Cost</th>
-                                                    <th>Qty</th>
-                                                    <th>Price</th>
+                                                    <th>Đơn giá</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá trị</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="tbody">
@@ -145,7 +145,7 @@
                                             <div class="col-md-6 mb-md-0 mb-3">
                                                 <div>
                                                     <p class="mb-2">
-                                                        <span class="me-1 text-heading">Person:</span>
+                                                        <span class="me-1 text-heading">Người giao:</span>
                                                         <span class="text-secondary personname"></span>
                                                     </p>
                                                     <span class="text-secondary">Thanks for your business</span>
@@ -197,10 +197,10 @@
                                             <span class="d-flex align-items-center justify-content-center text-nowrap"><i class="fa fa-angle-double-left me-2"></i>Send Invoice</span>
                                         </button>
                                         <a class="btn btn-outline-secondary d-grid w-100 mb-3 waves-effect" target="_blank" href="./app-invoice-print.php">
-                                            Print
+                                            In
                                         </a>
                                         <button onclick="Status()" class="btn btn-outline-secondary d-grid w-100 mb-3 waves-effect">
-                                            Update Status
+                                            Cập nhật trạng thái
                                         </button>
                                     </div>
                                 </div>
@@ -512,7 +512,7 @@
                     $('.name').html(invoices[0].supplier_name)
                     $('.address').html(invoices[0].supplier_address)
                     $('.phone').html(invoices[0].supplier_phone)
-                    $('.total-due').html(invoices[0].total)
+                    $('.total-due').html('$' +invoices[0].total)
                     $('.method').html(invoices[0].shipping_method)
                     $('.status').html(invoices[0].status)
                     $('.personname').html(invoices[0].name)

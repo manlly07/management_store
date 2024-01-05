@@ -9,7 +9,7 @@
     <header class="bg-gradient-primary py-5 d-flex ">
                 <div class="container px-4 px-lg-5 my-5">
                     <div class="text-center text-white mb-4">
-                        <h1 class="display-4 fw-bolder">Nhà phân phối bia nước ngọt Tín Võ</h1>
+                        <h1 class="display-4 fw-bolder">Nhà phân phối bia nước ngọt Tin Võ</h1>
                         <p class="lead fw-normal text-white-50 mb-0">Chuyên các loại đồ uống</p>
                     </div>
                     <input type="search" class="form-control col-7 m-auto" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
