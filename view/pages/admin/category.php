@@ -174,7 +174,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Category</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Sửa loại đồ uống</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -183,13 +183,13 @@
                     <form id="updateCategory">
                         <div class="form-row">
                             <div class="form-group col-12">
-                                <label for="username">Category name</label>
+                                <label for="username">Loại đồ uống</label>
                                 <input type="text" name="categoryname" class="form-control categoryname" placeholder="category name">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
-                                <label for="Description">Description</label>
+                                <label for="Description">Mô tả</label>
                                 <input type="text" name="description" class="form-control description" placeholder="description">
                             </div>
                         </div>
@@ -225,6 +225,7 @@
     <script src="../../../js/demo/datatables-demo.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../../../js/checkURL.js"></script>
     <script type="text/javascript">
         $(document).ready(() => {
@@ -280,11 +281,10 @@
                             {
                                 "data":null,
                                 render: function(data, type, row) {
-                                    console.log(row);
                                     return `<div class="btn-group" role="group" aria-label="Basic example">
                                                 <button onclick="EnableProduct(${row.id})" type="button" class="btn btn-sm btn-success mr-2">Enable</button>
                                                 <button onclick="DisableProduct(${row.id})" type="button" class="btn btn-sm btn-danger mr-2">Disable</button>
-                                                <button onclick="handleUpdate(${row.id}, ${row.categoryid})" type="button" class="btn btn-sm btn-warning">Edit</button>
+                                                <button onclick="EditCategory(${row.id})" type="button" class="btn btn-sm btn-warning">Edit</button>
                                             </div>`
                                 }
                             }
@@ -306,9 +306,20 @@
                         status
                     } = JSON.parse(response)
                     if (status === 200) {
-                        window.location.reload()
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cập nhật thành công!",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
                     } else if (status === 400) {
-                        console.log('haha');
+                        Swal.fire({
+                            title: "Oops...",
+                            text: "Đã xảy ra lỗi",
+                            icon: "error"
+                            });
                     }
                 }
             })
@@ -326,9 +337,20 @@
                         status
                     } = JSON.parse(response)
                     if (status === 200) {
-                        window.location.reload()
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cập nhật thành công!",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
                     } else if (status === 400) {
-                        console.log('haha');
+                        Swal.fire({
+                            title: "Oops...",
+                            text: "Đã xảy ra lỗi",
+                            icon: "error"
+                            });
                     }
                 }
             })
@@ -347,11 +369,22 @@
                         status,
                         message
                     } = JSON.parse(response)
-                    console.log(status);
                     if (status === 200) {
-                        window.location.reload()
+                        Swal.fire({
+                                title: "Done",
+                                text: "Tạo loại đồ uống mớithành công!",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
                     } else if (status === 400) {
                         $('.cerror').html(message);
+                        Swal.fire({
+                            title: "Oops...",
+                            text: "Đã xảy ra lỗi",
+                            icon: "error"
+                            });
                     }
                 }
             })
@@ -363,7 +396,6 @@
                 type: 'POST',
                 data: `id=${id}&action=getbyid`,
                 success: (response) => {
-                    console.log(response);
                     let data = JSON.parse(response)[0]
                     $('.categoryname').val(data['name']);
                     $('.description').val(data['description']);
@@ -388,9 +420,21 @@
                     console.log(message);
                     if (status === 200) {
                         $('.eerror').html('');
-                        window.location.reload()
+                        Swal.fire({
+                                title: "Done",
+                                text: "Cập nhật thành công!",
+                                icon: "success"
+                            });
+                            setTimeout(() => {
+                                window.location.reload()
+                            },1500)
                     } else if (status === 400) {
                         $('.eerror').html(message);
+                        Swal.fire({
+                            title: "Oops...",
+                            text: "Đã xảy ra lỗi",
+                            icon: "error"
+                            });
                     }
                 }
             })
