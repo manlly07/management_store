@@ -66,7 +66,7 @@
                                             <th>Chi phí</th>
                                             <th>Phương thức</th>
                                             <th>Trạng thái</th>
-                                            <th>Hành động</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -76,7 +76,7 @@
                                             <th>Chi phí</th>
                                             <th>Phương thức</th>
                                             <th>Trạng thái</th>
-                                            <th>Hành động</th>
+                                            
                                         </tr>
                                     </tfoot>
                                     <tbody id="table-category">
@@ -127,7 +127,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -159,7 +159,7 @@
         })
         const showOrders = () => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/orders.php',
+                url: 'http://localhost:3000/database/repository/orders.php',
                 type: 'POST',
                 data: {
                     action: "viewByUserId",
@@ -220,30 +220,6 @@
                                 data: 'status',
                                 render: function(data, type, row) {
                                     return checkStatus(row.status)
-                                }
-                            },
-                            {
-                                "data":null,
-                                render: function(data, type, row) {
-                                    console.log(row);
-                                    return `<div class="d-flex align-items-center">
-                                                    <a href="javascript:;" data-bs-toggle="tooltip" class="text-body delete-record" data-bs-placement="top" aria-label="Delete Invoice" data-bs-original-title="Delete Invoice">
-                                                        <i class="fa fa-trash mx-1"></i>
-                                                    </a>
-                                                    <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" aria-label="Preview Invoice" data-bs-original-title="Preview Invoice">
-                                                        <i class="fa fa-eye mx-1"></i>
-                                                    </a>
-                                                    <div class="dropdown">
-                                                        <i class="dropdown-toggle fa fa-caret-down " id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                           
-                                                        </i>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else here</a>
-                                                        </div>
-                                                        </div>
-                                                </div>`
                                 }
                             }
                         ],

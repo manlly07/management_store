@@ -130,7 +130,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -279,7 +279,7 @@
 
         const showAllProducts = () => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/products.php',
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
                 data: {
                     action: "viewAdmin"
@@ -316,7 +316,7 @@
                                 render: function(data, type, row) {
                                     return `<div class="d-flex flex-column  align-items-center">
                                             <p>${row.qis}</p>
-                                            <a class="text-danger" href="http://localhost:8000/view/pages/admin/addinvoice.php">${row.qis<=20 ? 'Sắp hết hàng, hãy nhập thêm': ''}</a>
+                                            <a class="text-danger" href="http://localhost:3000/view/pages/admin/addinvoice.php">${row.qis<=20 ? 'Sắp hết hàng, hãy nhập thêm': ''}</a>
                                         </div>`
                                 }
                             },
@@ -356,7 +356,7 @@
 
         const showAllCategory = () => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/category.php',
+                url: 'http://localhost:3000/database/repository/category.php',
                 type: 'POST',
                 data: `action=view`,
                 success: (response) => {
@@ -378,7 +378,7 @@
 
         const EnableProduct = (id) => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/products.php',
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
                 data: {
                     action: "enable",
@@ -410,7 +410,7 @@
         }
         const DisableProduct = (id) => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/products.php',
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
                 data: {
                     action: "disable",
@@ -454,7 +454,7 @@
             formData.append('action', 'create')
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:8000/database/repository/products.php',
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
                 data: formData,
                 processData: false, // Không xử lý dữ liệu
@@ -491,7 +491,7 @@
         const handleUpdate = (id, categoryid) => {
             
             $.ajax({
-                url: 'http://localhost:8000/database/repository/category.php',
+                url: 'http://localhost:3000/database/repository/category.php',
                 type: 'POST',
                 data: `action=view`,
                 success: (response) => {
@@ -509,7 +509,7 @@
             })
 
             $.ajax({
-                url: 'http://localhost:8000/database/repository/products.php',
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
                 data: `id=${id}&action=getbyid`,
                 success: (response) => {
@@ -540,7 +540,7 @@
 
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:8000/database/repository/products.php',
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
                 data: formData,
                 processData: false,

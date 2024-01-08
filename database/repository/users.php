@@ -20,7 +20,7 @@
             }
             $fullname = $row['first_name'] . ' ' . $row['last_name'];
             $output .= '<tr>
-                                <td><a href="http://localhost:8000/view/pages/admin/userInfor.php?id='.$row['id'].'">#'.$row['id'].'</a></td>
+                                <td><a href="http://localhost:3000/view/pages/admin/userInfor.php?id='.$row['id'].'">#'.$row['id'].'</a></td>
                                 <td>'.$fullname.'</td>
                                 <td>'.$row['address'].'</td>
                                 <td>'.$row['phone'].'</td>

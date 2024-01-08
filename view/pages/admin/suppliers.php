@@ -140,7 +140,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -362,7 +362,7 @@
 
         const showAllSpplier = () => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/supplier.php',
+                url: 'http://localhost:3000/database/repository/supplier.php',
                 type: 'POST',
                 data: {
                     action: "view"
@@ -428,7 +428,7 @@
         }
         const EnableSupplier = (id) => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/supplier.php',
+                url: 'http://localhost:3000/database/repository/supplier.php',
                 type: 'POST',
                 data: {
                     action: "enable",
@@ -459,7 +459,7 @@
         }
         const DisableSupplier = (id) => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/supplier.php',
+                url: 'http://localhost:3000/database/repository/supplier.php',
                 type: 'POST',
                 data: {
                     action: "disable",
@@ -494,7 +494,7 @@
             var formData = $('#createSupplier').serialize();
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:8000/database/repository/supplier.php',
+                url: 'http://localhost:3000/database/repository/supplier.php',
                 type: 'POST',
                 data: `${formData}&action=create`,
                 success: (response) => {
@@ -525,7 +525,7 @@
 
         const EditSupplier = (id) => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/supplier.php',
+                url: 'http://localhost:3000/database/repository/supplier.php',
                 type: 'POST',
                 data: `id=${id}&action=getbyid`,
                 success: (response) => {
@@ -545,7 +545,7 @@
             var formData = $('#updateSupplier').serialize();
             // console.log(formData);
             $.ajax({
-                url: 'http://localhost:8000/database/repository/supplier.php',
+                url: 'http://localhost:3000/database/repository/supplier.php',
                 type: 'POST',
                 data: `${formData}&action=update`,
                 success: (response) => {

@@ -14,14 +14,14 @@ function checkAdmin() {
       alert("Bạn không phải admin, hãy đăng nhập lại");
   
       // Điều hướng ra trang login
-      window.location.href = "http://localhost:8000/view/pages/login-register/login.php";
+      window.location.href = "http://localhost:3000/view/pages/login-register/login.php";
     }
     if (!isAdminUrl && isAdmin == "1") {
         // Hiển thị thông báo
         alert("Bạn cần đăng nhập với tài khoản khách hàng");
     
         // Điều hướng ra trang login
-        window.location.href = "http://localhost:8000/view/pages/login-register/login.php";
+        window.location.href = "http://localhost:3000/view/pages/login-register/login.php";
       }
   }
   

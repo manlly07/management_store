@@ -123,7 +123,7 @@
             var formData = $('#createUser').serialize();
             console.log(formData);
             $.ajax({
-                url: 'http://localhost:8000/database/repository/users.php',
+                url: 'http://localhost:3000/database/repository/users.php',
                 type: 'POST',
                 data: `${formData}&action=create`,
                 success: (response) => {
@@ -147,7 +147,7 @@
                                 icon: "success"
                             });
                             setTimeout(() => {
-                                window.location.href = 'http://localhost:8000/view/pages/user/products.php?page=1'
+                                window.location.href = 'http://localhost:3000/view/pages/user/products.php?page=1'
                             },1000)
                     } else if (status === 400) {
                         $('.cerror').html(message);

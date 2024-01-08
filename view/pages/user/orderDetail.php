@@ -60,10 +60,10 @@
                 <table class="table  border-bottom products">
                   <thead class="bg-200">
                     <tr style="background-color: #edf2f9;">
-                      <th class="text-900 border-0 fw-bold">Products</th>
-                      <th class="text-900 border-0 text-center fw-bold">Quantity</th>
-                      <th class="text-900 border-0 text-end fw-bold">Rate</th>
-                      <th class="text-900 border-0 text-end fw-bold">Amount</th>
+                      <th class="text-900 border-0 fw-bold">Sản phẩm</th>
+                      <th class="text-900 border-0 text-center fw-bold">Số lượng</th>
+                      <th class="text-900 border-0 text-end fw-bold">Đơn giá</th>
+                      <th class="text-900 border-0 text-end fw-bold">Giá trị</th>
                     </tr>
                   </thead>
                   
@@ -114,7 +114,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -153,7 +153,7 @@
         
         const getOrder = (id) => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/orders.php',
+                url: 'http://localhost:3000/database/repository/orders.php',
                 type: 'POST',
                 data: {
                   action: "getbyid",
@@ -168,9 +168,9 @@
                     <div class="card mb-3">
                         <div class="bg-holder d-none d-lg-block bg-card" ></div><!--/.bg-holder-->
                         <div class="card-body position-relative">
-                        <h5 class="fw-bold">Order Details: #${order.order_id}</h5>
+                        <h5 class="fw-bold">Mã đơn: #${order.order_id}</h5>
                         <p class="fs--1">${order.order_date}</p>
-                        <div><strong class="me-2">Status: </strong>
+                        <div><strong class="me-2">Trạng thái: </strong>
                             ${checkStatus(order.status)}
                         </div>
                         </div>
@@ -180,18 +180,18 @@
             <div class="card-body">
               <div class="row d-flex justify-content-between">
                 <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-                  <h5 class="mb-3 fs-0 fw-bold">Shipping Address</h5>
+                  <h5 class="mb-3 fs-0 fw-bold">Địa chỉ giao hàng</h5>
                   <h6 class="mb-2">${order.fullname}</h6>
                   <p class="mb-1 fs--1">${order.address}</p>
                   <p class="mb-0 fs--1"> <strong>Email: </strong><a href="${order.email}">${order.email}</a></p>
                   <p class="mb-0 fs--1"> <strong>Phone: </strong><a href="${order.phone}">${order.phone}</a></p>
                 </div>
                 <div class="col-md-4 col-lg-4 mb-4 mb-lg-0 text-center">
-                  <h5 class="mb-3 fs-0 fw-bold">Note</h5>
+                  <h5 class="mb-3 fs-0 fw-bold">Ghi chú</h5>
                   <p class="mb-1 fs--1">${JSON.parse(order.note).text}</p>
                 </div>
                 <div class="col-md-4 col-lg-4 text-center">
-                  <h5 class="mb-3 fs-0 fw-bold">Payment Method</h5>
+                  <h5 class="mb-3 fs-0 fw-bold">Phương thức thanh toán</h5>
                   <div class="d-flex justify-content-center">
                   <img class="me-3" src="${src_img}" width="40" height="30" alt=""> 
                     <div class="flex-1">
@@ -210,7 +210,7 @@
         }
         const getDetail = (id) => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/orders.php',
+                url: 'http://localhost:3000/database/repository/orders.php',
                 type: 'POST',
                 data: {
                   action: "getdetailbyid",
@@ -295,7 +295,7 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             $.ajax({
-                            url: 'http://localhost:8000/database/repository/orders.php',
+                            url: 'http://localhost:3000/database/repository/orders.php',
                             type: 'POST',
                             data: {
                                 action: 'update',

@@ -206,7 +206,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -241,7 +241,7 @@
         let formData = []
         const showAllCart = () => {
             $.ajax({
-              url: 'http://localhost:8000/database/repository/carts.php',
+              url: 'http://localhost:3000/database/repository/carts.php',
                 type: 'POST',
                 data: {
                     action: "view",
@@ -278,7 +278,7 @@
           formData.forEach(cart => {
             console.log(cart.itemId);
             $.ajax({
-            url: 'http://localhost:8000/database/repository/carts.php',
+            url: 'http://localhost:3000/database/repository/carts.php',
                 type: 'POST',
                 data: {
                   action: "delete",
@@ -352,7 +352,7 @@
                     if(payment_method == 'OnlineBanking'){
                       let url
                       $.ajax({
-                        url:'http://localhost:8000/database/repository/vnpay.php',
+                        url:'http://localhost:3000/database/repository/vnpay.php',
                         method: 'POST',
                         data: {
                           action: 'vnpay',
@@ -370,7 +370,7 @@
                         }     
                       })
                       $.ajax({
-                        url: 'http://localhost:8000/database/repository/orders.php',
+                        url: 'http://localhost:3000/database/repository/orders.php',
                         type: 'POST',
                         data: payload,
                         success: function(response) {
@@ -388,7 +388,7 @@
               }else{
 
                 $.ajax({
-                  url: 'http://localhost:8000/database/repository/orders.php',
+                  url: 'http://localhost:3000/database/repository/orders.php',
                   type: 'POST',
                   data: payload,
                   success: function(response) {
@@ -402,7 +402,7 @@
                       });
                       deleteCart()
                       setTimeout(() => {
-                        window.location.href = `http://localhost:8000/view/pages/user/orderDetail.php?id=${order_id}`
+                        window.location.href = `http://localhost:3000/view/pages/user/orderDetail.php?id=${order_id}`
                       },2000)
                     }else {
                     }

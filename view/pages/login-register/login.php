@@ -95,7 +95,7 @@
             let password = $('#password').val()
             
             $.ajax({
-                url: 'http://localhost:8000/database/repository/users.php',
+                url: 'http://localhost:3000/database/repository/users.php',
                 type: 'POST',
                 data: {
                   action:'login',
@@ -124,7 +124,7 @@
                                 icon: "success"
                             });
                             setTimeout(() => {
-                                window.location.href = 'http://localhost:8000/view/pages/admin/dashboard.php'
+                                window.location.href = 'http://localhost:3000/view/pages/admin/dashboard.php'
                             },1000)
                         }else{
                           Swal.fire({
@@ -133,7 +133,7 @@
                                 icon: "success"
                             });
                             setTimeout(() => {
-                                window.location.href = 'http://localhost:8000/view/pages/user/products.php?page=1'
+                                window.location.href = 'http://localhost:3000/view/pages/user/products.php?page=1'
                             },1000)
                         }
                     } else if (status === 400) {

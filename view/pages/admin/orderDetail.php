@@ -141,7 +141,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -231,7 +231,7 @@
         
         const getOrder = (id) => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/orders.php',
+                url: 'http://localhost:3000/database/repository/orders.php',
                 type: 'POST',
                 data: {
                   action: "getbyid",
@@ -290,7 +290,7 @@
         }
         const getDetail = (id) => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/orders.php',
+                url: 'http://localhost:3000/database/repository/orders.php',
                 type: 'POST',
                 data: {
                   action: "getdetailbyid",

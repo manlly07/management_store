@@ -114,7 +114,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -149,11 +149,11 @@
         })
         const showAllProducts = (currentPage) => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/products.php',
+                url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
                 data: {
                     action: "view",
-                    page: currentPage
+                    page: currentPage,
                 },
                 success: (response) => {
                     console.log(JSON.parse(response));
@@ -228,7 +228,7 @@
             let customer_id = localStorage.getItem('userId')
             let quantity = 1
             $.ajax({
-                url: 'http://localhost:8000/database/repository/carts.php',
+                url: 'http://localhost:3000/database/repository/carts.php',
                 type: 'POST',
                 data: `action=add&customer_id=${customer_id}&product_id=${product_id}&quantity=${quantity}`,
                 success: (response) => {

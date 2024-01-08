@@ -12,7 +12,7 @@
                         <h1 class="display-4 fw-bolder">Nhà phân phối bia nước ngọt Tin Võ</h1>
                         <p class="lead fw-normal text-white-50 mb-0">Chuyên các loại đồ uống</p>
                     </div>
-                    <input type="search" class="form-control col-7 m-auto" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                    <input type="search" class="form-control col-7 m-auto" id="search-input" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
                 </div>
     </header>
 </body>

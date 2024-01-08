@@ -148,7 +148,7 @@
 
         const getInvoiceDetail = (id) => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/invoices.php',
+                url: 'http://localhost:3000/database/repository/invoices.php',
                 type: 'POST',
                 data: `action=getbyid&id=${id}`,
                 success: (response) => {

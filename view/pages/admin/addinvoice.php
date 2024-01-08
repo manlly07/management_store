@@ -350,7 +350,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="http://localhost:8000/view/pages/login-register/login.php">Logout</a>
+                    <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -503,7 +503,7 @@
 
         const getProducts = () => {
             return $.ajax({
-            url: 'http://localhost:8000/database/repository/products.php',
+            url: 'http://localhost:3000/database/repository/products.php',
             method: 'POST',
             dataType: 'json',
             data: 'action=viewAdmin',
@@ -512,7 +512,7 @@
 
         const getSuppliers = () => {
             $.ajax({
-                url: 'http://localhost:8000/database/repository/supplier.php',
+                url: 'http://localhost:3000/database/repository/supplier.php',
                 type: 'POST',
                 data: {
                     action: "view"
@@ -536,7 +536,7 @@
             console.log(selectedOption);
 
             $.ajax({
-                url: 'http://localhost:8000/database/repository/supplier.php',
+                url: 'http://localhost:3000/database/repository/supplier.php',
                 type: 'POST',
                 data: `id=${selectedOption}&action=getbyid`,
                 success: (response) => {
@@ -623,7 +623,7 @@
                 action: 'create'    
             }
             $.ajax({
-                url: 'http://localhost:8000/database/repository/invoices.php',
+                url: 'http://localhost:3000/database/repository/invoices.php',
                 type: 'POST',
                 data: payload,
                 success: function(response) {
@@ -637,7 +637,7 @@
                             icon: "success"
                             });
                         setTimeout(() => {
-                            window.location.href = 'http://localhost:8000/view/pages/admin/listinvoice.php'
+                            window.location.href = 'http://localhost:3000/view/pages/admin/listinvoice.php'
                         },2000)
                     }else {
                         Swal.fire({

@@ -12,7 +12,7 @@
         // date_default_timezone_set('Asia/Ho_Chi_Minh');
 
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://localhost:8000/view/pages/user/listOrder.php";
+        $vnp_Returnurl = "http://localhost:3000/view/pages/user/listOrder.php";
         $vnp_TmnCode = "E5NXPOKV";//Mã website tại VNPAY 
         $vnp_HashSecret = "VXJBXFKFXJVCJZFSMFQZOFWLCXILIVBV"; //Chuỗi bí mật
 
