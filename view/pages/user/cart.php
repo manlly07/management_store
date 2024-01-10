@@ -51,7 +51,7 @@
                 <div class="card-header">
                 <div class="row justify-content-between">
                     <div class="col-md-auto">
-                    <h5 class="mb-3 mb-md-0 fw-bold number_item">Shopping Cart (0 Items)</h5>
+                    <h5 class="mb-3 mb-md-0 fw-bold number_item">Giỏ hàng có 0 sản phẩm</h5>
                     </div>
                     <div class="col-md-auto">
                         <a class="btn btn-sm btn-outline-secondary border-300 me-2 shadow-none" href="./products.php?page=1"><i class="fas fa-fw fa-chevron-left"></i>Tiếp tục mua sắm</a>
@@ -62,11 +62,11 @@
                 <div class="card-body p-0">
                 <div class="row gx-x1 mx-0 bg-200 text-900 fs--1 fw-semi-bold bg-secondary text-white">
 
-                    <div class="col-9 col-md-8 py-2 px-x1 ">Name</div>
+                    <div class="col-9 col-md-8 py-2 px-x1 ">Sản phẩm</div>
                     <div class="col-3 col-md-4 px-x1">
                         <div class="row">
-                            <div class="col-md-8 py-2 d-none d-md-block text-center ">Quantity</div>
-                            <div class="col-12 col-md-4 text-end py-2 ">Price</div>
+                            <div class="col-md-8 py-2 d-none d-md-block text-center ">Số lượng</div>
+                            <div class="col-12 col-md-4 text-end py-2 ">Giá trị</div>
                         </div>
                     </div>
                 </div>
@@ -78,11 +78,11 @@
                 </div>
 
                 <div class="row fw-bold gx-x1 mx-0">
-                    <div class="col-9 col-md-8 py-2 px-x1 text-end text-900">Total</div>
+                    <div class="col-9 col-md-8 py-2 px-x1 text-end text-900">Tổng đơn hàng</div>
                     <div class="col px-0">
                     <div class="row gx-x1 mx-0">
-                        <div class="col-md-8 py-2 px-x1 d-none d-md-block text-center" id="number_item">0 (items)</div>
-                        <div class="col-12 col-md-4 text-end py-2 px-x1 total-bill">$0</div>
+                        <div class="col-md-8 py-2 px-x1 d-none d-md-block text-center" id="number_item">0 (sản phẩm)</div>
+                        <div class="col-12 col-md-4 text-end py-2 px-x1 total-bill">0</div>
                     </div>
                     </div>
                 </div>
@@ -127,14 +127,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -167,6 +167,20 @@
             showCart();
         })
         let carts = []
+
+        function formatMoney(number) {
+            // Xác định số tiền
+            const amount = number.toFixed(2);
+
+            // Tạo chuỗi tiền
+            const money = new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(amount);
+
+            // Trả về chuỗi tiền
+            return money;
+        }
         const showCart = () => {
             $.ajax({
                 url: 'http://localhost:3000/database/repository/carts.php',
@@ -177,7 +191,7 @@
                 },
                 success: (response) => {
                     carts = JSON.parse(response)
-                    // console.log(carts.length);
+                    $('.cart-number').html(carts.length)
                     let total_bill = 0
                     let number_item = 0
                     carts.forEach(cart => {
@@ -190,7 +204,7 @@
                     <div class="d-flex align-items-center"><a href="../../app/e-commerce/product/product-details.html"><img class="img-fluid rounded-1 me-3 d-none d-md-block" src="../../../uploads/${cart.image}" alt="" width="60"></a>
                         <div class="flex-1">
                         <h5 class="fs-0"><a class="text-900" href="../../app/e-commerce/product/product-details.html">${cart.product_name}</a></h5>
-                        <div class="fs--2 fs-md--1"><a class="text-danger" href="#" onclick="removeItem(${cart.id})">Remove</a></div>
+                        <div class="fs--2 fs-md--1"><a class="text-danger" href="#" onclick="removeItem(${cart.id})">Xoá sản phẩm</a></div>
                         </div>
                     </div>
                     </div>
@@ -204,15 +218,15 @@
                             <button class="btn btn-sm btn-outline-secondary border-300 px-2 shadow-none" data-type="plus">+</button></div>
                         </div>
                         </div>
-                        <div class="total-price col-md-4 text-end ps-0 order-0 order-md-1 mb-2 mb-md-0 text-600">$${cart.quantity * cart.price}</div>
+                        <div class="total-price col-md-4 text-end ps-0 order-0 order-md-1 mb-2 mb-md-0 text-600">${formatMoney(cart.quantity * cart.price)}</div>
                     </div>
                     </div>
                 </div>
                         `
                         $('.carts').append(html)
-                        $('.total-bill').html('$' + total_bill)
-                        $('.number_item').html('Shopping Cart (' + number_item + ' Items)')
-                        $('#number_item').html(number_item + ' (items)')
+                        $('.total-bill').html(formatMoney(total_bill))
+                        $('.number_item').html('Giỏ hàng có ' + number_item + ' sản phẩm')
+                        $('#number_item').html(number_item + ' (sản phẩm)')
                     });
                 }
             })
@@ -274,14 +288,14 @@
                         const result =JSON.parse(response)
                         Swal.fire({
                             title: "Done",
-                            text: result.message,
+                            text: 'Lưu thành công',
                             icon: "success"
                             });
                     },
                     error: function (error) {
                         Swal.fire({
                             title: "Oops...",
-                            text: "Something went wrong!",
+                            text: "Đã xảy ra lỗi!",
                             icon: "error"
                             });
                     },
@@ -301,7 +315,7 @@
                     let result =JSON.parse(response)
                     Swal.fire({
                             title: "Done",
-                            text: result.message,
+                            text: "Xoá thành công",
                             icon: "success"
                             });
                     setTimeout(() => {

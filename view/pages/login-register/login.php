@@ -109,7 +109,7 @@
                         data
                     } = JSON.parse(response)
                     if (status === 200) { 
-                        // console.log(data);
+                        $('.cerror').empty().html('')
                         localStorage.setItem("userId", data[0].id)
                         localStorage.setItem("userName", data[0].user_name)
                         localStorage.setItem("email", data[0].email)
@@ -140,7 +140,7 @@
                         let html = `
                           <p class="fs-6">${message}</p>
                         `
-                        $('.error').append(html);
+                        $('.error').empty().append(html);
                     }
                 }
             })

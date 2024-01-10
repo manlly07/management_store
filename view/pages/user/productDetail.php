@@ -91,14 +91,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -131,9 +131,39 @@
             var urlParams = new URLSearchParams(window.location.search);
             var id = urlParams.get('id');
             getProductDetail(id)
+            showCart()
         })
 
+        const showCart = () => {
+            $.ajax({
+                url: 'http://localhost:3000/database/repository/carts.php',
+                type: 'POST',
+                data: {
+                    action: "view",
+                    id: localStorage.getItem("userId")
+                },
+                success: (response) => {
+                    carts = JSON.parse(response)
+                    $('.cart-number').html(carts.length)
+                }
+            })
+        }
+
         let categoryId = 0
+
+        function formatMoney(number) {
+            // Xác định số tiền
+            const amount = number.toFixed(2);
+
+            // Tạo chuỗi tiền
+            const money = new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(amount);
+
+            // Trả về chuỗi tiền
+            return money;
+        }
 
         const addToCart = (product_id) => {
             let customer_id = localStorage.getItem('userId')
@@ -147,7 +177,7 @@
                     let result =JSON.parse(response)
                     Swal.fire({
                         title: "Done",
-                        text: result.message,
+                        text: "Thêm vào giỏ hàng thành công",
                         icon: "success"
                     });
                     setTimeout(() => {
@@ -175,8 +205,7 @@
                         <div class="small mb-1">${product.categoryName}</div>
                         <h1 class="display-5 fw-bolder">${product.productName}</h1>
                         <div class="fs-5 mb-5">
-                            <span class="text-decoration-line-through">$45.00</span>
-                            <span>$${product.price}.000</span>
+                            <span>${formatMoney(product.price)}</span>
                         </div>
                         <div class="d-flex gap-2 align-items-center">
                             <h6>Số lượng trong kho</h6>
@@ -231,7 +260,7 @@
                                                             <i class="fas fa-fw fa-star"></i>
                                                             <i class="fas fa-fw fa-star"></i>
                                                         </div>
-                                                        $${product.price}.000
+                                                        ${formatMoney(product.price)}
                                                     </div>
                                                 </div>
                                                 

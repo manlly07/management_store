@@ -134,6 +134,7 @@
                     } = JSON.parse(response)
                     console.log(data);
                     if (status === 200) {
+                      $('.cerror').empty()
                       localStorage.setItem("userId", data.id)
                         localStorage.setItem("userName", data.user_name)
                         localStorage.setItem("email", data.email)
@@ -150,7 +151,7 @@
                                 window.location.href = 'http://localhost:3000/view/pages/user/products.php?page=1'
                             },1000)
                     } else if (status === 400) {
-                        $('.cerror').html(message);
+                        $('.cerror').empty().html(message);
                     }
                 }
             })

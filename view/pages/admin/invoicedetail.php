@@ -154,20 +154,20 @@
                                             <div class="col-md-6 d-flex justify-content-md-end mt-2">
                                                 <div class="invoice-calculations">
                                                     <div class="d-flex justify-content-between mb-2">
-                                                        <span class="w-px-100 text-secondary">Subtotal:</span>
+                                                        <span class="w-px-100 text-secondary">Tạm tính:</span>
                                                         <h6 class="mb-0 pt-1 subtotal">$5000.25</h6>
                                                     </div>
                                                     <div class="d-flex justify-content-between mb-2">
-                                                        <span class="w-px-100 text-secondary">Discount:</span>
+                                                        <span class="w-px-100 text-secondary">Giảm giá:</span>
                                                         <h6 class="mb-0 pt-1">00.00</h6>
                                                     </div>
                                                     <div class="d-flex justify-content-between mb-2">
-                                                        <span class="w-px-100 text-secondary">Tax:</span>
+                                                        <span class="w-px-100 text-secondary">Thuế:</span>
                                                         <h6 class="mb-0 pt-1">00.00</h6>
                                                     </div>
                                                     <hr>
                                                     <div class="d-flex justify-content-between">
-                                                        <span class="w-px-100 text-secondary">Total:</span>
+                                                        <span class="w-px-100 text-secondary">Tổng:</span>
                                                         <h6 class="mb-0 pt-1 total">5100.25</h6>
                                                     </div>
                                                 </div>
@@ -180,8 +180,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <span class="fw-medium">Note:</span>
-                                                <span class="text-secondary note">It was a pleasure working with you and your team. We hope you will keep us in mind for future freelance
-                                                    projects. Thank You!</span>
+                                                <span class="text-secondary note">Thật vui khi được làm việc với bạn và nhóm của bạn. Chúng tôi hy vọng bạn sẽ ghi nhớ chúng tôi cho các dự án tự do trong tương lai. Cảm ơn!</span>
                                             </div>
                                         </div>
                                     </div>
@@ -381,14 +380,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -423,6 +422,20 @@
             var id = urlParams.get('id');
             getInvoiceDetail(id)
         })
+
+        function formatMoney(number) {
+            // Xác định số tiền
+            const amount = number.toFixed(2);
+
+            // Tạo chuỗi tiền
+            const money = new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(amount);
+
+            // Trả về chuỗi tiền
+            return money;
+        }
 
         var urlParams = new URLSearchParams(window.location.search);
         var id = urlParams.get('id');
@@ -512,7 +525,7 @@
                     $('.name').html(invoices[0].supplier_name)
                     $('.address').html(invoices[0].supplier_address)
                     $('.phone').html(invoices[0].supplier_phone)
-                    $('.total-due').html('$' +invoices[0].total)
+                    $('.total-due').html(formatMoney(invoices[0].total))
                     $('.method').html(invoices[0].shipping_method)
                     $('.status').html(invoices[0].status)
                     $('.personname').html(invoices[0].name)
@@ -520,16 +533,16 @@
                         let tr = `
                             <tr>
                                 <td class="text-nowrap text-heading item">${invoice.product_name}</td>
-                                <td class="cost">${invoice.purchase_price}</td>
+                                <td class="cost">${formatMoney(invoice.purchase_price)}</td>
                                 <td class="qty">${invoice.quantity}</td>
-                                <td class="price">${invoice.purchase_price * invoice.quantity}</td>
+                                <td class="price">${formatMoney(invoice.purchase_price * invoice.quantity)}</td>
                             </tr>
                         `;
                         $('.tbody').append(tr);
                     });
 
-                    $('.subtotal').html(invoices[0].total)
-                    $('.total').html(invoices[0].total)  
+                    $('.subtotal').html(formatMoney(invoices[0].total))
+                    $('.total').html(formatMoney(invoices[0].total))
                     $('.note').html(invoices[0].note)
                 }
             })

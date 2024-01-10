@@ -5,7 +5,7 @@
         $data = Query($sql, db());
         $output = '';
         foreach($data as $row) {
-            $is_admin = $row['is_admin'] == 0? 'Grant Admin': 'Admin';
+            $is_admin = $row['is_admin'] == 0? 'Cấp Admin': 'Admin';
             $class_button = $row['is_admin'] == 0? '<button onclick="Admin(\'' . $row['id'] . '\')" type="button" class="btn btn-sm btn-primary ml-2">'.$is_admin.'</button>': 
             '<button type="button" class="btn btn-sm btn-warning ml-2">'.$is_admin.'</button>';
             $action = ' <div class="btn-group" role="group" aria-label="Basic example">
@@ -231,6 +231,7 @@
         $phone = $_POST['phone'];
         $email = $_POST['email'];       
         $id = $_POST['id']; 
+        $oldAvt = $_POST['oldAvt'];
 
         if($fname == '' || $lname == '' || $address == '' || $phone == '' || $email == '') {
             echo json_encode([
@@ -272,9 +273,26 @@
             return;
         }
 
+        if(isset($_FILES['avt'])) {
+            $image = $_FILES['avt'];
+            $time = time();
+            $filename = $time."-".$image['name'];
+            $tmp_path = $image['tmp_name'];
+            $destination = '../../uploads/avt/' . $filename;
+            move_uploaded_file($tmp_path, $destination);
+            $updateImage = ",avt='$filename'";
+
+            if (file_exists('../../uploads/avt/'.$oldAvt)) {
+                unlink('../../uploads/avt/'.$oldAvt);
+            }
+        }else {
+            $updateImage = "";
+        }
+
         $sql = "UPDATE `Customers`
                 SET `first_name` = '$fname', `last_name` = '$lname', `address` = '$address', `phone` = '$phone', `email` = '$email'
-                WHERE `id` = $id";
+                ".$updateImage ."
+                WHERE `id` = '$id'";
 
         $data = Query($sql, db());
         if(count($data) == 0) {
@@ -315,7 +333,7 @@
         if($newPassword !== $cfNewPassword) {
             echo json_encode([
                 'status' => 400,
-                'message' => 'New password and cofirm new password are not in the same!'
+                'message' => 'Mật khẩu nhập lại không khớp với mật khẩu mới!'
             ]);
             return;
         }
@@ -325,7 +343,7 @@
         if(!password_verify($oldPassword, $user[0]['password'])) {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Old password is incorrect!'
+                'message' => 'Mật khẩu cũ không đúng!'
             ]);
             return;
         }

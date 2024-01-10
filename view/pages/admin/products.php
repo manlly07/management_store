@@ -122,14 +122,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -139,7 +139,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Thêm sản phẩm</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -194,7 +194,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Product</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Chỉnh sửa sản phẩm</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -238,7 +238,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                             <button type="submit" class="btn btn-primary">Cập nhật</button>
                         </div>
                     </form>
@@ -275,7 +275,19 @@
             showAllCategory();
         })
         
+        function formatMoney(number) {
+            // Xác định số tiền
+            const amount = number.toFixed(2);
 
+            // Tạo chuỗi tiền
+            const money = new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(amount);
+
+            // Trả về chuỗi tiền
+            return money;
+        }
 
         const showAllProducts = () => {
             $.ajax({
@@ -308,7 +320,7 @@
                             {
                                 data: 'price',
                                 render: function(data, type, row) {
-                                    return row.price
+                                    return formatMoney(row.price)
                                 }
                             },
                             {
@@ -344,7 +356,7 @@
                                     return `<div class="btn-group" role="group" aria-label="Basic example">
                                                 <button onclick="EnableProduct(${row.id})" type="button" class="btn btn-sm btn-success mr-2">Enable</button>
                                                 <button onclick="DisableProduct(${row.id})" type="button" class="btn btn-sm btn-danger mr-2">Disable</button>
-                                                <button onclick="handleUpdate(${row.id}, ${row.categoryid})" type="button" class="btn btn-sm btn-warning">Edit</button>
+                                                <button onclick="handleUpdate(${row.id}, ${row.categoryid})" type="button" class="btn btn-sm btn-warning">Sửa</button>
                                             </div>`
                                 }
                             }

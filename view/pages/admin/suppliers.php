@@ -132,14 +132,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -149,7 +149,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Supplier</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Thêm nhà cung cấp</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -158,19 +158,19 @@
                     <form id="createSupplier">
                         <div class="form-row">
                             <div class="form-group col-12">
-                                <label for="username">Supplier name</label>
+                                <label for="username">Tên nhà cung cấp</label>
                                 <input type="text" name="suppliername" class="form-control" id="suppliername" placeholder="Supplier name">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
-                                <label for="address">Address</label>
+                                <label for="address">Địa chỉ</label>
                                 <input type="text" name="address" class="form-control" id="address" placeholder="Address">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
-                                <label for="phone">Phone</label>
+                                <label for="phone">SĐT</label>
                                 <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone">
                             </div>
                         </div>
@@ -180,7 +180,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary">Thêm</button>
                         </div>
                     </form>
                 </div>
@@ -192,7 +192,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Supplier</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Chỉnh sửa</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -201,19 +201,19 @@
                     <form id="updateSupplier">
                         <div class="form-row">
                             <div class="form-group col-12">
-                                <label for="supplier">Supplier name</label>
+                                <label for="supplier">Tên nhà cung cấp</label>
                                 <input type="text" name="suppliername" class="form-control suppliername" placeholder="Supplier name">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
-                                <label for="Phone">Phone</label>
+                                <label for="Phone">SĐT</label>
                                 <input type="text" name="phone" class="form-control phone" placeholder="Phone">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
-                                <label for="Address">Address</label>
+                                <label for="Address">Địa chỉ</label>
                                 <input type="text" name="address" id="addressInput" class="form-control address" placeholder="Address">
                             </div>
                             <div id="addressOutput" class="m-auto"></div>
@@ -225,7 +225,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">update</button>
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
                         </div>
                     </form>
                 </div>
@@ -417,7 +417,7 @@
                                     return `<div class="btn-group" role="group" aria-label="Basic example">
                                                 <button onclick="EnableSupplier(${row.id})" type="button" class="btn btn-sm btn-success mr-2">Enable</button>
                                                 <button onclick="DisableSupplier(${row.id})" type="button" class="btn btn-sm btn-danger mr-2">Disable</button>
-                                                <button onclick="EditSupplier(${row.id})" type="button" class="btn btn-sm btn-warning">Edit</button>
+                                                <button onclick="EditSupplier(${row.id})" type="button" class="btn btn-sm btn-warning">Sửa</button>
                                             </div>`
                                 }
                             }

@@ -133,14 +133,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -288,6 +288,20 @@
                 },
             })
         }
+
+        function formatMoney(number) {
+            // Xác định số tiền
+            const amount = number.toFixed(2);
+
+            // Tạo chuỗi tiền
+            const money = new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(amount);
+
+            // Trả về chuỗi tiền
+            return money;
+        }
         const getDetail = (id) => {
             $.ajax({
                 url: 'http://localhost:3000/database/repository/orders.php',
@@ -298,6 +312,7 @@
                 },
                 success: function(response) {
                     let orderDetail =JSON.parse(response)
+                    console.log(orderDetail);
                     let subtotal = 0
                     orderDetail.forEach(item => {
                         subtotal += item.quantity * item.price
@@ -309,8 +324,8 @@
                         <p class="mb-0">${item.categoryname}</p>
                       </td>
                       <td class="align-middle text-center">${item.quantity}</td>
-                      <td class="align-middle text-end">$${item.price}</td>
-                      <td class="align-middle text-end">$${item.quantity * item.price}</td>
+                      <td class="align-middle text-end">${formatMoney(item.price)}</td>
+                      <td class="align-middle text-end">${formatMoney(item.quantity * item.price)}</td>
                     </tr>
                   </tbody>
                         `
@@ -323,20 +338,20 @@
                             <div class="col-auto">
                             <table class="table table-sm table-borderless fs--1 text-end">
                                 <tbody><tr>
-                                <th class="text-900 fw-bold">Subtotal:</th>
-                                <td class="fw-semi-bold">$${subtotal}</td>
+                                <th class="text-900 fw-bold">Tạm tính:</th>
+                                <td class="fw-semi-bold">${formatMoney(subtotal)}</td>
                                 </tr>
                                 <tr>
-                                <th class="text-900 fw-bold">Coupon:</th>
-                                <td class="fw-semi-bold">-$55</td>
+                                <th class="text-900 fw-bold">Giảm giá:</th>
+                                <td class="fw-semi-bold">${formatMoney(-55000)}</td>
                                 </tr>
                                 <tr>
-                                <th class="text-900 fw-bold">Shipping:</th>
-                                <td class="fw-semi-bold">$20</td>
+                                <th class="text-900 fw-bold">Phí ship:</th>
+                                <td class="fw-semi-bold">${formatMoney(20000)}</td>
                                 </tr>
                                 <tr class="border-top">
-                                <th class="text-900 fw-bold">Total:</th>
-                                <td class="fw-semi-bold">$${subtotal-55+20}</td>
+                                <th class="text-900 fw-bold">Tổng hoá đơn:</th>
+                                <td class="fw-semi-bold">${formatMoney(subtotal-55+20)}</td>
                                 </tr>
                             </tbody></table>
                             </div>

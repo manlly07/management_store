@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>User Infor</title>
+    <title>Admin Infor</title>
 
     <!-- Custom fonts for this template -->
     <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,6 +31,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
+        <?php include '../../component/navbar.php' ?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -40,7 +41,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?php include './nav.php' ?>
+                <?php include '../../component/header.php' ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -51,6 +52,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="d-flex flex-column align-items-center text-center">
+                                            
                                             <img src="#" alt="Admin" class="rounded-circle" id="avatar" width="150" height="150">
                                             <div class="mt-3">
                                                 <h4 class="fullname"></h4>
@@ -126,25 +128,26 @@
                     </div>
             
                 </div>
-                </div>
+            </div>
                 <!-- /.container-fluid -->
 
+                <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div>
+            </footer>
             </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
+
             
             <!-- End of Footer -->
-
+            
         </div>
         <!-- End of Content Wrapper -->
-        <footer class="sticky-footer bg-primary">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto text-white">
-                        <span>Copyright &copy; Your Website 2023</span>
-                    </div>
-                </div>
-            </footer>
     </div>
     <!-- End of Page Wrapper -->
 
@@ -152,7 +155,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Đổi mật khẩu</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -243,22 +246,11 @@
             $('#username').html(`${username}`)
             let userId =localStorage.getItem('userId')
             FindUserById(userId)
-            showCart()
         })
 
-        const showCart = () => {
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/carts.php',
-                type: 'POST',
-                data: {
-                    action: "view",
-                    id: localStorage.getItem("userId")
-                },
-                success: (response) => {
-                    carts = JSON.parse(response)
-                    $('.cart-number').html(carts.length)
-                }
-            })
+        const loadImage = (evente) => {
+            console.log('hehe');
+            $('#avatar').attr('src', URL.createObjectURL(event.target.files[0]));
         }
 
         const FindUserById = (id) => {
@@ -268,9 +260,10 @@
                 data: `action=getbyid&id=${id}`,
                 success: (response) => {
                     let data = JSON.parse(response)[0]
-                    data['avt'] != '' ? $('#avatar').attr('src', `../../../uploads/avt/${data['avt']}`): $('#avatar').attr('src', "https://bootdey.com/img/Content/avatar/avatar7.png")
+                    // console.log(data);
                     $('#exampleModal').modal('show');
                     $('#old-avt').val(data['avt'])
+                    data['avt'] != '' ? $('#avatar').attr('src', `../../../uploads/avt/${data['avt']}`): $('#avatar').attr('src', "https://bootdey.com/img/Content/avatar/avatar7.png")
                     $('.fname').val(data['first_name']);
                     $('.lname').val(data['last_name']);
                     $('.email').val(data['email']);
@@ -281,11 +274,6 @@
                     $('.fullname').html(`${data['first_name']} ${data['last_name']}`);
                 }
             })
-        }
-
-        const loadImage = (evente) => {
-            console.log('hehe');
-            $('#avatar').attr('src', URL.createObjectURL(event.target.files[0]));
         }
 
         $('#editUser').on('submit', (e) => {

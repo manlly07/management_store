@@ -303,14 +303,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -342,6 +342,20 @@
             total()
         })
 
+        function formatMoney(number) {
+            // Xác định số tiền
+            const amount = number.toFixed(2);
+
+            // Tạo chuỗi tiền
+            const money = new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(amount);
+
+            // Trả về chuỗi tiền
+            return money;
+        }
+
         const getRevenue = () => {
             $.ajax({
                 url: 'http://localhost:3000/database/repository/orders.php',
@@ -354,7 +368,7 @@
                     if (result.total_revenue == null){
                         result.total_revenue = 0
                     }
-                    $('.revenue-currentdate').html('$'+result.total_revenue)
+                    $('.revenue-currentdate').html(formatMoney(result.total_revenue))
                 }
             })
 
@@ -369,7 +383,7 @@
                     if (result.total_revenue == null){
                         result.total_revenue = 0
                     }
-                    $('.revenue-currentmonth').html('$'+result.total_revenue)
+                    $('.revenue-currentmonth').html(formatMoney(result.total_revenue))
                 }
             })
 
@@ -384,7 +398,7 @@
                     if (result.total_revenue == null){
                         result.total_revenue = 0
                     }
-                    $('.revenue_annual').html('$'+result.total_revenue)
+                    $('.revenue_annual').html(formatMoney(result.total_revenue))
                 }
             })
 
@@ -479,7 +493,7 @@
                 success: (response) => {
                     let result =JSON.parse(response)
                     $('.count_invoice').html('Số lượng: '+result.total_invoice)
-                    $('.total_invoice').html('Giá trị: $'+result.total_revenue)
+                    $('.total_invoice').html('Giá trị: '+formatMoney(result.total_revenue))
                 }
             })
 

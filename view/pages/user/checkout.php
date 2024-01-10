@@ -51,7 +51,7 @@
             <div class="col-xl-4 order-xl-1">
               <div class="card">
                 <div class="card-header bg-body-tertiary d-flex justify-content-between">
-                  <h5 class="mb-0" id="summary">Order Summary: 0 (items)</h5>
+                  <h5 class="mb-0" id="summary">Số lượng: 0 (sản phẩm)</h5>
                   <a class="btn btn-falcon-default btn-sm text-600" href="./cart.php">
                   <i class="fas fa-fw fa-edit"></i>
                   </a>
@@ -60,26 +60,26 @@
                   <table class="table table-borderless fs--1 mb-0">
                     <tbody>
                     <tr class="border-bottom">
-                      <th class="ps-0">Subtotal</th>
-                      <th class="pe-0 text-end subtotal">$0</th>
+                      <th class="ps-0">Tạm tính</th>
+                      <th class="pe-0 text-end subtotal">0</th>
                     </tr>
                     <tr class="border-bottom">
-                      <th class="ps-0">Coupon: <span class="text-success">40SITEWIDE</span></th>
-                      <th class="pe-0 text-end">-$30</th>
+                      <th class="ps-0">Mã giảm giá: <span class="text-success">40SITEWIDE</span></th>
+                      <th class="pe-0 text-end discount">-0</th>
                     </tr>
                     <tr class="border-bottom">
-                      <th class="ps-0">Shipping</th>
-                      <th class="pe-0 text-end">$20</th>
+                      <th class="ps-0">Phí ship</th>
+                      <th class="pe-0 text-end fee">0</th>
                     </tr>
                     <tr>
-                      <th class="ps-0 pb-0">Total</th>
-                      <th class="pe-0 text-end pb-0 total-bill">$0</th>
+                      <th class="ps-0 pb-0">Tổng đơn hàng</th>
+                      <th class="pe-0 text-end pb-0 total-bill">0</th>
                     </tr>
                   </tbody></table>
                 </div>
                 <div class="card-footer d-flex justify-content-between bg-body-tertiary">
-                  <div class="fw-semi-bold">Payable Total</div>
-                  <div class="fw-bold total-bill">$0</div>
+                  <div class="fw-semi-bold">Tổng thanh toán</div>
+                  <div class="fw-bold total-bill">0</div>
                 </div>
               </div>
             </div>
@@ -88,14 +88,9 @@
                 <div class="card-header bg-body-tertiary">
                   <div class="row d-flex justify-content-between">
                     <div class="col-sm-auto">
-                      <h5 class="mb-2 mb-sm-0">Your Shipping Address</h5>
+                      <h5 class="mb-2 mb-sm-0">Địa chỉ giao hàng</h5>
                     </div>
-                    <div class="col-sm-auto">
-                        <a class="btn btn-falcon-default btn-sm" href="#!">
-                        <i class="fas fa-fw fa-plus"></i>
-                        Add New Address 
-                        </a>
-                    </div>
+                    
                   </div>
                 </div>
                 <div class="card-body">
@@ -113,7 +108,7 @@
               </div>
               <div class="card">
                 <div class="card-header bg-body-tertiary">
-                  <h5 class="mb-0">Payment Method</h5>
+                  <h5 class="mb-0">Phương thức thanh toán</h5>
                 </div>
                 <div class="card-body">
                   <form>
@@ -143,11 +138,11 @@
                       <div class="col-md-7 col-xl-12 col-xxl-7 px-md-3 mb-xxl-0 position-relative">
                         <div class="d-flex"><img class="me-3" src="../../../img/guard.png" alt="" width="60" height="60">
                           <div class="flex-1">
-                            <h5 class="mb-2">Buyer Protection</h5>
-                            <div class="form-check mb-0"><input class="form-check-input" id="protection-option-1" type="checkbox" checked="checked"><label class="form-check-label mb-0" for="protection-option-1"> <strong>Full Refund </strong>If you don't <br class="d-none d-md-block d-lg-none">receive your order</label></div>
-                            <div class="form-check"><input class="form-check-input" id="protection-option-2" type="checkbox" checked="checked"><label class="form-check-label mb-0" for="protection-option-2"> <strong>Full or Partial Refund, </strong>If the product is not as described in details</label></div><a class="fs--1 ms-3 ps-2" href="#!">
+                            <h5 class="mb-2">Bảo vệ người mua</h5>
+                            <div class="form-check mb-0"><input class="form-check-input" id="protection-option-1" type="checkbox" checked="checked"><label class="form-check-label mb-0" for="protection-option-1"> <strong>Hoàn trả đầy đủ </strong>nếu bạn không <br class="d-none d-md-block d-lg-none">nhận được đơn đặt hàng của bạn</label></div>
+                            <div class="form-check"><input class="form-check-input" id="protection-option-2" type="checkbox" checked="checked"><label class="form-check-label mb-0" for="protection-option-2"> <strong>Hoàn trả toàn bộ hoặc một phần </strong>nếu sản phẩm không đúng như mô tả chi tiết </label></div><a class="fs--1 ms-3 ps-2" href="#!">
                                 <i class="fas fa-fw fa-caret-right"></i>
-                                Learn More
+                                Tìm hiểu thêm
                                 </a>
                           </div>
                         </div>
@@ -155,9 +150,9 @@
                       </div>
                       <div class="col-md-5 col-xl-12 col-xxl-5 ps-lg-4 ps-xl-2 ps-xxl-5 text-center text-md-start text-xl-center text-xxl-start">
                         <div class="border-bottom border-dashed d-block d-md-none d-xl-block d-xxl-none my-4"></div>
-                        <div class="fs-2 fw-semi-bold total-bill2 text-primary" >All Total: <span >$0</span></div>
-                          <button class="btn btn-success fs-6 mt-3 px-5" id="pay" name="redirect" type="button" onclick="Pay()" >Pay</button>
-                        <p class="fs--1 mt-3 mb-0">By clicking <strong>Confirm &amp; Pay </strong>button you agree to the <a href="#!">Terms &amp; Conditions</a></p>
+                        <div class="fs-2 fw-semi-bold total-bill2 text-primary" >Tổng thanh toán: <span >0</span></div>
+                          <button class="btn btn-success fs-6 mt-3 px-5" id="pay" name="redirect" type="button" onclick="Pay()" >Thanh toán</button>
+                        <p class="fs--1 mt-3 mb-0">Bấm nút <strong>thanh toán </strong>khi bạn đồng ý với <br><a href="#!"> Điều kiện của cửa hàng</a></br> </p>
                       </div>
                     </div>
                   </form>
@@ -198,14 +193,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -237,7 +232,37 @@
           $('#username').html(`${username}`)
             showAllCart();
             inforUser()
+            showCart()
         })
+
+        const showCart = () => {
+            $.ajax({
+                url: 'http://localhost:3000/database/repository/carts.php',
+                type: 'POST',
+                data: {
+                    action: "view",
+                    id: localStorage.getItem("userId")
+                },
+                success: (response) => {
+                    carts = JSON.parse(response)
+                    $('.cart-number').html(carts.length)
+                }
+            })
+        }
+
+        function formatMoney(number) {
+            // Xác định số tiền
+            const amount = number.toFixed(2);
+
+            // Tạo chuỗi tiền
+            const money = new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(amount);
+
+            // Trả về chuỗi tiền
+            return money;
+        }
         let formData = []
         const showAllCart = () => {
             $.ajax({
@@ -265,11 +290,13 @@
                 // Thêm đối tượng dữ liệu vào mảng formData
                     formData.push(rowData);
                     });
-                    let total_bill = subtotal-30+20
-                    $('.subtotal').html('$' + subtotal)
-                    $('#summary').html('Order Summary: ' + number_item + ' (items)')
-                    $('.total-bill').html('$' + total_bill)
-                    $('.total-bill2').html('All Total: $'+total_bill)
+                    $('.discount').html(formatMoney(-30000))
+                    $('.fee').html(formatMoney(20000))
+                    let total_bill = subtotal-30000+20000
+                    $('.subtotal').html(formatMoney(subtotal))
+                    $('#summary').html('Số lượng: ' + number_item + ' (sản phẩm)')
+                    $('.total-bill').html(formatMoney(total_bill))
+                    $('.total-bill2').html('Tổng thanh toán: '+formatMoney(total_bill))
                 }
             })
         }
@@ -341,7 +368,7 @@
 
           Swal.fire({
             title: "Bạn chắc chắn muốn đặt hàng?",
-            text: "You won't be able to revert this!",
+            text: "Đơn hàng sẽ được thêm vào",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "success",

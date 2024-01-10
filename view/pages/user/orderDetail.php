@@ -106,14 +106,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -149,8 +149,24 @@
             getOrder(id)
             getDetail(id)
             $('#cancel').on('click',() => cancelled(id))
+            showCart()
         })
         
+        const showCart = () => {
+            $.ajax({
+                url: 'http://localhost:3000/database/repository/carts.php',
+                type: 'POST',
+                data: {
+                    action: "view",
+                    id: localStorage.getItem("userId")
+                },
+                success: (response) => {
+                    carts = JSON.parse(response)
+                    $('.cart-number').html(carts.length)
+                }
+            })
+        }
+
         const getOrder = (id) => {
             $.ajax({
                 url: 'http://localhost:3000/database/repository/orders.php',

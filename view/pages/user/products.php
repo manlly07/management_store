@@ -106,14 +106,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -144,9 +144,40 @@
             let username = localStorage.getItem('fullName')
             $('#username').html(`${username}`)
             var urlParams = new URLSearchParams(window.location.search);
+            showCart()
             var page = urlParams.get('page');
             showAllProducts(parseInt(page));
         })
+
+        function formatMoney(number) {
+            // Xác định số tiền
+            const amount = number.toFixed(2);
+
+            // Tạo chuỗi tiền
+            const money = new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(amount);
+
+            // Trả về chuỗi tiền
+            return money;
+        }
+
+        const showCart = () => {
+            $.ajax({
+                url: 'http://localhost:3000/database/repository/carts.php',
+                type: 'POST',
+                data: {
+                    action: "view",
+                    id: localStorage.getItem("userId")
+                },
+                success: (response) => {
+                    carts = JSON.parse(response)
+                    $('.cart-number').html(carts.length)
+                }
+            })
+        }
+
         const showAllProducts = (currentPage) => {
             $.ajax({
                 url: 'http://localhost:3000/database/repository/products.php',
@@ -177,7 +208,7 @@
                                                             <i class="fas fa-fw fa-star"></i>
                                                             <i class="fas fa-fw fa-star"></i>
                                                         </div>
-                                                        $${product.price}.000
+                                                        ${formatMoney(product.price)}
                                                     </div>
                                                 </div>
                                                 
@@ -235,7 +266,7 @@
                     let result =JSON.parse(response)
                     Swal.fire({
                             title: "Done",
-                            text: result.message,
+                            text: 'Thêm vào giỏ hàng thành công',
                             icon: "success"
                             });
                 }

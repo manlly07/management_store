@@ -123,14 +123,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -141,7 +141,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Update Order Status</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Cập nhật trạng thái đơn hàng</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -150,7 +150,7 @@
                     <form id="updateStatus">
                         <div class="form-row">
                             <div class="form-group col-12">
-                            <label class="form-label" for="customRange2">Order Status</label>
+                            <label class="form-label" for="customRange2">Trạng thái</label>
                             <div class="d-flex justify-content-between mb-3">
                                 <div class="d-flex flex-column align-items-center">
                                     <img src="../../../img/pending.png" alt="" style="width: 100px; height: 100px">
@@ -176,7 +176,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="submit" class="btn btn-primary">update</button>
+                            <button type="button" id="submit" class="btn btn-primary">Cập nhật</button>
                         </div>
                     </form>
                 </div>
@@ -284,7 +284,7 @@
                                 render: function(data, type, row) {
                                     // console.log(row);
                                     return `<div class="d-flex align-items-center">
-                                                <button onclick="Status(${row.order_id})" type="button" class="btn btn-sm btn-primary">Status <i class="fa fa-edit mx-1"></i></button>
+                                                <button onclick="Status(${row.order_id})" type="button" class="btn btn-sm btn-primary">Sửa trạng thái <i class="fa fa-edit mx-1"></i></button>
                                                 </div>`
                                 }
                             }

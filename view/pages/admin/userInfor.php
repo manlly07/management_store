@@ -48,28 +48,30 @@
                 <div class="container-fluid m-auto my-2" style="min-height: 77vh;">
                 <a class="btn btn-sm btn-outline-secondary border-300 mb-3 shadow-none" href="./users.php" style="margin-left: 180px;"><i class="fas fa-fw fa-chevron-left"></i>Trở lại</a>
                 <div class="container">
-                        <div class="row">
+                <div class="row">
                             <div class="col-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="d-flex flex-column align-items-center text-center">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                            
+                                            <img src="#" alt="Admin" class="rounded-circle" id="avatar" width="150" height="150">
                                             <div class="mt-3">
-                                                <h4 class="fullname">John Doe</h4>
-                                                <p class="text-muted font-size-sm address">Bay Area, San Francisco, CA</p>
-                                                <!-- <button class="btn btn-outline-primary">Edit Avartar</button> -->
+                                                <h4 class="fullname"></h4>
+                                                <p class="text-muted font-size-sm address"></p>
                                             </div>
+                                            <input onchange="loadImage(event)" class="form-control image col-8" name="image" type="file" id="formFile">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-8">     
+                            <div class="col-8">
+                                
                                 <div class="card">
                                     <div class="card-body">
                                         <form id="editUser">
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0">First Name</h6>
+                                                    <h6 class="mb-0">Tên</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
                                                     <input type="text" name="fname" class="form-control fname"  require>
@@ -77,7 +79,7 @@
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0">Last Name</h6>
+                                                    <h6 class="mb-0">Họ</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
                                                     <input type="text" name="lname" class="form-control lname" require>
@@ -93,7 +95,7 @@
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0">Phone</h6>
+                                                    <h6 class="mb-0">SĐT</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
                                                     <input type="text" class="form-control phone" name="phone" require>
@@ -101,11 +103,12 @@
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0">Address</h6>
+                                                    <h6 class="mb-0">Địa chỉ</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
                                                     <input type="text" class="form-control address" name="address" require>
                                                     <input hidden type="text" class="form-control id" name="id" require>
+                                                    <input type="text" name="" hidden id="old-avt">
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
@@ -113,7 +116,7 @@
                                             </div>
                                             <div class="d-flex justify-content-end">
                                                 <div class="text-secondary">
-                                                    <input type="submit" class="btn btn-primary px-4" value="Save Changes">
+                                                    <input type="submit" class="btn btn-primary px-4" value="Lưu thay đổi">
                                                 </div>
                                             </div>
                                         </form>
@@ -186,7 +189,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Update Order Status</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Cập nhật trạng thái đơn hàng</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -195,7 +198,7 @@
                     <form id="updateStatus">
                         <div class="form-row">
                             <div class="form-group col-12">
-                            <label class="form-label" for="customRange2">Order Status</label>
+                            <label class="form-label" for="customRange2">Trạng thái</label>
                             <div class="d-flex justify-content-between mb-3">
                                 <div class="d-flex flex-column align-items-center">
                                     <img src="../../../img/pending.png" alt="" style="width: 100px; height: 100px">
@@ -221,7 +224,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="submit" class="btn btn-primary">update</button>
+                            <button type="button" id="submit" class="btn btn-primary">Cập nhật</button>
                         </div>
                     </form>
                 </div>
@@ -239,14 +242,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -292,6 +295,8 @@
                     let data = JSON.parse(response)[0]
                     console.log(data);
                     $('#exampleModal').modal('show');
+                    $('#old-avt').val(data['avt'])
+                    data['avt'] != '' ? $('#avatar').attr('src', `../../../uploads/avt/${data['avt']}`): $('#avatar').attr('src', "https://bootdey.com/img/Content/avatar/avatar7.png")
                     $('.fname').val(data['first_name']);
                     $('.lname').val(data['last_name']);
                     $('.email').val(data['email']);
@@ -303,15 +308,32 @@
                 }
             })
         }
+        const loadImage = (evente) => {
+            console.log('hehe');
+            $('#avatar').attr('src', URL.createObjectURL(event.target.files[0]));
+        }
 
         $('#editUser').on('submit', (e) => {
             e.preventDefault();
-            var formData = $('#editUser').serialize();
-            console.log(formData);
+            let formData = new FormData();
+            formData.append('id', $('.id').val())
+            formData.append('fname', $('.fname').val())
+            formData.append('lname', $('.lname').val())
+            formData.append('email', $('.email').val())
+            formData.append('phone', $('.phone').val())
+            formData.append('address', $('.address').val())
+            formData.append('action', "update")
+            formData.append('oldAvt', $('#old-avt').val())
+            var img = $('.image')[0]
+            if (img.files[0]) {
+                formData.append('avt', img.files[0])
+            }
             $.ajax({
                 url: 'http://localhost:3000/database/repository/users.php',
                 type: 'POST',
-                data: `${formData}&action=update`,
+                data: formData,
+                processData: false,
+                contentType: false,
                 success: (response) => {
                     let {
                         status,
@@ -335,6 +357,20 @@
                 }
             })
         })
+
+        function formatMoney(number) {
+            // Xác định số tiền
+            const amount = number.toFixed(2);
+
+            // Tạo chuỗi tiền
+            const money = new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(amount);
+
+            // Trả về chuỗi tiền
+            return money;
+        }
 
         const showOrders = (id) => {
         
@@ -377,7 +413,7 @@
                                 <div class="d-flex justify-content-start align-items-center">
                                                 <div class="d-flex flex-column gap-1">
                                                     <a href="pages-profile-user.html" class="text-truncate">
-                                                        <h6 class="mb-0 fw-bold">$${row.total}</h6>
+                                                        <h6 class="mb-0 fw-bold">${formatMoney(row.total)}</h6>
                                                     </a>
                                                 </div>
                                             </div>
@@ -409,7 +445,7 @@
                             data: null,
                             render: function(data, type, row) {
                                 return `<div class="d-flex align-items-center">
-                                                <button onclick="Status(${row.order_id})" type="button" class="btn btn-sm btn-primary">Status <i class="fa fa-edit mx-1"></i></button>
+                                                <button onclick="Status(${row.order_id})" type="button" class="btn btn-sm btn-primary">Sửa trạng thái <i class="fa fa-edit mx-1"></i></button>
                                                 </div>`
                             }
                         }

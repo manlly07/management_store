@@ -25,7 +25,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="http://localhost:3000/view/pages/user/products.php?page=1">Sản phẩm</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Thông tin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://localhost:3000/view/pages/user/about.php">Thông tin</a></li>
                         
                     </ul>
                     <form class="d-flex align-item-center gap-4">
@@ -34,7 +34,7 @@
                                 
                                     <i class="fas fa-fw fa-shopping-cart"></i>
                                     Giỏ hàng
-                                    <span class="badge bg-primary text-white ms-1 rounded-pill">6</span>
+                                    <span class="badge bg-primary text-white ms-1 rounded-pill cart-number">0</span>
                         
                             <!-- </a> -->
                             

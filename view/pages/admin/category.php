@@ -120,14 +120,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn Log out?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Chọn "Logout" bên dưới để kết thúc phiên làm việc.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
                     <a class="btn btn-primary" href="http://localhost:3000/view/pages/login-register/login.php">Logout</a>
                 </div>
             </div>
@@ -146,13 +146,13 @@
                     <form id="createCategory">
                         <div class="form-row">
                             <div class="form-group col-12">
-                                <label for="username">Category name</label>
+                                <label for="username">Tên loại đồ uống</label>
                                 <input type="text" name="categoryname" class="form-control" id="categoryname" placeholder="category name">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
-                                <label for="Description">Description</label>
+                                <label for="Description">Mô tả</label>
                                 <input type="Description" name="description" class="form-control" id="description" placeholder="description">
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary">Thêm</button>
                         </div>
                     </form>
                 </div>
@@ -200,7 +200,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">update</button>
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
                         </div>
                     </form>
                 </div>
@@ -284,7 +284,7 @@
                                     return `<div class="btn-group" role="group" aria-label="Basic example">
                                                 <button onclick="EnableProduct(${row.id})" type="button" class="btn btn-sm btn-success mr-2">Enable</button>
                                                 <button onclick="DisableProduct(${row.id})" type="button" class="btn btn-sm btn-danger mr-2">Disable</button>
-                                                <button onclick="EditCategory(${row.id})" type="button" class="btn btn-sm btn-warning">Edit</button>
+                                                <button onclick="EditCategory(${row.id})" type="button" class="btn btn-sm btn-warning">Sửa</button>
                                             </div>`
                                 }
                             }
