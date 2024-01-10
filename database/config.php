@@ -1,12 +1,15 @@
 <?php
     define('SERVER', '127.0.0.1');
-    define('DB_NAME', 'MANAGEMENT_STORE');
+    define('DB_NAME', 'quanlikhohang');
     define('DB_USER_NAME', 'root');
     define('DB_PASSWORD', '');
 
     header('Access-Control-Allow-Origin: *');
     header("Access-Control-Allow-Headers: *");
     header("Access-Control-Allow-Methods:  *");
+
+    error_reporting(0);
+    ini_set('display_errors', '0');
 
     function db() {
         $connection_string = "mysql:host=" . SERVER;
