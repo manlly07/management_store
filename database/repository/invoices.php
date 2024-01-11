@@ -12,7 +12,7 @@
         $sql = "SELECT COUNT(*) AS total_invoice,
         SUM(total) AS total_revenue
         FROM invoiceshipments
-        WHERE InvoiceShipments.status = 'delivered'
+        WHERE InvoiceShipments.status = 'đã giao'
         -- AND YEAR(shipment_date) = YEAR(CURDATE())
         ";
         $data = Query($sql, db());
@@ -83,7 +83,7 @@
         $sql = "UPDATE InvoiceShipments SET status = '$status' WHERE id = '$id'";
         $data = Query($sql, db());
 
-        if ($status == 'cancelled') {
+        if ($status == 'đã huỷ') {
             $sql1 = "SELECT product_id, quantity FROM InvoiceShipmentDetails WHERE shipment_id = $id";
             $orderDetails = Query($sql1, db());
  
@@ -156,7 +156,7 @@
             MONTH(shipment_date) AS month,
             SUM(total) AS total
             FROM InvoiceShipments
-            WHERE InvoiceShipments.status = 'delivered'
+            WHERE InvoiceShipments.status = 'đã giao'
             -- AND YEAR(shipment_date) = YEAR(CURDATE())
             GROUP BY MONTH(shipment_date)";
         $data = Query($sql, db());

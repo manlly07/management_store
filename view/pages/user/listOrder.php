@@ -261,16 +261,16 @@
 
         const checkStatus = (status) => {
             switch (status){
-                        case 'pending': 
+                        case 'chờ xử lý': 
                             return `<span class="badge rounded-pill py-2 px-3 fs-6 bg-primary"> ${status} </span>`
                             break
-                        case 'processing': 
+                        case 'đang xử lý': 
                             return `<span class="badge rounded-pill py-2 px-3 fs-6 bg-warning"> ${status} </span>`
                             break
-                        case 'delivered': 
+                        case 'đã giao': 
                             return `<span class="badge rounded-pill py-2 px-3 fs-6 bg-success"> ${status} </span>`
                             break
-                        case 'cancelled': 
+                        case 'đã huỷ': 
                             return `<span class="badge rounded-pill py-2 px-3 fs-6 bg-secondary"> ${status} </span>`
                             break
                     }

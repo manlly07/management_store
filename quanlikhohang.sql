@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 10, 2024 lúc 02:06 PM
+-- Thời gian đã tạo: Th1 11, 2024 lúc 04:58 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `management_store`
+-- Cơ sở dữ liệu: `quanlikhohang`
 --
 
 -- --------------------------------------------------------
@@ -97,14 +97,15 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `user_name`, `password`, `first_name`, `last_name`, `address`, `phone`, `email`, `created_at`, `is_active`, `is_admin`, `avt`) VALUES
-(1, 'duc', '$2y$10$ajUyDWJalYS44uU0CPgCpeztupryGcZpuxA1hMfs9tMqFqwJtPktu', 'Duc', 'Nguyen', 'Hà Đông, Hà Nội', '0762023368', 'ducn7128@gmail.com', '2023-11-24 18:41:23', 1, 1, '1704880773-1704877110-1700900685-anh_mat.jpg'),
+(1, 'duc', '$2y$10$ajUyDWJalYS44uU0CPgCpeztupryGcZpuxA1hMfs9tMqFqwJtPktu', 'Duc', 'Nguyen', 'Hà Đông, Hà Nội', '0762023368', 'ducn7128@gmail.com', '2023-11-24 18:41:23', 1, 1, '1704906533-networksystem.webp'),
 (2, 'cuong', '$2y$10$/9MfdQ0TKFb52BMaw9/fzeHhjeX6c4SJHFDmbQ8ouuU3vXoynox7m', 'Dang', 'Cuong', 'Hà Nội', '0999345908', 'ngminducc@gmail.com', '2023-12-08 19:56:01', 1, 1, ''),
-(3, 'anh', '$2y$10$jVyxt0kUXvZPQRuh7Mwo8OSzvoBfiSqLczkNzoNxZ4EOEk/KHEYaG', 'Hoang', 'Anh', 'Cầu Giấy, Hà Nội', '0987654321', '123@gmail.com', '2023-12-08 20:01:07', 1, 0, '1704880360-1704879162-1700900714-anh2ban.jpg'),
-(4, 'Dat', '$2y$10$jOLRQRdKrgK9mW6U3Blrbenfk.ZqmwOYjIekeAcxx9YuOvIyREiz.', 'Dac', 'Dat', 'Tổ 7 Huyền Kỳ', '0762023369', 'dat@gmail.com', '2023-12-22 18:10:30', 1, 0, ''),
-(5, 'Mixi', '$2y$10$tqlqyISQzR6dzJtt2HnMduEYh/4sRzwlMBLVWzs0olvaSmoEPzagK', 'Phung', 'Do', 'Victoria Van Phu, Ha Dong', '0762023367', 'mixi@gmail.com', '2023-12-22 23:19:53', 1, 0, ''),
-(11, 'CR7', '$2y$10$XIy7DKSMh7iy9J4.Youlje2Q9CILz7QJexCunM.Jm3.Sa71qfarGy', 'Cristiano', 'Ronaldo', 'Portugal ', '0762023360', 'cr7@gmail.com', '2023-12-31 10:50:57', 1, 1, ''),
+(3, 'anh', '$2y$10$jVyxt0kUXvZPQRuh7Mwo8OSzvoBfiSqLczkNzoNxZ4EOEk/KHEYaG', 'Hoang', 'Anh', 'Cầu Giấy, Hà Nội', '0987654321', '123@gmail.com', '2023-12-08 20:01:07', 1, 0, '1704906425-encryption.png'),
+(4, 'Dat', '$2y$10$jOLRQRdKrgK9mW6U3Blrbenfk.ZqmwOYjIekeAcxx9YuOvIyREiz.', 'Dac', 'Dat', 'Tổ 7 Huyền Kỳ', '0762023369', 'dat@gmail.com', '2023-12-22 18:10:30', 1, 0, '1704906404-networksystem.webp'),
+(5, 'Mixi', '$2y$10$tqlqyISQzR6dzJtt2HnMduEYh/4sRzwlMBLVWzs0olvaSmoEPzagK', 'Phung', 'Do', 'Victoria Van Phu, Ha Dong', '0762023367', 'mixi@gmail.com', '2023-12-22 23:19:53', 1, 0, '1704906249-softwareTesting.jpg'),
+(11, 'CR7', '$2y$10$XIy7DKSMh7iy9J4.Youlje2Q9CILz7QJexCunM.Jm3.Sa71qfarGy', 'Cristiano', 'Ronaldo', 'Portugal ', '0762023360', 'cr7@gmail.com', '2023-12-31 10:50:57', 1, 1, '1704905900-1704877110-1700900685-anh_mat.jpg'),
 (12, 'M10', '$2y$10$iTTB7fjwXW8.cJX3DjP6RulSWlFR2b4B6XXxm1pHTIQYlG0mGRjVS', 'Lionel', 'Messi', 'Argentina ', '0762023361', 'm10@gmail.com', '2023-12-31 10:55:38', 1, 0, ''),
-(13, 'tinvo', '$2y$10$PZXMHb4OKVbnPfU7aW/wyeWGWxhEYyr9ddLOYQ9G1HHYCwmNCphE2', 'Tin', 'Vo', 'HCM', '0762023345', 'trantinvo@gmail.com', '2024-01-09 13:40:16', 1, 1, '1704879162-1700900714-anh2ban.jpg');
+(13, 'tinvo', '$2y$10$PZXMHb4OKVbnPfU7aW/wyeWGWxhEYyr9ddLOYQ9G1HHYCwmNCphE2', 'Tin', 'Vo', 'HCM', '0762023345', 'trantinvo@gmail.com', '2024-01-09 13:40:16', 1, 1, '1704906129-graph.png'),
+(14, 'duc', '$2y$10$FNGam5uK7AspFYi12VGy2uupSEv01gVqBsx8kPCc9BuIJd7.s5FgG', 'minh', 'nguyen', 'Dương Nội, Hà Đông, Hà Nội', '0762023398', 'ducn71@gmail.com', '2024-01-11 00:08:16', 1, 0, '1704906515-optimise.jpg');
 
 -- --------------------------------------------------------
 
@@ -151,7 +152,7 @@ CREATE TABLE `invoiceshipments` (
   `email` varchar(255) DEFAULT '',
   `shipment_date` date DEFAULT current_timestamp(),
   `total` float DEFAULT 0,
-  `status` enum('pending','processing','shipped','delivered','cancelled') DEFAULT 'processing',
+  `status` enum('chờ xử lý','đang xử lý','đã giao','đã huỷ') DEFAULT 'chờ xử lý',
   `shipping_method` enum('COD','OnlineBanking') DEFAULT 'COD',
   `is_active` tinyint(1) DEFAULT 1,
   `description` varchar(255) DEFAULT ''
@@ -162,15 +163,15 @@ CREATE TABLE `invoiceshipments` (
 --
 
 INSERT INTO `invoiceshipments` (`id`, `Supplier_id`, `name`, `phone`, `email`, `shipment_date`, `total`, `status`, `shipping_method`, `is_active`, `description`) VALUES
-(9, 1, 'duc', '', '', '2023-01-06', 144000, 'delivered', 'COD', 1, ''),
-(10, 1, 'duc', '', '', '2023-02-06', 144000, 'processing', 'OnlineBanking', 1, ''),
-(12, 1, 'duc', '', '', '2023-06-06', 144000, 'pending', 'OnlineBanking', 1, ''),
-(13, 3, 'Hoang Anh', '0987656789', '', '2023-08-08', 144000, 'delivered', 'COD', 1, ''),
-(14, 3, 'Leipzig ', '0123456789', '', '2023-10-16', 144000, 'delivered', 'OnlineBanking', 1, ''),
-(15, 3, 'Leipzig ', '0987654321', '', '2023-12-16', 3000000, 'delivered', 'COD', 1, ''),
-(16, 1, 'Phùng Thanh Độ', '0343747383', '', '2023-12-27', 700000, 'delivered', 'COD', 1, ''),
-(17, 4, 'Nguyễn Minh Đức', '0997767834', '', '2024-01-09', 450000, 'pending', 'COD', 1, ''),
-(18, 2, 'Tin Vo', '0998785338', '', '2024-01-09', 300000, 'pending', 'COD', 1, '');
+(9, 1, 'duc', '', '', '2023-01-06', 144000, 'đã giao', 'COD', 1, ''),
+(10, 1, 'duc', '', '', '2023-02-06', 144000, 'chờ xử lý', 'OnlineBanking', 1, ''),
+(12, 1, 'duc', '', '', '2023-06-06', 144000, 'đã giao', 'OnlineBanking', 1, ''),
+(13, 3, 'Hoang Anh', '0987656789', '', '2023-08-08', 144000, 'đã giao', 'COD', 1, ''),
+(14, 3, 'Leipzig ', '0123456789', '', '2023-10-16', 144000, 'đã giao', 'OnlineBanking', 1, ''),
+(15, 3, 'Leipzig ', '0987654321', '', '2023-12-16', 3000000, 'đã giao', 'COD', 1, ''),
+(16, 1, 'Phùng Thanh Độ', '0343747383', '', '2023-12-27', 700000, 'đã giao', 'COD', 1, ''),
+(17, 4, 'Nguyễn Minh Đức', '0997767834', '', '2024-01-09', 450000, 'đã giao', 'COD', 1, ''),
+(18, 2, 'Tin Vo', '0998785338', '', '2024-01-09', 300000, 'đã giao', 'COD', 1, '');
 
 -- --------------------------------------------------------
 
@@ -236,7 +237,7 @@ CREATE TABLE `orders` (
   `address` varchar(100) NOT NULL,
   `total` float DEFAULT NULL,
   `note` varchar(100) DEFAULT '',
-  `status` enum('pending','processing','shipped','delivered','cancelled') DEFAULT 'pending',
+  `status` enum('chờ xử lý','đang xử lý','đã giao','đã huỷ') DEFAULT 'chờ xử lý',
   `payment_method` enum('COD','OnlineBanking') DEFAULT 'COD',
   `is_active` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -246,29 +247,29 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `order_date`, `customer_id`, `fullname`, `email`, `phone`, `address`, `total`, `note`, `status`, `payment_method`, `is_active`) VALUES
-(2, '2023-02-12', 1, 'Minh Đức Minh ', 'duc@gmail.com', '0762023368', 'Số 7, ngách 88/17, TDP Hòa Bình, Dương Nội, Hà Đông, Hà Nội', 189000, '{\"text\":\"Good luck\",\"account\":\"12322244490\",\"bankmaster\": \"Nguyen Minh Duc\"}', 'delivered', 'OnlineBanking', 1),
-(4, '2023-01-12', 1, 'Minh Đức Minh ', 'duc@gmail.com', '0762023368', 'Số 7, ngách 88/17, TDP Hòa Bình, Dương Nội, Hà Đông, Hà Nội', 175000, '{\"text\":\"Hi\",\"account\":\"0493422892984\",\"bankmaster\": \"Nguyen Minh Duc\"}', 'processing', 'COD', 1),
-(6, '2023-02-12', 1, '', 'duc@gmail.com', '', '', 5000, '{\"text\":\"Hi\",\"account\":\"0493422893583583\",\"bankmaster\": \"Nguyen Minh Duc\"}', 'processing', 'OnlineBanking', 1),
-(8, '2023-03-12', 1, '', 'duc@gmail.com', '', '', 125000, '{\"text\":\"Hi\",\"account\":\"049342289242253\",\"bankmaster\": \"Nguyen Minh Duc\"}', 'processing', 'OnlineBanking', 1),
-(10, '2023-04-12', 1, '', 'duc@gmail.com', '', '', 25000, '{\"text\":\"Hi\",\"account\":\"04934228924649845\",\"bankmaster\": \"Nguyen Minh Duc\"}', 'delivered', 'OnlineBanking', 1),
-(16, '2023-05-13', 2, 'Dang Cuong', 'ngminducc@gmail.com', '0999345908', 'Hà Nội', 465000, '{\"text\":\"Hi\",\"account\":\"0493422892353853\",\"bankmaster\": \"Dang Van Cuong\"}', 'delivered', 'OnlineBanking', 1),
-(19, '2023-06-13', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 5000, '{\"text\":\"Hi\",\"account\":\"049342289338759\",\"bankmaster\": \"Dang Hoang Anh\"}', 'cancelled', 'OnlineBanking', 1),
-(21, '2023-07-16', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 65000, '{\"text\":\"Hi\",\"account\":\"049342289313413\",\"bankmaster\":\"Dang Hoang Anh\"}', 'cancelled', 'OnlineBanking', 1),
-(22, '2023-08-16', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 50000, '{\"text\":\"Hi\",\"account\":\"049342282131\",\"bankmaster\":\"Dang Hoang Anh\"}', 'delivered', 'OnlineBanking', 1),
-(23, '2023-09-20', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 290000, '{\"text\":\"Hi\",\"account\":\"04934228923242\",\"bankmaster\":\"Dang Hoang Anh\"}', 'processing', 'OnlineBanking', 1),
-(24, '2023-10-22', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 240000, '{\"text\":\"Hihi\",\"account\":\"313113232424\",\"bankmaster\":\"Dang Hoang Anh\"}', 'delivered', 'OnlineBanking', 1),
-(25, '2023-11-22', 4, 'Dac Dat', 'dat@gmail.com', '0762023369', 'Tổ 7 Huyền Kỳ', 65000, '{\"text\":\"ngu\",\"account\":\"313113232424\",\"bankmaster\":\"Nguyen Dac Dat\"}', 'pending', 'OnlineBanking', 1),
-(26, '2023-12-22', 4, 'Dac Dat', 'dat@gmail.com', '0762023369', 'Tổ 7 Huyền Kỳ', 70000, '{\"text\":\"\",\"account\":\"\",\"bankmaster\":\"\"}', 'delivered', 'OnlineBanking', 1),
-(27, '2023-12-22', 4, 'Dac Dat', 'dat@gmail.com', '0762023369', 'Tổ 7 Huyền Kỳ', 80000, '{\"text\":\"\",\"account\":\"0762023369\",\"bankmaster\":\"Dac Dat\"}', 'pending', 'COD', 1),
-(28, '2023-12-27', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 54000, '{\"text\":\"\",\"account\":\"0987654321\",\"bankmaster\":\"Hoang Anh\"}', 'pending', 'COD', 1),
-(29, '2024-01-03', 12, 'Lionel Messi', 'm10@gmail.com', '0762023361', 'Argentina ', 290000, '{\"text\":\"\",\"account\":\"0762023361\",\"bankmaster\":\"Lionel Messi\"}', 'delivered', 'COD', 1),
-(30, '2024-01-03', 12, 'Lionel Messi', 'm10@gmail.com', '0762023361', 'Argentina ', 240000, '{\"text\":\"\",\"account\":\"0762023361\",\"bankmaster\":\"Lionel Messi\"}', 'delivered', 'COD', 1),
-(31, '2024-01-04', 12, 'Lionel Messi', 'm10@gmail.com', '0762023361', 'Argentina ', 190000, '{\"text\":\"\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'delivered', 'OnlineBanking', 1),
-(32, '2024-01-04', 12, 'Lionel Messi', 'm10@gmail.com', '0762023361', 'Argentina ', 110000, '{\"text\":\"\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'delivered', 'OnlineBanking', 1),
-(33, '2024-01-04', 12, 'Lionel Messi', 'm10@gmail.com', '0762023361', 'Argentina ', 240000, '{\"text\":\"\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'delivered', 'OnlineBanking', 1),
-(34, '2024-01-08', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Cầu Giấy, Hà Nội', 215000, '{\"text\":\"\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'pending', 'OnlineBanking', 1),
-(35, '2024-01-09', 13, 'Tin Võ', 'trantinvo@gmail.com', '0762023368', 'Số 7, ngách 88/17, La Nội, Dương Nội, Hà Đông, Hà Nội', 15000, '{\"text\":\"good luck\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'pending', 'OnlineBanking', 1),
-(36, '2024-01-09', 3, 'Tin Vo', '123@gmail.com', '0762023368', 'Số 7, ngách 88/17, TDP Hòa Bình, Dương Nội, Hà Đông, Hà Nội', 70000, '{\"text\":\"good luck\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'pending', 'OnlineBanking', 1);
+(2, '2023-02-12', 1, 'Minh Đức Minh ', 'duc@gmail.com', '0762023368', 'Số 7, ngách 88/17, TDP Hòa Bình, Dương Nội, Hà Đông, Hà Nội', 189000, '{\"text\":\"Good luck\",\"account\":\"12322244490\",\"bankmaster\": \"Nguyen Minh Duc\"}', 'đã giao', 'OnlineBanking', 1),
+(4, '2023-01-12', 1, 'Minh Đức Minh ', 'duc@gmail.com', '0762023368', 'Số 7, ngách 88/17, TDP Hòa Bình, Dương Nội, Hà Đông, Hà Nội', 175000, '{\"text\":\"Hi\",\"account\":\"0493422892984\",\"bankmaster\": \"Nguyen Minh Duc\"}', 'đã giao', 'COD', 1),
+(6, '2023-02-12', 1, '', 'duc@gmail.com', '', '', 5000, '{\"text\":\"Hi\",\"account\":\"0493422893583583\",\"bankmaster\": \"Nguyen Minh Duc\"}', 'đã giao', 'OnlineBanking', 1),
+(8, '2023-03-12', 1, '', 'duc@gmail.com', '', '', 125000, '{\"text\":\"Hi\",\"account\":\"049342289242253\",\"bankmaster\": \"Nguyen Minh Duc\"}', 'đã giao', 'OnlineBanking', 1),
+(10, '2023-04-12', 1, '', 'duc@gmail.com', '', '', 25000, '{\"text\":\"Hi\",\"account\":\"04934228924649845\",\"bankmaster\": \"Nguyen Minh Duc\"}', 'đang xử lý', 'OnlineBanking', 1),
+(16, '2023-05-13', 2, 'Dang Cuong', 'ngminducc@gmail.com', '0999345908', 'Hà Nội', 465000, '{\"text\":\"Hi\",\"account\":\"0493422892353853\",\"bankmaster\": \"Dang Van Cuong\"}', 'đã giao', 'OnlineBanking', 1),
+(19, '2023-06-13', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 5000, '{\"text\":\"Hi\",\"account\":\"049342289338759\",\"bankmaster\": \"Dang Hoang Anh\"}', 'đã giao', 'OnlineBanking', 1),
+(21, '2023-07-16', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 65000, '{\"text\":\"Hi\",\"account\":\"049342289313413\",\"bankmaster\":\"Dang Hoang Anh\"}', 'chờ xử lý', 'OnlineBanking', 1),
+(22, '2023-08-16', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 50000, '{\"text\":\"Hi\",\"account\":\"049342282131\",\"bankmaster\":\"Dang Hoang Anh\"}', 'đã giao', 'OnlineBanking', 1),
+(23, '2023-09-20', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 290000, '{\"text\":\"Hi\",\"account\":\"04934228923242\",\"bankmaster\":\"Dang Hoang Anh\"}', 'đã giao', 'OnlineBanking', 1),
+(24, '2023-10-22', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 240000, '{\"text\":\"Hihi\",\"account\":\"313113232424\",\"bankmaster\":\"Dang Hoang Anh\"}', 'đã giao', 'OnlineBanking', 1),
+(25, '2023-11-22', 4, 'Dac Dat', 'dat@gmail.com', '0762023369', 'Tổ 7 Huyền Kỳ', 65000, '{\"text\":\"ngu\",\"account\":\"313113232424\",\"bankmaster\":\"Nguyen Dac Dat\"}', 'đã giao', 'OnlineBanking', 1),
+(26, '2023-12-22', 4, 'Dac Dat', 'dat@gmail.com', '0762023369', 'Tổ 7 Huyền Kỳ', 70000, '{\"text\":\"\",\"account\":\"\",\"bankmaster\":\"\"}', 'đã giao', 'OnlineBanking', 1),
+(27, '2023-12-22', 4, 'Dac Dat', 'dat@gmail.com', '0762023369', 'Tổ 7 Huyền Kỳ', 80000, '{\"text\":\"\",\"account\":\"0762023369\",\"bankmaster\":\"Dac Dat\"}', 'đã giao', 'COD', 1),
+(28, '2023-12-27', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 54000, '{\"text\":\"\",\"account\":\"0987654321\",\"bankmaster\":\"Hoang Anh\"}', 'đã giao', 'COD', 1),
+(29, '2024-01-03', 12, 'Lionel Messi', 'm10@gmail.com', '0762023361', 'Argentina ', 290000, '{\"text\":\"\",\"account\":\"0762023361\",\"bankmaster\":\"Lionel Messi\"}', 'đã giao', 'COD', 1),
+(30, '2024-01-03', 12, 'Lionel Messi', 'm10@gmail.com', '0762023361', 'Argentina ', 240000, '{\"text\":\"\",\"account\":\"0762023361\",\"bankmaster\":\"Lionel Messi\"}', 'đã giao', 'COD', 1),
+(31, '2024-01-04', 12, 'Lionel Messi', 'm10@gmail.com', '0762023361', 'Argentina ', 190000, '{\"text\":\"\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'đã giao', 'OnlineBanking', 1),
+(32, '2024-01-04', 12, 'Lionel Messi', 'm10@gmail.com', '0762023361', 'Argentina ', 110000, '{\"text\":\"\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'đã giao', 'OnlineBanking', 1),
+(33, '2024-01-04', 12, 'Lionel Messi', 'm10@gmail.com', '0762023361', 'Argentina ', 240000, '{\"text\":\"\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'đã giao', 'OnlineBanking', 1),
+(34, '2024-01-08', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Cầu Giấy, Hà Nội', 215000, '{\"text\":\"\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'đã giao', 'OnlineBanking', 1),
+(35, '2024-01-09', 13, 'Tin Võ', 'trantinvo@gmail.com', '0762023368', 'Số 7, ngách 88/17, La Nội, Dương Nội, Hà Đông, Hà Nội', 15000, '{\"text\":\"good luck\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'đã giao', 'OnlineBanking', 1),
+(36, '2024-01-09', 3, 'Tin Vo', '123@gmail.com', '0762023368', 'Số 7, ngách 88/17, TDP Hòa Bình, Dương Nội, Hà Đông, Hà Nội', 70000, '{\"text\":\"good luck\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'đã giao', 'OnlineBanking', 1);
 
 -- --------------------------------------------------------
 
@@ -419,7 +420,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT cho bảng `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `invoiceshipmentdetails`

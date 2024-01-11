@@ -106,7 +106,7 @@ if ($_POST['action'] && $_POST['action'] == 'update') {
         $sql = "UPDATE Orders SET status = '$status' WHERE id = '$id'";
         $data = Query($sql, db());
 
-        if ($status == 'cancelled') {
+        if ($status == 'đã huỷ') {
             $sql1 = "SELECT product_id, quantity FROM OrderDetails WHERE order_id = $id";
             $orderDetails = Query($sql1, db());
  
@@ -161,7 +161,7 @@ if ($_POST['action'] && $_POST['action'] == 'revenue_annual'){
     $sql = "SELECT
             SUM(total) AS total_revenue 
             FROM orders
-            WHERE orders.status = 'delivered'
+            WHERE orders.status = 'đã giao'
             AND YEAR(order_date) = YEAR(CURDATE())
             ";
     $data = Query($sql, db());
@@ -173,7 +173,7 @@ if ($_POST['action'] && $_POST['action'] == 'revenue_monthly'){
         MONTH(order_date) AS month,
         SUM(total) AS total_revenue
         FROM orders
-        WHERE orders.status = 'delivered'
+        WHERE orders.status = 'đã giao'
         AND YEAR(order_date) = YEAR(CURDATE())
         GROUP BY MONTH(order_date)";
     $data = Query($sql, db());
@@ -184,7 +184,7 @@ if ($_POST['action'] && $_POST['action'] == 'revenue_currentMonth'){
     $sql = "SELECT
             SUM(total) AS total_revenue 
             FROM orders
-            WHERE orders.status = 'delivered'
+            WHERE orders.status = 'đã giao'
             AND MONTH(order_date) = MONTH(CURDATE())";
     $data = Query($sql, db());
     echo json_encode($data[0]);
@@ -193,7 +193,7 @@ if ($_POST['action'] && $_POST['action'] == 'revenue_currentMonth'){
 if ($_POST['action'] && $_POST['action'] == 'revenue_currentDate'){
     $sql = "SELECT SUM(total) AS total_revenue
         FROM orders
-        WHERE orders.status = 'delivered'
+        WHERE orders.status = 'đã giao'
         AND DATE_FORMAT(order_date, '%Y-%m-%d') = CURDATE()";
     $data = Query($sql, db());
     echo json_encode($data[0]);
@@ -202,7 +202,7 @@ if ($_POST['action'] && $_POST['action'] == 'revenue_currentDate'){
 if ($_POST['action'] && $_POST['action'] == 'number_customer_currentDate'){
     $sql = "SELECT COUNT(DISTINCT customer_id) AS number_customer
         FROM orders
-        WHERE orders.status = 'delivered'
+        WHERE orders.status = 'đã giao'
         AND DATE_FORMAT(order_date, '%Y-%m-%d') = CURDATE()
         ";
     $data = Query($sql, db());
@@ -211,7 +211,7 @@ if ($_POST['action'] && $_POST['action'] == 'number_customer_currentDate'){
 if ($_POST['action'] && $_POST['action'] == 'number_customer_currentMonth'){
     $sql = "SELECT COUNT(DISTINCT customer_id) AS number_customer
         FROM orders
-        WHERE orders.status = 'delivered'
+        WHERE orders.status = 'đã giao'
         AND MONTH(order_date) = MONTH(CURDATE())";
     $data = Query($sql, db());
     echo json_encode($data[0]);
@@ -219,7 +219,7 @@ if ($_POST['action'] && $_POST['action'] == 'number_customer_currentMonth'){
 if ($_POST['action'] && $_POST['action'] == 'number_customer_currentYear'){
     $sql = "SELECT COUNT(DISTINCT customer_id) AS number_customer
         FROM orders
-        WHERE orders.status = 'delivered'
+        WHERE orders.status = 'đã giao'
         AND YEAR(order_date) = YEAR(CURDATE())";
     $data = Query($sql, db());
     echo json_encode($data[0]);
