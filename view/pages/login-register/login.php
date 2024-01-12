@@ -117,6 +117,7 @@
                         localStorage.setItem("fullName", data[0].first_name + ' ' + data[0].last_name)
                         localStorage.setItem("address", data[0].address)
                         localStorage.setItem("isAdmin", data[0].is_admin)
+                        localStorage.setItem("avt", data[0].avt)
                         if(data[0].is_admin == 1){
                           Swal.fire({
                                 title: "Done",

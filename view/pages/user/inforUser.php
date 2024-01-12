@@ -242,6 +242,8 @@
             let username = localStorage.getItem('fullName')
             $('#username').html(`${username}`)
             let userId =localStorage.getItem('userId')
+            let avtURL =localStorage.getItem('avt')
+            avtURL != '' ? $('#customer-avt').attr('src', `../../../uploads/avt/${avtURL}`): $('#avatar').attr('src', "../../../img/undraw_profile.svg")
             FindUserById(userId)
             showCart()
         })

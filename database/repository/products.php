@@ -6,7 +6,31 @@
         IFNULL(quantity,0) AS quantity_sold 
         FROM Products JOIN Categories ON Products.category_id = Categories.ID
         LEFT JOIN orderDetails ON Products.id = orderDetails.product_id 
-        LEFT JOIN orders ON orders.id = orderdetails.order_id AND orders.status = 'delivered'
+        LEFT JOIN orders ON orders.id = orderdetails.order_id AND orders.status = 'đã giao'
+        GROUP BY Products.id";
+        $data = Query($sql, db());
+        echo json_encode($data);
+    }
+
+    if($_POST['action'] && $_POST['action'] == 'bestseller'){
+        $sql = "SELECT  Products.name as productname, Products.price, image, Categories.name as categoryname, Products.id as id, Categories.id as categoryid, Products.is_active, Products.created_at, Products.quantity_in_stock as qis,
+        IFNULL(quantity,0) AS quantity_sold 
+        FROM Products JOIN Categories ON Products.category_id = Categories.ID
+        LEFT JOIN orderDetails ON Products.id = orderDetails.product_id 
+        LEFT JOIN orders ON orders.id = orderdetails.order_id AND orders.status = 'đã giao'
+        GROUP BY Products.id
+        HAVING quantity_sold >= 10";
+        $data = Query($sql, db());
+        echo json_encode($data);
+    }
+
+    if($_POST['action'] && $_POST['action'] == 'almostoutofstock'){
+        $sql = "SELECT  Products.name as productname, Products.price, image, Categories.name as categoryname, Products.id as id, Categories.id as categoryid, Products.is_active, Products.created_at, Products.quantity_in_stock as qis,
+        IFNULL(quantity,0) AS quantity_sold 
+        FROM Products JOIN Categories ON Products.category_id = Categories.ID
+        LEFT JOIN orderDetails ON Products.id = orderDetails.product_id 
+        LEFT JOIN orders ON orders.id = orderdetails.order_id AND orders.status = 'đã giao'
+        WHERE Products.quantity_in_stock <= 20
         GROUP BY Products.id";
         $data = Query($sql, db());
         echo json_encode($data);
@@ -16,7 +40,11 @@
             
             $page = $_POST['page'];
             $productsPerPage = 8 * ($page - 1);
-            $sql = "SELECT  Products.name as productname, price, image, Categories.name as categoryname, Products.id as id, Categories.id as categoryid, Products.is_active, Products.created_at FROM Products JOIN Categories ON Products.category_id = Categories.ID 
+            $searchQuery = $_POST['search'];
+
+            $sql = "SELECT  Products.name as productname, price, image, Categories.name as categoryname, Products.id as id, Categories.id as categoryid, Products.is_active, Products.created_at 
+            FROM Products JOIN Categories ON Products.category_id = Categories.ID 
+            WHERE Products.name LIKE '%$searchQuery%'
             LIMIT 8 OFFSET $productsPerPage";
             $data = Query($sql, db());
             
@@ -117,6 +145,8 @@
         $categoryid = $_POST['categoryid'];
         $id = $_POST['id'];
         $description = $_POST['description'];
+        $oldImg = $_POST['oldImg'];
+
         if($productname == '' || $price == '' || $categoryid == '' || $description == '') {
             echo json_encode([
                 'status' => 400,
@@ -129,9 +159,13 @@
             $time = time();
             $filename = $time."-".$image['name'];
             $tmp_path = $image['tmp_name'];
-            $destination = '../../uploads/' . $filename;
+            $destination = '../../uploads/'.$filename;
             move_uploaded_file($tmp_path, $destination);
-            $updateImage = "image='$filename,'";
+            $updateImage = "image='$filename',";
+
+            if (file_exists('../../uploads/'.$oldImg)) {
+                unlink('../../uploads/'.$oldImg);
+            }
         }else {
             $updateImage = "";
         }

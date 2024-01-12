@@ -49,7 +49,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid m-auto my-4 justify-content-center col-10">
-                <a class="btn btn-sm btn-outline-secondary border-300 me-2 mb-3 shadow-none" href="./orders.php"><i class="fas fa-fw fa-chevron-left"></i>Back to order list</a>
+                <a class="btn btn-sm btn-outline-secondary border-300 me-2 mb-3 shadow-none" href="./orders.php"><i class="fas fa-fw fa-chevron-left"></i>Trở lại</a>
                 
                     <div class="order-infor">
 
@@ -174,6 +174,8 @@
         $(document).ready(() => {
             let username = localStorage.getItem('fullName')
             $('#username').html(`${username}`)
+            let avtURL =localStorage.getItem('avt')
+            avtURL != '' ? $('#admin-avt').attr('src', `../../../uploads/avt/${avtURL}`): $('#avatar').attr('src', "../../../img/admin.png")
             var urlParams = new URLSearchParams(window.location.search);
             var id = urlParams.get('id');
             getOrder(id)
@@ -351,7 +353,7 @@
                                 </tr>
                                 <tr class="border-top">
                                 <th class="text-900 fw-bold">Tổng hoá đơn:</th>
-                                <td class="fw-semi-bold">${formatMoney(subtotal-55+20)}</td>
+                                <td class="fw-semi-bold">${formatMoney(subtotal-55000+20000)}</td>
                                 </tr>
                             </tbody></table>
                             </div>

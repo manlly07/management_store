@@ -157,7 +157,7 @@
             SUM(total) AS total
             FROM InvoiceShipments
             WHERE InvoiceShipments.status = 'đã giao'
-            -- AND YEAR(shipment_date) = YEAR(CURDATE())
+            AND YEAR(shipment_date) = YEAR(CURDATE())
             GROUP BY MONTH(shipment_date)";
         $data = Query($sql, db());
         echo json_encode($data);

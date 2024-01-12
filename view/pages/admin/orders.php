@@ -207,6 +207,8 @@
         $(document).ready(() => {
             let username = localStorage.getItem('fullName')
             $('#username').html(`${username}`)
+            let avtURL =localStorage.getItem('avt')
+            avtURL != '' ? $('#admin-avt').attr('src', `../../../uploads/avt/${avtURL}`): $('#avatar').attr('src', "../../../img/admin.png")
             showAllInvoice();
         })
         const showAllInvoice = () => {
@@ -218,11 +220,11 @@
                 },
                 success: (response) => {
                     console.log(JSON.parse(response));
-                    let invoices = JSON.parse(response)
+                    let orders = JSON.parse(response)
                     $('#dataTable').DataTable({
                         searching: true,
                         paging: true,
-                        data: invoices,
+                        data: orders,
                         columns: [
                             {
                                 data: 'order_id',
@@ -241,11 +243,12 @@
                             {
                                 data: null,
                                 render: function(data, type, row) {
+                                    let avtURL = row.avt != '' ? `../../../uploads/avt/${row.avt}` : '../../../img/undraw_profile.svg'
                                     return `
                                     <div class="d-flex justify-content-start align-items-center">
                                                     <div class="avatar-wrapper">
                                                         <div class="avatar avatar-sm me-2">
-                                                            <img src="../../../img/undraw_profile.svg" alt="Avatar" class="rounded-circle" />
+                                                            <img src="${avtURL}" alt="Avatar" class="rounded-circle" width="45px" height="45px" />
                                                         </div>
                                                     </div>
                                                     <div class="d-flex flex-column gap-1">

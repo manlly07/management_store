@@ -141,7 +141,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add User</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Thêm tài khoản</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -154,27 +154,27 @@
                                 <input type="text" name="username" class="form-control" id="username" placeholder="Username">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="password">Password</label>
+                                <label for="password">Mật khẩu</label>
                                 <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="firstname">Firstname</label>
+                                <label for="firstname">Tên</label>
                                 <input type="text" name="fname" class="form-control" id="firstname" placeholder="Firstname">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="Lastname">Lastname</label>
+                                <label for="Lastname">Họ</label>
                                 <input type="text" name="lname" class="form-control" id="Lastname" placeholder="Lastname">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputAddress">Address</label>
+                            <label for="inputAddress">Địa chỉ</label>
                             <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="Phone">Phone</label>
+                                <label for="Phone">SĐT</label>
                                 <input type="number" name="phone" class="form-control" id="Phone" placeholder="Phone">
                             </div>
                             <div class="form-group col-md-6">
@@ -188,8 +188,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-primary">Thêm</button>
                         </div>
                     </form>
                 </div>
@@ -348,6 +348,8 @@
         $(document).ready(() => {
             let username = localStorage.getItem('fullName')
             $('#username').html(`${username}`)
+            let avtURL =localStorage.getItem('avt')
+            avtURL != '' ? $('#admin-avt').attr('src', `../../../uploads/avt/${avtURL}`): $('#avatar').attr('src', "../../../img/admin.png")
             showAllUsers();
         })
         const showAllUsers = () => {

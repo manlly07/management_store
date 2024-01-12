@@ -258,6 +258,8 @@
         $(document).ready(() => {
             let username = localStorage.getItem('fullName')
             $('#username').html(`${username}`)
+            let avtURL =localStorage.getItem('avt')
+            avtURL != '' ? $('#admin-avt').attr('src', `../../../uploads/avt/${avtURL}`): $('#avatar').attr('src', "../../../img/admin.png")
             showAllInvoice();
         })
         const showAllInvoice = () => {

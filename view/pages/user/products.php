@@ -45,7 +45,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style="min-height: 85vh;">
                 
                 <div>
                     <!-- <h5>Bộ lọc tìm kiếm</h5> -->
@@ -143,10 +143,13 @@
         $(document).ready(() => {
             let username = localStorage.getItem('fullName')
             $('#username').html(`${username}`)
+            let avtURL =localStorage.getItem('avt')
+            avtURL != '' ? $('#customer-avt').attr('src', `../../../uploads/avt/${avtURL}`): $('#avatar').attr('src', "../../../img/undraw_profile.svg")    
             var urlParams = new URLSearchParams(window.location.search);
             showCart()
             var page = urlParams.get('page');
-            showAllProducts(parseInt(page));
+            searchQuery = ''
+            showAllProducts(parseInt(page), searchQuery);
         })
 
         function formatMoney(number) {
@@ -178,19 +181,34 @@
             })
         }
 
-        const showAllProducts = (currentPage) => {
+        let products = []
+
+        // $('#search-input').keypress(function(event) {
+        //     if (event.keyCode === 13) { // Enter key pressed
+        //         const searchQuery = $(this).val();
+        //         showAllProducts(1, searchQuery);
+        //     }
+        // });
+        $('#search-input').on('change', function() {
+            const searchQuery = $(this).val();
+            showAllProducts(1, searchQuery);
+        });
+
+        const showAllProducts = (currentPage, searchQuery = '') => {
             $.ajax({
                 url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',
                 data: {
                     action: "view",
                     page: currentPage,
+                    search: searchQuery
                 },
                 success: (response) => {
-                    console.log(JSON.parse(response));
                     let data = JSON.parse(response)
-                    let products = data.products
-                    products.forEach(product => {
+                    products = data.products
+                    let productsFiltered = products.filter(product => product.productname.toLowerCase().includes(searchQuery.toLowerCase()));
+                    $('.products').html('')
+                    productsFiltered.forEach(product => {
                         let htmls = `
                             <div class="col-3 mb-5 ">
                                             <div class="card w-80 h-100 shadow-lg">
@@ -237,7 +255,7 @@
             const totalPages = Math.ceil(count / 8);
             const currentPage = page;
             // Clear previous pagination
-
+            $(".pageNumber").html('')
             // Generate pagination links
             for (let i = 1; i <= totalPages; i++) {
                 let activeClass = "";
@@ -245,7 +263,6 @@
                     activeClass = "active";
                     localStorage.setItem('currentPage')
                 }
-
                 const html = `
                 <li class="page-item ${activeClass}">
                     <a class="page-link" href="./products.php?page=${i}" onclick="showAllProducts(${i})">${i}</a>

@@ -230,6 +230,7 @@
                             <div class="form-group m-auto">
                                 <img src="" alt="" class="w-100 ratio ratio-1x1 avatar" id="avatar" style="width: 300px; height:300px; object-fit: cover">
                                 <input type="text" class="id" hidden>
+                                <input type="text" name="" hidden class="old-img">
                             </div>
                         </div>
                         <div class="form-row">
@@ -271,6 +272,8 @@
         $(document).ready(() => {
             let username = localStorage.getItem('fullName')
             $('#username').html(`${username}`)
+            let avtURL =localStorage.getItem('avt')
+            avtURL != '' ? $('#admin-avt').attr('src', `../../../uploads/avt/${avtURL}`): $('#admin-avt').attr('src', "../../../img/admin.png")
             showAllProducts();
             showAllCategory();
         })
@@ -306,6 +309,7 @@
                             {
                                 data: null,
                                 render: function(data, type, row) {
+                                    
                                     return `<div class="d-flex gap-2 align-items-center">
                                             <div class="w-4 h-4">
                                                  <img src="../../../uploads/${row.image}" style="width: 100px; height:100px; object-fit: cover"/>
@@ -526,6 +530,8 @@
                 data: `id=${id}&action=getbyid`,
                 success: (response) => {
                     let data = JSON.parse(response)
+                    console.log(data['image']);
+                        $('.old-img').val(data['image'])
                         $('.productname').val(data['productName'])
                         $('.price').val(data['price'])
                         $('.description1').val(data.productDescription)
@@ -545,12 +551,13 @@
             formData.append('categoryid', $('.categoryid').val())
             formData.append('description', $('.description1').val())
             formData.append('action', "update")
+            formData.append('oldImg', $('.old-img').val())
             var img = $('.image')[0]
             if (img.files[0]) {
                 formData.append('image', img.files[0])
             }
 
-            console.log(formData);
+            console.log(img.files[0]);
             $.ajax({
                 url: 'http://localhost:3000/database/repository/products.php',
                 type: 'POST',

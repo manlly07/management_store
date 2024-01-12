@@ -21,6 +21,17 @@
     <!-- Custom styles for this page -->
     <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../../css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+
 </head>
 
 <body id="page-top">
@@ -117,8 +128,8 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Lượng người mua (theo ngày)</div>
+                                            <a href="./customer_date.php" class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Lượng người mua (theo ngày)</a>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800 customer-currentdate">0</div>
                                         </div>
                                         <div class="col-auto">
@@ -134,8 +145,8 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Lượng người mua (theo tháng)</div>
+                                            <a href="./customer_month.php" class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Lượng người mua (theo tháng)</a>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800 customer-currentmonth">0</div>
                                         </div>
                                         <div class="col-auto">
@@ -151,8 +162,8 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Lượng người mua (theo năm)</div>
+                                            <a href="./customer_year.php" class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Lượng người mua (theo năm)</a>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800 customer_annual">0</div>
                                         </div>
                                         <div class="col-auto">
@@ -268,6 +279,84 @@
                         
                     </div>
 
+                    <div class="shadow">
+                    <div class="card m-auto">
+                        <div class="card-header py-3 d-flex align-items-center">
+                            <h6 class="m-0 font-weight-bold text-primary">Sản phẩm bán chạy</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Sản Phẩm</th>
+                                            <th>Đơn Giá</th>
+                                            <th>Số hàng trong kho</th>
+                                            <th>Đã Bán</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Ngày Tạo</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                        <th>Sản Phẩm</th>
+                                            <th>Đơn Giá</th>
+                                            <th>Số hàng trong kho</th>
+                                            <th>Đã Bán</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Ngày Tạo</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody id="table-products">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="shadow mt-4">
+                    <div class="card m-auto">
+                        <div class="card-header py-3 d-flex align-items-center">
+                            <h6 class="m-0 font-weight-bold text-primary">Sản phẩm sắp hết hàng</h6>
+                            <a href="http://localhost:3000/view/pages/admin/addinvoice.php" class="ml-auto d-block btn btn-primary">
+                                <i class="fa fa-plus"></i>
+                                Nhập thêm sản phẩm
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Sản Phẩm</th>
+                                            <th>Đơn Giá</th>
+                                            <th>Số hàng trong kho</th>
+                                            <th>Đã Bán</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Ngày Tạo</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                        <th>Sản Phẩm</th>
+                                            <th>Đơn Giá</th>
+                                            <th>Số hàng trong kho</th>
+                                            <th>Đã Bán</th>
+                                            <th>Trạng Thái</th>
+                                            <th>Ngày Tạo</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody id="table-products">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
                     <!-- Content Row -->
                     
 
@@ -328,6 +417,15 @@
 
     <!-- Page level plugins -->
     <script src="../../../vendor/chart.js/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+
+    <script src="../../../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../../../js/demo/datatables-demo.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="../../../js/demo/chart-area-demo.js"></script>
@@ -337,10 +435,148 @@
         $(document).ready(() => {
             let username = localStorage.getItem('fullName')
             $('#username').html(`${username}`)
-
+            let avtURL =localStorage.getItem('avt')
+            avtURL != '' ? $('#admin-avt').attr('src', `../../../uploads/avt/${avtURL}`): $('#avatar').attr('src', "../../../img/admin.png")
             getRevenue()
             total()
+            bestseller()
+            almostoutofstock()
         })
+
+        function bestseller(){
+            $.ajax({
+                url: 'http://localhost:3000/database/repository/products.php',
+                type: 'POST',
+                data: {
+                    action: "bestseller"
+                },
+                success: (response) => {
+                    let products = JSON.parse(response)
+                    $('#dataTable').DataTable({
+                        searching: true,
+                        paging: true,
+                        data: products,
+                        columns: [
+                            {
+                                data: null,
+                                render: function(data, type, row) {
+                                    return `<div class="d-flex gap-2 align-items-center">
+                                            <div class="w-4 h-4">
+                                                 <img src="../../../uploads/${row.image}" style="width: 100px; height:100px; object-fit: cover"/>
+                                             </div>
+                                             <div class="d-flex flex-column mt-4">
+                                                <h6 class="fw-bold">${row.productname}</h6>
+                                                <p>${row.categoryname}</p>
+                                             </div>
+                                        </div>`
+                                }
+                            },
+                            {
+                                data: 'price',
+                                render: function(data, type, row) {
+                                    return formatMoney(row.price)
+                                }
+                            },
+                            {
+                                data: null,
+                                render: function(data, type, row) {
+                                    return `<div class="d-flex flex-column  align-items-center">
+                                            <p>${row.qis}</p>
+                                            <a class="text-danger" href="http://localhost:3000/view/pages/admin/addinvoice.php">${row.qis<=20 ? 'Sắp hết hàng, hãy nhập thêm': ''}</a>
+                                        </div>`
+                                }
+                            },
+                            {
+                                data: 'quantity_sold',
+                                render: function(data, type, row) {
+                                    return row.quantity_sold
+                                }
+                            },
+                            {
+                                data: 'is_active',
+                                render: function(data, type, row) {
+                                    return row.is_active == 0 ? `<button type="button" class="m-auto d-block btn-sm btn btn-outline-danger">Disable</button>` : `<button type="button" class="m-auto d-block btn-sm btn btn-outline-success">Enable</button>`
+                                }
+                            },
+                            {
+                                data: 'created_at',
+                                render: function(data, type, row) {
+                                    return row.created_at
+                                }
+                            }
+                        ],
+                    })
+                }
+            })
+        }
+
+        function almostoutofstock(){
+            $.ajax({
+                url: 'http://localhost:3000/database/repository/products.php',
+                type: 'POST',
+                data: {
+                    action: "almostoutofstock"
+                },
+                success: (response) => {
+                    let products = JSON.parse(response)
+                    console.log(products);
+                    $('#dataTable2').DataTable({
+                        searching: true,
+                        paging: true,
+                        data: products,
+                        columns: [
+                            {
+                                data: null,
+                                render: function(data, type, row) {
+                                    return `<div class="d-flex gap-2 align-items-center">
+                                            <div class="w-4 h-4">
+                                                 <img src="../../../uploads/${row.image}" style="width: 100px; height:100px; object-fit: cover"/>
+                                             </div>
+                                             <div class="d-flex flex-column mt-4">
+                                                <h6 class="fw-bold">${row.productname}</h6>
+                                                <p>${row.categoryname}</p>
+                                             </div>
+                                        </div>`
+                                }
+                            },
+                            {
+                                data: 'price',
+                                render: function(data, type, row) {
+                                    return formatMoney(row.price)
+                                }
+                            },
+                            {
+                                data: null,
+                                render: function(data, type, row) {
+                                    return `<div class="d-flex flex-column  align-items-center">
+                                            <p>${row.qis}</p>
+    
+                                        </div>`
+                                }
+                            },
+                            {
+                                data: 'quantity_sold',
+                                render: function(data, type, row) {
+                                    return row.quantity_sold
+                                }
+                            },
+                            {
+                                data: 'is_active',
+                                render: function(data, type, row) {
+                                    return row.is_active == 0 ? `<button type="button" class="m-auto d-block btn-sm btn btn-outline-danger">Disable</button>` : `<button type="button" class="m-auto d-block btn-sm btn btn-outline-success">Enable</button>`
+                                }
+                            },
+                            {
+                                data: 'created_at',
+                                render: function(data, type, row) {
+                                    return row.created_at
+                                }
+                            }
+                        ],
+                    })
+                }
+            })
+        }
 
         function formatMoney(number) {
             // Xác định số tiền
@@ -410,7 +646,6 @@
                 },
                 success: (response) => {
                     let result =JSON.parse(response)
-                    console.log(result);
                     $('.customer-currentdate').html(result.number_customer)
                 }
             })
@@ -423,7 +658,6 @@
                 },
                 success: (response) => {
                     let result =JSON.parse(response)
-                    console.log(result);
                     $('.customer-currentmonth').html(result.number_customer)
                 }
             })
@@ -436,7 +670,6 @@
                 },
                 success: (response) => {
                     let result =JSON.parse(response)
-                    console.log(result);
                     $('.customer_annual').html(result.number_customer)
                 }
             })

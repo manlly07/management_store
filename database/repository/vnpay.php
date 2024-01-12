@@ -22,7 +22,7 @@
         $vnp_OrderInfo = 'Noi dung thanh toan';
         $vnp_OrderType = 'billpayment';
         // $vnp_Amount = $_POST['amount'] * 100;
-        $vnp_Amount = $_POST['total'] * 1000 * 100;
+        $vnp_Amount = $_POST['total']* 100;
         $vnp_Locale = 'vn';
         $vnp_BankCode = 'NCB';
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];

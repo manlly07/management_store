@@ -230,6 +230,8 @@
         $(document).ready(() => {
           let username = localStorage.getItem('fullName')
           $('#username').html(`${username}`)
+          let avtURL =localStorage.getItem('avt')
+            avtURL != '' ? $('#customer-avt').attr('src', `../../../uploads/avt/${avtURL}`): $('#avatar').attr('src', "../../../img/undraw_profile.svg")
             showAllCart();
             inforUser()
             showCart()
@@ -264,6 +266,7 @@
             return money;
         }
         let formData = []
+        let total
         const showAllCart = () => {
             $.ajax({
               url: 'http://localhost:3000/database/repository/carts.php',
@@ -296,6 +299,7 @@
                     $('.subtotal').html(formatMoney(subtotal))
                     $('#summary').html('Số lượng: ' + number_item + ' (sản phẩm)')
                     $('.total-bill').html(formatMoney(total_bill))
+                    total =total_bill
                     $('.total-bill2').html('Tổng thanh toán: '+formatMoney(total_bill))
                 }
             })
@@ -343,7 +347,7 @@
           let phone = $('#phone').val()
           let address = $('#address').val()
           // let note = $('#note').val()
-          let total = parseFloat($('.total-bill2').html().slice(12,$('.total-bill2').html().length))
+          console.log(total);
           let pay_infor = {
             bank: $('#bank').val(),
             account: $('#account').val(),
@@ -412,30 +416,32 @@
                           }
                           },
                       })
-              }else{
+                  }else if(payment_method == 'COD'){
+                      $.ajax({
+                        url: 'http://localhost:3000/database/repository/orders.php',
+                        type: 'POST',
+                        data: payload,
+                        success: function(response) {
+                          // console.log(JSON.parse(response));
+                          console.log(payload);
+                          // Xử lý phản hồi thành công từ máy chủ
+                          let {status, message, order_id} = JSON.parse(response);
+                          if (status === 200) {
+                            Swal.fire({
+                              title: "Success!",
+                              text: "Đặt hàng thành công",
+                              icon: "success"
+                            });
+                            deleteCart()
+                            setTimeout(() => {
+                              window.location.href = `http://localhost:3000/view/pages/user/orderDetail.php?id=${order_id}`
+                            },2000)
+                          }else {
+                          }
+                          },
+                      })
 
-                $.ajax({
-                  url: 'http://localhost:3000/database/repository/orders.php',
-                  type: 'POST',
-                  data: payload,
-                  success: function(response) {
-                    // Xử lý phản hồi thành công từ máy chủ
-                    let {status, message, order_id} = JSON.parse(response);
-                    if (status === 200) {
-                      Swal.fire({
-                        title: "Success!",
-                        text: "Đặt hàng thành công",
-                        icon: "success"
-                      });
-                      deleteCart()
-                      setTimeout(() => {
-                        window.location.href = `http://localhost:3000/view/pages/user/orderDetail.php?id=${order_id}`
-                      },2000)
-                    }else {
                     }
-                    },
-                })
-              }
             }
           });
         }

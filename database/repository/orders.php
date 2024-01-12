@@ -2,9 +2,10 @@
 include '../config.php';
 
 if ($_POST['action'] && $_POST['action'] == 'view') {
-        $sql = "SELECT o.id AS order_id, o.order_date, o.fullname, c.email, c.phone, o.total, o.status, o.payment_method, o.note
+        $sql = "SELECT o.id AS order_id, o.order_date, o.fullname, c.email, c.phone, o.total, o.status, o.payment_method, o.note, c.avt
                 FROM Orders o
-                INNER JOIN Customers c ON o.customer_id = c.id";
+                INNER JOIN Customers c ON o.customer_id = c.id
+                ORDER BY o.order_date DESC";
         $data = Query($sql, db());
         echo json_encode($data);
     
@@ -33,7 +34,7 @@ if ($_POST['action'] && $_POST['action'] == 'viewByUserId'){
     $sql1 = "SELECT o.id AS order_id, o.order_date, o.total, o.status, o.payment_method, o.note
             FROM Orders o
             WHERE o.customer_id = $id
-            ORDER BY order_id DESC";
+            ORDER BY o.order_date DESC";
     $data = Query($sql1, db());
     echo json_encode($data);
 }
@@ -93,9 +94,54 @@ if ($_POST['action'] && $_POST['action'] == 'create') {
     } catch (PDOException $e) {
         echo json_encode([
             'status' => 400,
+            'message' => $e
+        ]);
+    }
+}
+
+if($_POST['action'] && $_POST['action'] == 'update1') {
+    $fullname = $_POST['name'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $note = $_POST['note'];  
+    $id = $_POST['id'];
+    if($fullname == '' || $address == '' || $phone == '') {
+        echo json_encode([
+            'status' => 400,
+            'message' => 'All fields must be required'
+        ]);
+        return;
+    }
+
+    $pattern = '/^[a-zA-Z\s]+$/';
+    // Biểu thức chính quy kiểm tra xem chuỗi chỉ bao gồm chữ thường và chữ hoa.
+    
+    $pattern = '/^(03|05|07|08|09)+([0-9]{8})$/';
+    if (!preg_match($pattern, $phone)) {
+        echo json_encode([
+            'status' => 400,
+            'message' => 'Phone number is invalid'
+        ]);
+        return;
+    }
+
+    $sql = "UPDATE `Orders`
+            SET `fullname` = '$fullname', `address` = '$address', `phone` = '$phone', `note` = '$note'
+            WHERE `id` = $id";
+
+    $data = Query($sql, db());
+    if(count($data) == 0) {
+        echo json_encode([
+            'status' => 200,
+            'message' => 'Successfully'
+        ]);
+    }else {
+        echo json_encode([
+            'status' => 400,
             'message' => 'Something went wrong'
         ]);
     }
+
 }
 
 if ($_POST['action'] && $_POST['action'] == 'update') {
@@ -185,7 +231,8 @@ if ($_POST['action'] && $_POST['action'] == 'revenue_currentMonth'){
             SUM(total) AS total_revenue 
             FROM orders
             WHERE orders.status = 'đã giao'
-            AND MONTH(order_date) = MONTH(CURDATE())";
+            AND MONTH(order_date) = MONTH(CURDATE())
+            AND YEAR(order_date) = YEAR(CURDATE())";
     $data = Query($sql, db());
     echo json_encode($data[0]);
 }
@@ -212,7 +259,8 @@ if ($_POST['action'] && $_POST['action'] == 'number_customer_currentMonth'){
     $sql = "SELECT COUNT(DISTINCT customer_id) AS number_customer
         FROM orders
         WHERE orders.status = 'đã giao'
-        AND MONTH(order_date) = MONTH(CURDATE())";
+        AND MONTH(order_date) = MONTH(CURDATE())
+        AND YEAR(order_date) = YEAR(CURDATE())";
     $data = Query($sql, db());
     echo json_encode($data[0]);
 }
@@ -223,4 +271,40 @@ if ($_POST['action'] && $_POST['action'] == 'number_customer_currentYear'){
         AND YEAR(order_date) = YEAR(CURDATE())";
     $data = Query($sql, db());
     echo json_encode($data[0]);
+}
+if ($_POST['action'] && $_POST['action'] == 'customer_currentYear_detail'){
+    $sql = "SELECT 
+        o.id AS order_id, o.order_date, o.fullname, c.email, c.phone, o.total, o.payment_method, o.note, c.avt
+        FROM orders o
+        INNER JOIN customers c ON o.customer_id = c.id
+        WHERE o.status = 'đã giao'
+        AND YEAR(order_date) = YEAR(CURDATE())
+        ORDER BY o.fullname";
+    $data = Query($sql, db());
+    echo json_encode($data);
+}
+
+if ($_POST['action'] && $_POST['action'] == 'customer_currentMonth_detail'){
+    $sql = "SELECT 
+        o.id AS order_id, o.order_date, o.fullname, c.email, c.phone, o.total, o.payment_method, o.note, c.avt
+        FROM orders o
+        INNER JOIN customers c ON o.customer_id = c.id
+        WHERE o.status = 'đã giao'
+        AND MONTH(order_date) = MONTH(CURDATE())
+        AND YEAR(order_date) = YEAR(CURDATE());
+        ORDER BY o.fullname";
+    $data = Query($sql, db());
+    echo json_encode($data);
+}
+
+if ($_POST['action'] && $_POST['action'] == 'customer_currentDate_detail'){
+    $sql = "SELECT 
+        o.id AS order_id, o.order_date, o.fullname, c.email, c.phone, o.total, o.payment_method, o.note, c.avt
+        FROM orders o
+        INNER JOIN customers c ON o.customer_id = c.id
+        WHERE o.status = 'đã giao'
+        AND DATE_FORMAT(order_date, '%Y-%m-%d') = CURDATE()
+        ORDER BY o.fullname";
+    $data = Query($sql, db());
+    echo json_encode($data);
 }
