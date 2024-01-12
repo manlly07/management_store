@@ -28,14 +28,13 @@
             $phone = $_POST['phone'];
             $shipment_date = $_POST['shipment_date'];
             $total = $_POST['total'];
-            $status = $_POST['status'];
             $shipping_method = $_POST['shipping_method'];
             $data = $_POST['data'];
             $total = str_replace(" đ", "", $total);
             // Chèn dữ liệu vào bảng InvoiceShipments
 
-            $sql = "INSERT INTO InvoiceShipments (Supplier_id, name, phone, shipment_date, total, status, shipping_method)
-                    VALUES ($supplier_id, '$name', '$phone', '$shipment_date', '$total', '$status', '$shipping_method')";
+            $sql = "INSERT INTO InvoiceShipments (Supplier_id, name, phone, shipment_date, total,shipping_method)
+                    VALUES ($supplier_id, '$name', '$phone', '$shipment_date', '$total', '$shipping_method')";
             
             // Query($sql, db());
             $shipment_id = QueryGetId($sql, db());

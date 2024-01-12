@@ -84,58 +84,7 @@
                                         </tr>
                                     </tfoot>
                                     <tbody id="table-category">
-                                        <tr>
-                                            <td>
-                                                <a href="#"><span>#4582</span></a>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex justify-content-start align-items-center">
-                                                    <div class="avatar-wrapper">
-                                                        <div class="avatar avatar-sm me-2">
-                                                            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_8000,h_2250,f_auto/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/x1nlzlyldasoj6pllfug/V%C3%A9V%C3%A0oC%E1%BB%95ngIMGWorldsofAdventure,Dubai-KlookVi%E1%BB%87tNam.jpg" alt="Avatar" class="rounded-circle" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex flex-column gap-1">
-                                                        <a href="pages-profile-user.html" class="text-truncate">
-                                                            <h6 class="mb-0">Jereme Saltmarsh</h6>
-                                                        </a>
-                                                        <small class="text-truncate">jsaltmarshj@hp.com</small>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                $5612	
-                                            </td>
-                                            <td>
-                                                <span class="badge rounded-pill bg-label-success"> Paid </span>
-                                            </td>
-                                            <td>
-                                                <span class="badge rounded-pill bg-label-success"> Paid </span>
-                                            </td>
-                                            <td>
-                                                12 Apr 2020	
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <a href="javascript:;" data-bs-toggle="tooltip" class="text-body delete-record" data-bs-placement="top" aria-label="Delete Invoice" data-bs-original-title="Delete Invoice">
-                                                        <i class="fa fa-trash mx-1"></i>
-                                                    </a>
-                                                    <a href="app-invoice-preview.html" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top" aria-label="Preview Invoice" data-bs-original-title="Preview Invoice">
-                                                        <i class="fa fa-eye mx-1"></i>
-                                                    </a>
-                                                    <div class="dropdown">
-                                                        <i class="dropdown-toggle fa fa-caret-down " id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                           
-                                                        </i>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else here</a>
-                                                        </div>
-                                                        </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>

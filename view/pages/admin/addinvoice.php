@@ -139,9 +139,7 @@
                                                         </tr>
                                                         <tr class="text-secondary">
                                                             <select class="form-select mb-3 select-status" required>
-                                                                <option value="Pending">Pending</option>
-                                                                <option value="Shipped">Shipped</option>
-                                                                <option value="Processing">Processing</option>
+                                                                <option value="Pending">chờ xử lý</option>
                                                             </select>
                                                         </tr>
                                                         <tr class="text-secondary">
@@ -575,7 +573,6 @@
         $('.save').on('click', () => {
             let shipment_date = $(".invoice-date").val()
             let supplier = $('.select-supplier').val()
-            let status = $('.select-status').val()
             let method = $('input[name="exampleRadios"]:checked').val()
             let name = $('#personname').val()
             let phone = $('#personphone').val()
@@ -619,7 +616,6 @@
                 shipment_date: shipment_date,
                 total: total,
                 description: note,
-                status: status,
                 shipping_method: method,
                 data: formData,
                 action: 'create'    
