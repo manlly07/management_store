@@ -70,7 +70,7 @@
         } catch (PDOException $e) {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Something went wrong'
+                'message' => 'Máy chủ lỗi'
             ]);
         }
     }
@@ -102,7 +102,7 @@
         } else {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Something went wrong while updating quantity'
+                'message' => 'Máy chủ lỗi while updating quantity'
             ]);
         }
     }

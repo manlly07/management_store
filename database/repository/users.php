@@ -100,7 +100,7 @@
         if($username == '' || $password == '' || $fname == '' || $lname == '' || $address == '' || $phone == '' || $email == '') {
             echo json_encode([
                 'status' => 400,
-                'message' => 'All fields must be required'
+                'message' => 'Tất cả các trường phải điền'
             ]);
             return;
         }
@@ -108,7 +108,7 @@
         if(strlen($password) < 7){
             echo json_encode([
                 'status' => 400,
-                'message' => 'Password must be more than 6 characters '
+                'message' => 'Mật khẩu phải trên 6 ký tự'
             ]);
             return;
         }
@@ -119,7 +119,7 @@
         if (!preg_match($pattern, $fname) || !preg_match($pattern, $lname)) {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Firstname or Lastname must not contain numbers and special characters'
+                'message' => 'Tên không được chứa số hoặc ký tự đặc biệt'
             ]);
             return;
         }
@@ -128,7 +128,7 @@
         if (!preg_match($pattern, $phone)) {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Phone number is invalid'
+                'message' => 'Số điện thoại không hợp lệ'
             ]);
             return;
         }
@@ -138,7 +138,7 @@
         if(count($existPhone) > 0) {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Phone number existed'
+                'message' => 'Số điện thoại đã tồn tại'
             ]);
             return;
         }
@@ -148,7 +148,7 @@
         if(count($existUsername) > 0) {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Username existed'
+                'message' => 'Username đã tồn tại'
             ]);
             return;
         }
@@ -158,7 +158,7 @@
         if(count($existEmail) > 0) {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Email existed'
+                'message' => 'Email đã tồn tại'
             ]);
             return;
         }
@@ -187,17 +187,26 @@
         if($password == ''|| $email == '') {
             echo json_encode([
                 'status' => 400,
-                'message' => 'All fields must be required'
+                'message' => 'Tất cả các trường phải điền'
             ]);
             return;
         }
 
         $sql = "SELECT * FROM customers WHERE email = '$email'";
         $existUsername = Query($sql, db());
+
+        if ($existUsername[0]['is_active'] == 0) {
+            echo json_encode([
+                'status' => 400,
+                'message' => 'Tài khoản đã bị khoá, vui lòng đăng nhập tài khoản khác'
+            ]);
+            return;
+        }
+
         if(count($existUsername) == 0) {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Email or password is incorrect'
+                'message' => 'Email hoặc mật khẩu không đúng'
             ]);
             return;
         }else{
@@ -211,7 +220,7 @@
             }else {
                 echo json_encode([
                     'status' => 400,
-                    'message' => 'Email or password is incorrect'
+                    'message' => 'Email hoặc mật khẩu không đúng'
                 ]);
             }
         }
@@ -236,7 +245,7 @@
         if($fname == '' || $lname == '' || $address == '' || $phone == '' || $email == '') {
             echo json_encode([
                 'status' => 400,
-                'message' => 'All fields must be required'
+                'message' => 'Tất cả các trường phải điền'
             ]);
             return;
         }
@@ -247,7 +256,7 @@
         if (!preg_match($pattern, $fname) || !preg_match($pattern, $lname)) {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Firstname or Lastname must not contain numbers and special characters'
+                'message' => 'Tên không được chứa số hoặc ký tự đặc biệt'
             ]);
             return;
         }
@@ -256,7 +265,7 @@
         if (!preg_match($pattern, $phone)) {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Phone number is invalid'
+                'message' => 'Số điện thoại không hợp lệ'
             ]);
             return;
         }
@@ -268,7 +277,7 @@
         if($user[0]['phone'] != $phone && count($existPhone) != 0) {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Phone number existed'
+                'message' => 'Số điện thoại đã tồn tại'
             ]);
             return;
         }
@@ -303,7 +312,7 @@
         }else {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Something went wrong'
+                'message' => 'Máy chủ lỗi'
             ]);
         }
     }
@@ -317,7 +326,7 @@
         if($oldPassword == '' || $newPassword == '' || $cfNewPassword == '') {
             echo json_encode([
                 'status' => 400,
-                'message' => 'All fields must be required'
+                'message' => 'Tất cả các trường phải điền'
             ]);
             return;
         }
@@ -325,7 +334,7 @@
         if(strlen($newPassword) < 7 || strlen($cfNewPassword) < 7){
             echo json_encode([
                 'status' => 400,
-                'message' => 'Password must be more than 6 characters '
+                'message' => 'Mật khẩu phải trên 6 ký tự '
             ]);
             return;
         }
@@ -361,7 +370,7 @@
         }else {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Something went wrong'
+                'message' => 'Máy chủ lỗi'
             ]);
         }
     }

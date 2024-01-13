@@ -109,7 +109,7 @@
         if($productname == '' || $price == '' || $categoryid == '' || $image == '' || $description == '') {
             echo json_encode([
                 'status' => 400,
-                'message' => 'All fields must be required'
+                'message' => 'Tất cả các trường phải điền'
             ]);
             return;
         }
@@ -133,7 +133,7 @@
         }else {
             echo json_encode([
                 'status' => 404,
-                'message' => 'Something went wrong'
+                'message' => 'Máy chủ lỗi'
             ]);
         }
 
@@ -150,7 +150,7 @@
         if($productname == '' || $price == '' || $categoryid == '' || $description == '') {
             echo json_encode([
                 'status' => 400,
-                'message' => 'All fields must be required'
+                'message' => 'Tất cả các trường phải điền'
             ]);
             return;
         }
@@ -180,7 +180,7 @@
         }else {
             echo json_encode([
                 'status' => 404,
-                'message' => 'Something went wrong'
+                'message' => 'Máy chủ lỗi'
             ]);
         }
     }

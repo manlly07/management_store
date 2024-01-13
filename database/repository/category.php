@@ -45,7 +45,7 @@
         if($categoryname == '' || $description == '') {
             echo json_encode([
                 'status' => 400,
-                'message' => 'All fields must be required'
+                'message' => 'Tất cả các trường phải điền'
             ]);
             return;
         }
@@ -73,7 +73,7 @@
         }else {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Something went wrong'
+                'message' => 'Máy chủ lỗi'
             ]);
         }
     }
@@ -86,7 +86,7 @@
         if($categoryname == '' || $description == '') {
             echo json_encode([
                 'status' => 400,
-                'message' => 'All fields must be required'
+                'message' => 'Tất cả các trường phải điền'
             ]);
             return;
         }
@@ -118,7 +118,7 @@
         }else {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Something went wrong'
+                'message' => 'Máy chủ lỗi'
             ]);
         }
     }

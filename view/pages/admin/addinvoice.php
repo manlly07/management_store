@@ -174,12 +174,12 @@
                                                                 <input type="number" class="form-control invoice-item-cost mb-3" placeholder="cost" min="1" value="0">
                                                             </div>
                                                             <div class="col-md-2 col-12 mb-md-0 mb-3">
-                                                                <h6 class="mb-2 repeater-title">Số Lượng</h6>
+                                                                <h6 class="mb-2 repeater-title">Số lượng</h6>
                                                                 <input type="number" class="form-control invoice-item-qty" value="0" placeholder="qty" min="0" max="50">
                                                             </div>
                                                             <div class="col-md-1 col-12 pe-0">
                                                                 <h6 class="mb-2 repeater-title">Giá Trị</h6>
-                                                                <p class="mb-0 invoice-item-price">0.00 đ</p>
+                                                                <p class="mb-0 invoice-item-price">00.000đ</p>
                                                             </div>
                                                         </div>
                                                         <div class="d-flex flex-column align-items-center justify-content-center border-start p-2">
@@ -204,7 +204,7 @@
                                                     <input type="text" class="form-control w-50" id="personname" placeholder="Nhập tên..." required ><input type="text" class="form-control w-50" id="personphone" placeholder="Nhập SĐT..." required >
                                                 </div>
                                                 <div class="mb-4">
-                                                    <input type="text" class="form-control w-50" id="invoiceMsg" placeholder="Thanks for your business" value="Thanks for your business">
+                                                    <input type="text" class="form-control w-50" id="invoiceMsg" placeholder="Cảm ơn đơn hàng của bạn" value="Cảm ơn đơn hàng của bạn">
                                                     <label for="invoiceMsg" class="d-none">Customer Notes</label>
                                                 </div>
                                             </div>
@@ -216,11 +216,11 @@
                                                     </div>
                                                     <div class="d-flex justify-content-between mb-2">
                                                         <span class="w-px-100 text-secondary">Giảm giá:</span>
-                                                        <h6 class="mb-0 pt-1">$00.00</h6>
+                                                        <h6 class="mb-0 pt-1">00.000đ</h6>
                                                     </div>
                                                     <div class="d-flex justify-content-between mb-2">
                                                         <span class="w-px-100 text-secondary">Thuế:</span>
-                                                        <h6 class="mb-0 pt-1">$00.00</h6>
+                                                        <h6 class="mb-0 pt-1">00.000đ</h6>
                                                     </div>
                                                     <hr>
                                                     <div class="d-flex justify-content-between">
@@ -408,6 +408,7 @@
 
         });
 
+        let total
         //   Gán sự kiện change cho các trường cost và qty
         $(document).on('input', '.invoice-item-cost, .invoice-item-qty', function(event) {
             // Lấy giá trị của cost và qty trong hàng hiện tại
@@ -417,26 +418,25 @@
             // Tinh toán giá mới
             // Kiểm tra nếu cost là NaN, gán bằng 0
             if (isNaN(cost)) {
-            cost = 0;
+                cost = 0;
             }
             
             // Kiểm tra nếu qty là NaN, gán bằng 0
             if (isNaN(qty)) {
-            qty = 0;
+                qty = 0;
             }
             let price = cost * qty;
             // Cập nhật giá (price) trong hàng hiện tại
-            row.find(".invoice-item-price").html(price.toFixed(2) + ' đ');
+            row.find(".invoice-item-price").html(formatMoney(price));
 
-            let total = $('.invoice-item-price').map(function() {
-                return parseFloat($(this).text());
+            total = $('.invoice-item-price').map(function() {
+                return parseFloat($(this).text().replace(/\.|₫/g, ""));
                 }).get().reduce(function(a, b) {
                 return a + b;
             }, 0);
-            console.log(total.toFixed(2));
-            $('.total-due').html(total.toFixed(2) + ' đ');
-            $('.total').html(total.toFixed(2) + ' đ');
-            $('.subtotal').html(total.toFixed(2) + ' đ');
+            $('.total-due').html(formatMoney(total));
+            $('.total').html(formatMoney(total));
+            $('.subtotal').html(formatMoney(total));
         });
 
         const formatDate = (date) => {
@@ -444,6 +444,20 @@
             let month = (date.getMonth() + 1).toString().padStart(2, '0');
             let day = date.getDate().toString().padStart(2, '0');
             return `${year}-${month}-${day}`;
+        }
+
+        function formatMoney(number) {
+            // Xác định số tiền
+            const amount = number.toFixed(2);
+
+            // Tạo chuỗi tiền
+            const money = new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+            }).format(amount);
+
+            // Trả về chuỗi tiền
+            return money;
         }
 
         $('.button-create').click(() => {
@@ -576,12 +590,11 @@
             let method = $('input[name="exampleRadios"]:checked').val()
             let name = $('#personname').val()
             let phone = $('#personphone').val()
-            let total = $('.total').html()
             let note = $('#note').val()
             console.log(total);
             // Lấy danh sách các hàng trong biểu mẫu
             let rows = Array.from($('.repeater-wrapper'));
-            console.log(rows);
+            // console.log(rows);
             // Mảng để lưu trữ các giá trị từ các hàng
             let formData = [];
 
@@ -620,6 +633,8 @@
                 data: formData,
                 action: 'create'    
             }
+
+            console.log(payload);
             $.ajax({
                 url: 'http://localhost:3000/database/repository/invoices.php',
                 type: 'POST',

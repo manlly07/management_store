@@ -108,7 +108,7 @@ if($_POST['action'] && $_POST['action'] == 'update1') {
     if($fullname == '' || $address == '' || $phone == '') {
         echo json_encode([
             'status' => 400,
-            'message' => 'All fields must be required'
+            'message' => 'Tất cả các trường phải điền'
         ]);
         return;
     }
@@ -120,7 +120,7 @@ if($_POST['action'] && $_POST['action'] == 'update1') {
     if (!preg_match($pattern, $phone)) {
         echo json_encode([
             'status' => 400,
-            'message' => 'Phone number is invalid'
+            'message' => 'Số điện thoại không hợp lệ'
         ]);
         return;
     }
@@ -138,7 +138,7 @@ if($_POST['action'] && $_POST['action'] == 'update1') {
     }else {
         echo json_encode([
             'status' => 400,
-            'message' => 'Something went wrong'
+            'message' => 'Máy chủ lỗi'
         ]);
     }
 
@@ -173,7 +173,7 @@ if ($_POST['action'] && $_POST['action'] == 'update') {
     } catch(PDOException $e){
         echo json_encode([
             'status' => 400,
-            'message' => 'Something went wrong while updating quantity'
+            'message' => 'Máy chủ lỗi while updating quantity'
         ]);
     }
 }

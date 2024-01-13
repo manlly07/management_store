@@ -148,7 +148,7 @@
                                                         <span class="me-1 text-heading">Người giao:</span>
                                                         <span class="text-secondary personname"></span>
                                                     </p>
-                                                    <span class="text-secondary">Thanks for your business</span>
+                                                    <span class="text-secondary">Cảm ơn đơn hàng của bạn</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 d-flex justify-content-md-end mt-2">
@@ -179,7 +179,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-12">
-                                                <span class="fw-medium">Note:</span>
+                                                <span class="fw-medium">Ghi chú:</span>
                                                 <span class="text-secondary note">Thật vui khi được làm việc với bạn và nhóm của bạn. Chúng tôi hy vọng bạn sẽ ghi nhớ chúng tôi cho các dự án tự do trong tương lai. Cảm ơn!</span>
                                             </div>
                                         </div>

@@ -36,7 +36,7 @@ if ($_POST['action'] && $_POST['action'] == 'add') {
         } else {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Something went wrong while updating quantity'
+                'message' => 'Máy chủ lỗi while updating quantity'
             ]);
         }
     } else {
@@ -52,7 +52,7 @@ if ($_POST['action'] && $_POST['action'] == 'add') {
         } else {
             echo json_encode([
                 'status' => 400,
-                'message' => 'Something went wrong while adding product to cart'
+                'message' => 'Máy chủ lỗi while adding product to cart'
             ]);
         }
     }
@@ -73,7 +73,7 @@ if ($_POST['action'] && $_POST['action'] == 'update') {
     } else {
         echo json_encode([
             'status' => 400,
-            'message' => 'Something went wrong while updating quantity'
+            'message' => 'Máy chủ lỗi while updating quantity'
         ]);
     }
 }
@@ -92,7 +92,7 @@ if ($_POST['action'] && $_POST['action'] == 'delete') {
     } else {
         echo json_encode([
             'status' => 400,
-            'message' => 'Something went wrong while removing product from cart'
+            'message' => 'Máy chủ lỗi while removing product from cart'
         ]);
     }
 }
