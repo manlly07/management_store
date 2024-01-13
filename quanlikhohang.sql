@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 11, 2024 lúc 04:58 AM
+-- Thời gian đã tạo: Th1 13, 2024 lúc 06:05 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -43,9 +43,7 @@ INSERT INTO `carts` (`id`, `customer_id`, `product_id`, `quantity`, `created_at`
 (24, 4, 12, 2, '2023-12-22 22:45:17'),
 (27, 4, 11, 2, '2023-12-22 22:57:30'),
 (30, 4, 10, 2, '2023-12-22 23:07:45'),
-(41, 12, 11, 1, '2024-01-08 14:49:14'),
-(46, 3, 11, 2, '2024-01-10 17:46:26'),
-(47, 3, 12, 1, '2024-01-10 19:03:38');
+(41, 12, 11, 1, '2024-01-08 14:49:14');
 
 -- --------------------------------------------------------
 
@@ -136,7 +134,11 @@ INSERT INTO `invoiceshipmentdetails` (`id`, `shipment_id`, `product_id`, `quanti
 (11, 16, 4, 30, 15000, 1),
 (12, 16, 9, 10, 25000, 1),
 (13, 17, 3, 30, 15000, 1),
-(14, 18, 6, 30, 10000, 1);
+(14, 18, 6, 30, 10000, 1),
+(15, 19, 9, 50, 20000, 1),
+(16, 20, 1, 15, 200000, 1),
+(17, 21, 2, 100, 10000, 1),
+(18, 22, 1, 4, 2000000, 1);
 
 -- --------------------------------------------------------
 
@@ -163,7 +165,7 @@ CREATE TABLE `invoiceshipments` (
 --
 
 INSERT INTO `invoiceshipments` (`id`, `Supplier_id`, `name`, `phone`, `email`, `shipment_date`, `total`, `status`, `shipping_method`, `is_active`, `description`) VALUES
-(9, 1, 'duc', '', '', '2023-01-06', 144000, 'đã giao', 'COD', 1, ''),
+(9, 1, 'duc', '', '', '2023-01-06', 144000, 'chờ xử lý', 'COD', 1, ''),
 (10, 1, 'duc', '', '', '2023-02-06', 144000, 'chờ xử lý', 'OnlineBanking', 1, ''),
 (12, 1, 'duc', '', '', '2023-06-06', 144000, 'đã giao', 'OnlineBanking', 1, ''),
 (13, 3, 'Hoang Anh', '0987656789', '', '2023-08-08', 144000, 'đã giao', 'COD', 1, ''),
@@ -171,7 +173,11 @@ INSERT INTO `invoiceshipments` (`id`, `Supplier_id`, `name`, `phone`, `email`, `
 (15, 3, 'Leipzig ', '0987654321', '', '2023-12-16', 3000000, 'đã giao', 'COD', 1, ''),
 (16, 1, 'Phùng Thanh Độ', '0343747383', '', '2023-12-27', 700000, 'đã giao', 'COD', 1, ''),
 (17, 4, 'Nguyễn Minh Đức', '0997767834', '', '2024-01-09', 450000, 'đã giao', 'COD', 1, ''),
-(18, 2, 'Tin Vo', '0998785338', '', '2024-01-09', 300000, 'đã giao', 'COD', 1, '');
+(18, 2, 'Tin Vo', '0998785338', '', '2024-01-09', 300000, 'đã giao', 'COD', 1, ''),
+(19, 2, 'duc', '0284249935', '', '2024-01-13', 1000000, 'đã giao', 'COD', 1, ''),
+(20, 1, 'nguyễn minh', '099877376', '', '2024-01-13', 3000000, 'chờ xử lý', 'COD', 1, ''),
+(21, 3, '', '', '', '2024-01-13', 1000000, 'chờ xử lý', 'COD', 1, ''),
+(22, 1, 'cr7', '0762023368', '', '2024-01-13', 8000000, 'chờ xử lý', 'COD', 1, '');
 
 -- --------------------------------------------------------
 
@@ -219,7 +225,10 @@ INSERT INTO `orderdetails` (`id`, `order_id`, `product_id`, `quantity`, `price`,
 (27, 34, 5, 3, 15000, 1),
 (28, 34, 9, 4, 25000, 1),
 (29, 35, 3, 10, 16, 1),
-(30, 36, 3, 5, 16, 1);
+(30, 36, 3, 5, 16, 1),
+(31, 37, 11, 2, 300000, 1),
+(32, 37, 12, 1, 250000, 1),
+(33, 37, 9, 6, 25000, 1);
 
 -- --------------------------------------------------------
 
@@ -254,7 +263,7 @@ INSERT INTO `orders` (`id`, `order_date`, `customer_id`, `fullname`, `email`, `p
 (10, '2023-04-12', 1, '', 'duc@gmail.com', '', '', 25000, '{\"text\":\"Hi\",\"account\":\"04934228924649845\",\"bankmaster\": \"Nguyen Minh Duc\"}', 'đang xử lý', 'OnlineBanking', 1),
 (16, '2023-05-13', 2, 'Dang Cuong', 'ngminducc@gmail.com', '0999345908', 'Hà Nội', 465000, '{\"text\":\"Hi\",\"account\":\"0493422892353853\",\"bankmaster\": \"Dang Van Cuong\"}', 'đã giao', 'OnlineBanking', 1),
 (19, '2023-06-13', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 5000, '{\"text\":\"Hi\",\"account\":\"049342289338759\",\"bankmaster\": \"Dang Hoang Anh\"}', 'đã giao', 'OnlineBanking', 1),
-(21, '2023-07-16', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 65000, '{\"text\":\"Hi\",\"account\":\"049342289313413\",\"bankmaster\":\"Dang Hoang Anh\"}', 'chờ xử lý', 'OnlineBanking', 1),
+(21, '2023-07-16', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Yên Nghĩa', 65000, '{\"text\":\"hehe\",\"account\":\"049342282131\",\"bankmaster\":\"Dang Hoang Anh\"}', 'chờ xử lý', 'OnlineBanking', 1),
 (22, '2023-08-16', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 50000, '{\"text\":\"Hi\",\"account\":\"049342282131\",\"bankmaster\":\"Dang Hoang Anh\"}', 'đã giao', 'OnlineBanking', 1),
 (23, '2023-09-20', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 290000, '{\"text\":\"Hi\",\"account\":\"04934228923242\",\"bankmaster\":\"Dang Hoang Anh\"}', 'đã giao', 'OnlineBanking', 1),
 (24, '2023-10-22', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Hà Nội', 240000, '{\"text\":\"Hihi\",\"account\":\"313113232424\",\"bankmaster\":\"Dang Hoang Anh\"}', 'đã giao', 'OnlineBanking', 1),
@@ -269,7 +278,8 @@ INSERT INTO `orders` (`id`, `order_date`, `customer_id`, `fullname`, `email`, `p
 (33, '2024-01-04', 12, 'Lionel Messi', 'm10@gmail.com', '0762023361', 'Argentina ', 240000, '{\"text\":\"\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'đã giao', 'OnlineBanking', 1),
 (34, '2024-01-08', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Cầu Giấy, Hà Nội', 215000, '{\"text\":\"\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'đã giao', 'OnlineBanking', 1),
 (35, '2024-01-09', 13, 'Tin Võ', 'trantinvo@gmail.com', '0762023368', 'Số 7, ngách 88/17, La Nội, Dương Nội, Hà Đông, Hà Nội', 15000, '{\"text\":\"good luck\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'đã giao', 'OnlineBanking', 1),
-(36, '2024-01-09', 3, 'Tin Vo', '123@gmail.com', '0762023368', 'Số 7, ngách 88/17, TDP Hòa Bình, Dương Nội, Hà Đông, Hà Nội', 70000, '{\"text\":\"good luck\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'đã giao', 'OnlineBanking', 1);
+(36, '2024-01-09', 3, 'Tin Vo', '123@gmail.com', '0762023368', 'Số 7, ngách 88/17, TDP Hòa Bình, Dương Nội, Hà Đông, Hà Nội', 70000, '{\"text\":\"good luck\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'đã giao', 'OnlineBanking', 1),
+(37, '2024-01-13', 3, 'Hoang Anh', '123@gmail.com', '0987654321', 'Cầu Giấy, Hà Nội', 990000, '{\"text\":\"\",\"account\":\"9704198526191432198\",\"bankmaster\":\"NGUYEN VAN A\"}', 'đã huỷ', 'OnlineBanking', 1);
 
 -- --------------------------------------------------------
 
@@ -294,18 +304,18 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `price`, `image`, `category_id`, `created_at`, `is_active`, `description`, `quantity_in_stock`) VALUES
-(1, 'Whiskey ', 100000, '1701859416-sting.webp', 1, '2023-12-06 17:43:36', 1, '', 101),
-(2, 'Sting', 20000, '1702040702-sting.webp', 3, '2023-12-08 20:05:02', 1, '', 102),
-(3, 'Pepsi', 16000, '1702040737-pepsi.png', 2, '2023-12-08 20:05:37', 1, 'Pepsi lon 330ml có màu nâu đỏ đặc trưng, với các bọt khí nhỏ nổi đều trên bề mặt. Khi uống, sản phẩm có vị ngọt thanh, hơi chua nhẹ, kết hợp với vị đắng nhẹ của caffeine, mang đến cảm giác sảng khoái, giải tỏa căng thẳng, mệt mỏi.', 106),
-(4, 'Cocacola ', 15000, '1702040763-cocacola.png', 2, '2023-12-08 20:06:03', 1, 'hello', 50),
-(5, 'Fanta', 15000, '1702390092-fanta.webp', 2, '2023-12-12 21:08:12', 1, '', 89),
-(6, 'Aquafina', 12000, '1702390184-aquafina.webp', 4, '2023-12-12 21:09:44', 1, 'nước tinh khiết', 130),
-(7, 'Lavie', 12000, '1702390240-lavie.png', 4, '2023-12-12 21:10:40', 1, '', 100),
-(8, 'TH True Water', 15000, '1702390402-thtruemilk.jpg', 4, '2023-12-12 21:13:22', 0, '', 100),
-(9, 'Red Bull', 25000, '1702390493-redbull.jpeg', 3, '2023-12-12 21:14:53', 1, '', 16),
-(10, 'Vodka', 200000, '1702390576-vodka.webp', 1, '2023-12-12 21:16:16', 1, '', 99),
-(11, 'Gin', 300000, '1702390623-gin.jpg', 1, '2023-12-12 21:17:03', 1, '', 100),
-(12, 'Vermouth', 250000, '1702443894-vermouth.webp', 1, '2023-12-13 12:04:54', 1, '', 98);
+(1, 'Whiskey ', 2000000, '1705078902-whiskey.webp', 1, '2023-12-06 17:43:36', 1, 'ngon', 120),
+(2, 'Sting', 210000, '1705078734-sting.webp', 3, '2023-12-08 20:05:02', 1, 'ngon', 202),
+(3, 'Pepsi', 250000, '1705078622-pepsi.webp', 2, '2023-12-08 20:05:37', 1, 'Pepsi lon 330ml có màu nâu đỏ đặc trưng, với các bọt khí nhỏ nổi đều trên bề mặt. Khi uống, sản phẩm có vị ngọt thanh, hơi chua nhẹ, kết hợp với vị đắng nhẹ của caffeine, mang đến cảm giác sảng khoái, giải tỏa căng thẳng, mệt mỏi.', 106),
+(4, 'Cocacola ', 230000, '1705078290-cocacola.jpg', 2, '2023-12-08 20:06:03', 1, 'hello', 50),
+(5, 'Fanta', 220000, '1705078318-fanta.webp', 2, '2023-12-12 21:08:12', 1, 'ngon', 89),
+(6, 'Aquafina', 100000, '1705078218-aquafina.webp', 4, '2023-12-12 21:09:44', 1, 'nước tinh khiết', 130),
+(7, 'Lavie', 95000, '1705078370-lavie.png', 4, '2023-12-12 21:10:40', 1, 'ngon', 100),
+(8, 'TH True Water', 110000, '1705078815-thtruemilk.jpg', 4, '2023-12-12 21:13:22', 1, 'ngon', 100),
+(9, 'Red Bull', 400000, '1705078662-redbull.jpeg', 3, '2023-12-12 21:14:53', 1, 'ngon', 66),
+(10, 'Vodka', 1200000, '1705078839-vodka.webp', 1, '2023-12-12 21:16:16', 1, 'ngon', 99),
+(11, 'Gin', 1500000, '1705078348-gin.jpg', 1, '2023-12-12 21:17:03', 1, 'ngon', 100),
+(12, 'Vermouth', 1300000, '1705078773-vermouth.webp', 1, '2023-12-13 12:04:54', 1, 'chris vinyard', 98);
 
 -- --------------------------------------------------------
 
@@ -408,7 +418,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT cho bảng `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT cho bảng `categories`
@@ -426,25 +436,25 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT cho bảng `invoiceshipmentdetails`
 --
 ALTER TABLE `invoiceshipmentdetails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `invoiceshipments`
 --
 ALTER TABLE `invoiceshipments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
