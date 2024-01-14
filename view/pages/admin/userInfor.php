@@ -106,7 +106,7 @@
                                                     <h6 class="mb-0">Địa chỉ</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <input type="text" class="form-control address" name="address" require>
+                                                    <input type="text" class="form-control address" id="InputAddress" name="address" require>
                                                     <input hidden type="text" class="form-control id" name="id" require>
                                                     <input type="text" name="" hidden id="old-avt">
                                                 </div>
@@ -295,7 +295,6 @@
                 data: `action=getbyid&id=${id}`,
                 success: (response) => {
                     let data = JSON.parse(response)[0]
-                    console.log(data);
                     $('#exampleModal').modal('show');
                     $('#old-avt').val(data['avt'])
                     data['avt'] != '' ? $('#avatar').attr('src', `../../../uploads/avt/${data['avt']}`): $('#avatar').attr('src', "https://bootdey.com/img/Content/avatar/avatar7.png")
@@ -303,7 +302,7 @@
                     $('.lname').val(data['last_name']);
                     $('.email').val(data['email']);
                     $('.phone').val(data['phone']);
-                    $('.address').val(data['address']);
+                    $('#InputAddress').val(data['address']);
                     $('.id').val(data['id']);
                     $('.address').html(data['address']);
                     $('.fullname').html(`${data['first_name']} ${data['last_name']}`);
@@ -311,7 +310,6 @@
             })
         }
         const loadImage = (evente) => {
-            console.log('hehe');
             $('#avatar').attr('src', URL.createObjectURL(event.target.files[0]));
         }
 
@@ -323,13 +321,14 @@
             formData.append('lname', $('.lname').val())
             formData.append('email', $('.email').val())
             formData.append('phone', $('.phone').val())
-            formData.append('address', $('.address').val())
+            formData.append('address', $('#InputAddress').val())
             formData.append('action', "update")
             formData.append('oldAvt', $('#old-avt').val())
             var img = $('.image')[0]
             if (img.files[0]) {
                 formData.append('avt', img.files[0])
             }
+            console.log($('#InputAddress').val());
             $.ajax({
                 url: 'http://localhost:3000/database/repository/users.php',
                 type: 'POST',
@@ -353,6 +352,7 @@
                                 text: "Cập nhật người dùng thành công!",
                                 icon: "success"
                             });
+                            window.location.reload()
                     } else if (status === 400) {
                         $('.eerror').html(message);
                     }
@@ -385,7 +385,6 @@
             },
             success: (response) => {
                 let orders = JSON.parse(response)
-                console.log(orders);
                 // if ($.fn.dataTable.isDataTable('#dataTable')) {
                 //     $('#dataTable').DataTable().destroy();
                 // }
