@@ -357,6 +357,42 @@
                     </div>
                     </div>
 
+                    <div class="shadow mt-4">
+                    <div class="card m-auto">
+                        <div class="card-header py-3 d-flex align-items-center">
+                            <h6 class="m-0 font-weight-bold text-primary">Khách hàng tiềm năng</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Khách hàng</th>
+                                            <th>SĐT</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Số đơn</th>
+                                            <th>Tổng giá trị</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Khách hàng</th>
+                                            <th>SĐT</th>
+                                            <th>Địa chỉ</th>
+                                            <th>Số đơn</th>
+                                            <th>Tổng giá trị</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody id="table-products">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                     <!-- Content Row -->
                     
 
@@ -441,7 +477,92 @@
             total()
             bestseller()
             almostoutofstock()
+            bestCustomer()
         })
+
+        function bestCustomer(){
+            $.ajax({
+                url: 'http://localhost:3000/database/repository/orders.php',
+                type: 'POST',
+                data: {
+                    action: 'best_customer'
+                },
+                success: (response) => {
+                    let result =JSON.parse(response)
+                    console.log(result);
+                    $('#dataTable3').DataTable({
+                        searching: true,
+                        paging: true,
+                        data: result,
+                        columns: [
+                            {
+                                data: null,
+                                render: function(data, type, row) {
+                                    return `
+                                    <a href="./userInfor.php?id=${row.id}"><span>#${row.id}</span></a>
+                                    `
+                                }
+                            },
+                            {
+                                data: null,
+                                render: function(data, type, row) {
+                                    let avtURL = row.avt != '' ? `../../../uploads/avt/${row.avt}` : '../../../img/undraw_profile.svg'
+                                    return `
+                                    <div class="d-flex justify-content-start align-items-center">
+                                                    <div class="avatar-wrapper">
+                                                        <div class="avatar avatar-sm me-2">
+                                                            <img src="${avtURL}" alt="Avatar" class="rounded-circle" width="45px" height="45px" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column gap-1">
+                                                        <a href="pages-profile-user.html" class="text-truncate">
+                                                            <h6 class="mb-0 fw-bold">${row.fullname}</h6>
+                                                        </a>
+                                                        <small class="text-truncate">${row.email}</small>
+                                                    </div>
+                                                </div>
+                                    `
+                                }
+                            },
+                            {
+                                data: null,
+                                render: function(data, type, row) {
+                                    return row.phone
+                                }
+                            },
+                            {
+                                data: null,
+                                render: function(data, type, row) {
+                                    return row.address
+                                }
+                            },
+                            {
+                                data: null,
+                                render: function(data, type, row) {
+                                    return row.total_orders
+                                }
+                            },
+                            {
+                                data: null,
+                                render: function(data, type, row) {
+                                    return `
+                                    <div class="d-flex justify-content-start align-items-center">
+                                                    <div class="d-flex flex-column gap-1">
+                                                        <a href="pages-profile-user.html" class="text-truncate">
+                                                            <h6 class="mb-0 fw-bold">${formatMoney(row.total_value)}</h6>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                    `
+                                }
+                            },
+                            
+                        ],
+                        order: [[4, 'desc']]
+                    })
+                }
+            })
+        }
 
         function bestseller(){
             $.ajax({
@@ -519,7 +640,6 @@
                 },
                 success: (response) => {
                     let products = JSON.parse(response)
-                    console.log(products);
                     $('#dataTable2').DataTable({
                         searching: true,
                         paging: true,

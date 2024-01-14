@@ -308,3 +308,15 @@ if ($_POST['action'] && $_POST['action'] == 'customer_currentDate_detail'){
     $data = Query($sql, db());
     echo json_encode($data);
 }
+
+
+if ($_POST['action'] && $_POST['action'] == 'best_customer'){
+    $sql = "SELECT c.id, o.fullname, c.address, c.avt, c.email, c.phone, COUNT(o.id) AS total_orders, SUM(o.total) AS total_value
+            FROM Customers AS c
+            JOIN Orders AS o ON c.id = o.customer_id
+            GROUP BY c.id
+            ORDER BY total_orders DESC
+            LIMIT 10";
+    $data = Query($sql, db());
+    echo json_encode($data);
+}

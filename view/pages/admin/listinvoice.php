@@ -227,7 +227,7 @@
                         data: invoices,
                         columns: [
                             {
-                                data: 'id',
+                                data: null,
                                 render: function(data, type, row) {
                                     return `
                                         <a href="./invoicedetail.php?id=${row.id}"><span>#${row.id}</span></a>
@@ -296,6 +296,7 @@
                                 }
                             }
                         ],
+                        order: [[1, 'desc']]
                     })
                 }
             })
