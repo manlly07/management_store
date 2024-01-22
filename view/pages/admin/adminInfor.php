@@ -105,7 +105,7 @@
                                                     <h6 class="mb-0">Địa chỉ</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <input type="text" class="form-control address" name="address" require>
+                                                    <input type="text" class="form-control address" name="address" id="admin-address" require>
                                                     <input hidden type="text" class="form-control id" name="id" require>
                                                     <input type="text" name="" hidden id="old-avt">
                                                 </div>
@@ -270,7 +270,7 @@
                     $('.lname').val(data['last_name']);
                     $('.email').val(data['email']);
                     $('.phone').val(data['phone']);
-                    $('.address').val(data['address']);
+                    $('#admin-address').val(data['address']);
                     $('.id').val(data['id']);
                     $('.address').html(data['address']);
                     $('.fullname').html(`${data['first_name']} ${data['last_name']}`);
@@ -286,7 +286,7 @@
             formData.append('lname', $('.lname').val())
             formData.append('email', $('.email').val())
             formData.append('phone', $('.phone').val())
-            formData.append('address', $('.address').val())
+            formData.append('address', $('#admin-address').val())
             formData.append('action', "update")
             formData.append('oldAvt', $('#old-avt').val())
             var img = $('.image')[0]
@@ -298,7 +298,7 @@
                 type: 'POST',
                 data: formData,
                 processData: false,
-                contentType: false,
+                contentType: false, 
                 success: (response) => {
                     let {
                         status,
