@@ -67,13 +67,20 @@
                     <a class="collapse-item" href="./addinvoice.php">Thêm mới</a>
                 </div>
             </div>
-        </li>
+    </li>
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="./orders.php">
+    <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders" aria-expanded="true" aria-controls="collapseInvoices">
                 <i class="fas fa-fw fa-folder"></i>
-                <span>Đơn Hàng</span>
+                <span>Đơn Xuất Kho</span>
             </a>
+            <div id="collapseOrders" class="collapse" aria-labelledby="headingInvoices" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Đơn Xuất Kho</h6>
+                    <a class="collapse-item" href="./orders.php">Danh Sách</a>
+                    <a class="collapse-item" href="./addOrder.php">Thêm mới</a>
+                </div>
+            </div>
         </li>
     <!-- Divider -->
     <hr class="sidebar-divider">

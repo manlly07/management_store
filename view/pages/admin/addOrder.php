@@ -106,14 +106,15 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between flex-wrap">
                                             <div class="my-3 me-3">
-                                                <h6 class="fw-bold">Đơn Nhập Từ:</h6>
+                                                <h6 class="fw-bold">Khách hàng:</h6>
                                                 <select class="form-select mb-3 select-supplier" required>
-                                                    <option>Chọn nhà cung cấp</option>
+                                                    <option>Chọn khách hàng</option>
                 
                                                 </select>
-                                                <p class="mb-1 text-secondary name"></p>
-                                                <p class="mb-1 text-secondary address"></p>
+                                                <p class="mb-1 text-secondary customer-name"></p>
                                                 <p class="mb-1 text-secondary phone"></p>
+                                                <p class="mb-1 text-secondary email"></p>
+                                                <p class="mb-1 text-secondary address"></p>
                                             </div>
                                             <div class="my-3">
                                                 <h6 class="fw-bold">Thanh Toán:</h6>
@@ -122,7 +123,7 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="cod" checked>
+                                                                    <input class="form-check-input" type="radio" name="payment-method" id="exampleRadios1" value="COD" checked>
                                                                     <label class="form-check-label" for="exampleRadios1">
                                                                         COD
                                                                     </label>
@@ -130,9 +131,9 @@
                                                             </td>
                                                             <td>
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="banking">
+                                                                    <input class="form-check-input" type="radio" name="payment-method" id="exampleRadios2" value="OnlineBanking">
                                                                     <label class="form-check-label" for="exampleRadios2">
-                                                                        Banking
+                                                                    Online Banking
                                                                     </label>
                                                                 </div>
                                                             </td>
@@ -199,12 +200,15 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6 mb-md-0 mb-3">
-                                                <div class="d-flex align-items-center gap-2 mb-3 mt-2">
-                                                    <label for="salesperson" class="text-heading">Người Giao: </label>
-                                                    <input type="text" class="form-control w-50" id="personname" placeholder="Nhập tên..." required ><input type="text" class="form-control w-50" id="personphone" placeholder="Nhập SĐT..." required >
+                                                <label for="salesperson" class="text-heading">Thông tin người nhận: </label>
+                                                <div class="d-flex flex-column align-items-center gap-2 mb-3 mt-2">
+                                                    <div class="d-flex gap-2">
+                                                        <input type="text" class="form-control w-50" id="receiver" placeholder="Nhập tên..." required >
+                                                        <input type="text" class="form-control w-50" id="receive-phone" placeholder="Nhập SĐT..." required >
+                                                    </div>
+                                                    <input type="text" class="form-control w-100" id="receive-address" placeholder="Nhập địa chỉ..." required >
                                                 </div>
                                                 <div class="mb-4">
-                                                    <input type="text" class="form-control w-50" id="invoiceMsg" placeholder="Cảm ơn đơn hàng của bạn" value="Cảm ơn đơn hàng của bạn">
                                                     <label for="invoiceMsg" class="d-none">Customer Notes</label>
                                                 </div>
                                             </div>
@@ -216,11 +220,11 @@
                                                     </div>
                                                     <div class="d-flex justify-content-between mb-2">
                                                         <span class="w-px-100 text-secondary">Giảm giá:</span>
-                                                        <h6 class="mb-0 pt-1">00.000đ</h6>
+                                                        <h6 class="mb-0 pt-1">-55.000đ</h6>
                                                     </div>
                                                     <div class="d-flex justify-content-between mb-2">
-                                                        <span class="w-px-100 text-secondary">Thuế:</span>
-                                                        <h6 class="mb-0 pt-1">00.000đ</h6>
+                                                        <span class="w-px-100 text-secondary">Phí ship:</span>
+                                                        <h6 class="mb-0 pt-1">20.000đ</h6>
                                                     </div>
                                                     <hr>
                                                     <div class="d-flex justify-content-between">
@@ -250,12 +254,11 @@
                             <div class="col-lg-3 col-12 invoice-actions">
                                 <div class="card mb-4">
                                     <div class="card-body">
-                                        <button class="btn btn-primary d-grid w-100 mb-3 waves-effect waves-light" data-bs-toggle="offcanvas" data-bs-target="#sendInvoiceOffcanvas">
+                                        <button class="btn btn-secondary d-grid w-100 mb-3 waves-effect waves-light" data-bs-toggle="offcanvas" data-bs-target="#sendInvoiceOffcanvas">
                                             <span class="d-flex align-items-center justify-content-center gap-2 text-nowrap"><i class="fas fa-fw fa-long-arrow-alt-left"></i><span>Gửi Đơn</span></span>
                                         </button>
                                         <div class="d-flex">
-                                            <a href="./invoicedetail.php" class="btn btn-outline-secondary w-50 me-2 mb-3 waves-effect">Xem Trước</a>
-                                            <button type="button" class="btn btn-outline-secondary w-50 mb-3 waves-effect save">Lưu</button>
+                                            <button type="button" class="btn btn-primary w-100 mb-3 waves-effect save">Lưu Đơn</button>
                                         </div>
                                     </div>
                                 </div>
@@ -382,7 +385,7 @@
             avtURL != '' ? $('#admin-avt').attr('src', `../../../uploads/avt/${avtURL}`): $('#avatar').attr('src', "../../../img/admin.png")
             getSuppliers()
             getProducts().done(function(response) {
-                console.log(response);
+                // console.log(response);
                 let products = response
                 $(".item-details").each(function() {
                     let selectElement = $(this);
@@ -434,6 +437,7 @@
                 }).get().reduce(function(a, b) {
                 return a + b;
             }, 0);
+            total =total - 55000+20000
             $('.total-due').html(formatMoney(total));
             $('.total').html(formatMoney(total));
             $('.subtotal').html(formatMoney(total));
@@ -476,7 +480,7 @@
             <div class="d-flex border rounded position-relative pe-0">
                                                         <div class="row w-100 p-3">
                                                             <div class="col-md-6 col-12 mb-md-0 mb-3">
-                                                                <h6 class="mb-2 repeater-title">Sản phẩm</h6>
+                                                                <h6 class="mb-2 repeater-title">Sản Phẩm</h6>
                                                                 <select class="form-select item-details mb-3">
                                                                     <option value>Chọn sản phẩm</option>
                                                                     ${selectElement}
@@ -526,10 +530,10 @@
 
         const getSuppliers = () => {
             $.ajax({
-                url: 'http://localhost:3000/database/repository/supplier.php',
+                url: 'http://localhost:3000/database/repository/users.php',
                 type: 'POST',
                 data: {
-                    action: "view"
+                    action: "view1"
                 },
                 success: (response) => {
                     let suppliers = JSON.parse(response)
@@ -537,29 +541,29 @@
                     // Xóa các tùy chọn hiện có
                     selectElement.empty();
                     // Thêm tùy chọn mặc định
-                    selectElement.append('<option disabled selected value>Chọn nhà cung cấp</option>');
+                    selectElement.append('<option disabled selected value>Chọn khách hàng</option>');
                     // Thêm tùy chọn cho từng sản phẩm
                     suppliers.forEach(function(supplier) {
-                        selectElement.append('<option value="' + supplier.id + '">' + supplier.name + '</option>');
+                        selectElement.append('<option value="' + supplier.id + '">' + supplier.user_name + '</option>');
                     });
                 }
             })
         }
         $(document).on('change', '.select-supplier', function(event) {
             let selectedOption = $(this).val();
-            console.log(selectedOption);
-
             $.ajax({
-                url: 'http://localhost:3000/database/repository/supplier.php',
+                url: 'http://localhost:3000/database/repository/users.php',
                 type: 'POST',
                 data: `id=${selectedOption}&action=getbyid`,
                 success: (response) => {
                     let supplier = JSON.parse(response)[0]
-                    console.log(supplier.name);
-
-                    $('.name').html(supplier.name)
+                    $('.customer-name').html(supplier.first_name + ' ' + supplier.last_name)
+                    $('#receiver').val(supplier.first_name + ' ' + supplier.last_name)
+                    $('.email').html(supplier.email)
                     $('.address').html(supplier.address)
+                    $('#receive-address').val(supplier.address)
                     $('.phone').html(supplier.phone)
+                    $('#receive-phone').val(supplier.phone)
                 }
             })
         });
@@ -567,7 +571,17 @@
         $(document).on('change', '.item-details', function(event) {
             let selectedOption = $(this).val();
             let optionExists = false;
-
+            let row = $(event.target).closest(".repeater-wrapper");
+            row.find(".invoice-item-cost").val();
+            $.ajax({
+                url: 'http://localhost:3000/database/repository/products.php',
+                type: 'POST',
+                data: `id=${selectedOption}&action=getbyid`,
+                success: (response) => {
+                    let product = JSON.parse(response)
+                    row.find(".invoice-item-cost").val(product.price);
+                }
+            })
             // Lặp qua các hàng khác và kiểm tra xem tùy chọn đã tồn tại hay chưa
             $(".item-details").not(this).each(function() {
                 if ($(this).val() === selectedOption) {
@@ -585,13 +599,14 @@
         });
 
         $('.save').on('click', () => {
-            let shipment_date = $(".invoice-date").val()
-            let supplier = $('.select-supplier').val()
-            let method = $('input[name="exampleRadios"]:checked').val()
-            let name = $('#personname').val()
-            let phone = $('#personphone').val()
-            let note = $('#note').val()
-            console.log(total);
+            let order_date = $(".invoice-date").val()
+            let customer_id = parseFloat($('.select-supplier').val())
+            let payment_method = $('input[name="payment-method"]:checked').val() 
+            let fullname = $('#receiver').val()
+            let phone = $('#receive-phone').val()
+            let address = $('#receive-address').val()
+            let email = $('.email').html()
+            // let note = $('#note').val()
             // Lấy danh sách các hàng trong biểu mẫu
             let rows = Array.from($('.repeater-wrapper'));
             // console.log(rows);
@@ -600,9 +615,9 @@
 
             // Lặp qua từng hàng và lấy giá trị
             rows.forEach(function(row) {
-                let itemDetails = row.querySelector('.item-details').value;
-                let itemCost = row.querySelector('.invoice-item-cost').value;
-                let itemQty = row.querySelector('.invoice-item-qty').value;
+                let itemDetails = parseFloat(row.querySelector('.item-details').value);
+                let itemCost = parseFloat(row.querySelector('.invoice-item-cost').value);
+                let itemQty = parseFloat(row.querySelector('.invoice-item-qty').value);
 
                 // Tạo đối tượng dữ liệu cho hàng hiện tại
                 let rowData = {
@@ -615,53 +630,68 @@
                 formData.push(rowData);
             });
             
-            for($i = 0; $i < formData.length; $i++) {
-                if (formData[$i].itemDetails.trim() === '') {
-                    alert('Hãy trọn sản phẩm')
+            for(let i = 0; i < formData.length; i++) {
+                if (formData[i].itemDetails == '') {
+                    alert('Hãy chọn sản phẩm')
                     return
                 }
             }
 
-            let payload = {
-                Supplier_id: supplier,
-                name: name,
-                phone: phone,
-                shipment_date: shipment_date,
-                total: total,
-                description: note,
-                shipping_method: method,
-                data: formData,
-                action: 'create'    
-            }
+        let note = {
+            text: $('#note').val(),
+            account: $('input[name="payment-method"]:checked').val() == 'OnlineBanking' ? '9704198526191432198' : phone,
+            bankmaster: $('input[name="payment-method"]:checked').val() == 'OnlineBanking' ? 'NGUYEN VAN A' : fullname
+          }
+          note = JSON.stringify(note)
+          let payload = {
+            customer_id:customer_id, order_date:order_date, fullname:fullname, email:email, phone:phone,
+            address:address, note:note, total:total, payment_method: payment_method,
+            data: formData,
+            action: 'create'
+          }
 
             console.log(payload);
-            $.ajax({
-                url: 'http://localhost:3000/database/repository/invoices.php',
-                type: 'POST',
-                data: payload,
-                success: function(response) {
-                    // Xử lý phản hồi thành công từ máy chủ
-                    console.log(response);
-                    let {status, message} = JSON.parse(response);
-                    if (status === 200) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: "Tạo thành công!",
-                            icon: "success"
-                            });
-                        setTimeout(() => {
-                            window.location.href = 'http://localhost:3000/view/pages/admin/listinvoice.php'
-                        },2000)
-                    }else {
-                        Swal.fire({
-                            title: "...Oops!",
-                            text: "Đã xảy ra lỗi, hãy kiểm tra lại!",
-                            icon: "error"
-                            });
-                    }
-                    console.log(response);
-                },
-            })
+
+            Swal.fire({
+            title: "Bạn chắc chắn muốn đặt hàng?",
+            text: "Đơn hàng sẽ được thêm vào",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "success",
+            cancelButtonColor: "danger",
+            confirmButtonText: "Xác nhận và tạo đơn"
+          }).then((result) => {
+            if(result.isConfirmed){
+
+                $.ajax({
+                    url: 'http://localhost:3000/database/repository/orders.php',
+                    type: 'POST',
+                    data: payload,
+                    success: function(response) {
+                        // Xử lý phản hồi thành công từ máy chủ
+                        console.log(response);
+                        let {status, message} = JSON.parse(response);
+                        if (status === 200) {
+                            Swal.fire({
+                                title: "Success!",
+                                text: "Tạo đơn thành công!",
+                                icon: "success"
+                                });
+                            setTimeout(() => {
+                                window.location.href = 'http://localhost:3000/view/pages/admin/orders.php'
+                            },1500)
+                        }else {
+                            Swal.fire({
+                                title: "...Oops!",
+                                text: "Đã xảy ra lỗi, hãy kiểm tra lại!",
+                                icon: "error"
+                                });
+                        }
+                        console.log(response);
+                    },
+                })
+            }
+          })
         })
     </script>
 </body>

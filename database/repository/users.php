@@ -33,6 +33,14 @@
         echo $output;
     }
 
+    if($_POST['action'] && $_POST['action'] == 'view1') {
+        // $id =  $_POST['id'];
+        $sql = "SELECT * FROM customers WHERE 1";
+
+        $data = Query($sql, db());
+        echo json_encode($data);
+    }
+
     if($_POST['action'] && $_POST['action'] == 'disable') {
         $id =  $_POST['id'];
         $sql = "UPDATE customers SET is_active = 0 WHERE id = '$id'";
